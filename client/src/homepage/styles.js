@@ -1,0 +1,197 @@
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+
+    body: {
+        margin: "0",
+        padding: "0",
+    },
+
+    navbarRoot: {
+        flexGrow: 1,
+    },
+
+    navbar: {
+        width: '100%',
+        backgroundColor: "#ffffff",
+    },
+
+    logo: {
+        height: '10%',
+        width: '10%',
+    },
+
+    navbarTitle: {
+        flexGrow: 1,
+        color: '#000000'
+    },
+    
+    navbarButton: {
+        backgroundColor: '#4b53bc',
+        margin: '5px',
+        color: '#ffffff',
+        textTransform: 'none',
+        fontWeight: 'bold',
+        '&:hover': {
+            backgroundColor: '#4b53bc',
+            textDecoration: 'underline'
+        }
+    },
+
+    blueBox: {
+        height: '8vh',
+        width: '100vw',
+        backgroundColor: '#4b53bc',
+        [theme.breakpoints.down('md')]: {
+            height: '10vh'
+        }
+    },
+
+    blueTag: {
+        margin: '1%',
+        textAlign: 'center',
+    },
+
+    homeRoot: {
+        flexGrow: 1,
+    },
+
+    paper: {
+      padding: theme.spacing(10),
+      textAlign: 'left'
+    },
+
+    homeTitle: {
+        color: '#4b53bc',
+        fontWeight: 'bold'
+    },
+
+    tagline: {
+        color: '#000000'
+    },
+
+    img: {
+        height: '80vh',
+        width: '1',
+        overflow: 'hidden',
+        flexWrap: 'wrap',
+        justifyContent: 'space-around',
+        display: 'flex',
+    },
+
+    signin:{
+        margin: "10vh auto",
+        padding: 10,
+        height: '80vh',
+        width: '30vw',
+        backgroundColor: '#ffffff'
+    },
+
+    bigLogo: {
+        height: '8%',
+        width: '40%',
+    },
+
+    textField: {
+        marginTop: "10px",
+        width: '100%',
+        height: '5%'
+    },
+
+    signupButton: {
+        backgroundColor: '#4b53bc',
+        margin: '5px',
+        color: '#ffffff',
+        fontWeight: 'bold',
+        width: '18vw',
+        borderRadius: 0,
+        textTransform: 'none',
+        border: '2px solid',
+        borderColor: '#ffffff',
+        '&:hover': {
+            backgroundColor: '#363c90',
+            borderColor: '#f5f5f5',
+        }
+    },
+
+    signinButton: {
+        backgroundColor: '#ffffff',
+        margin: '5px',
+        color: '#000000',
+        fontWeight: 'bold',
+        width: '18vw',
+        borderRadius: 0,
+        textTransform: 'none',
+        border: '2px solid',
+        borderColor: '#4b53bc',
+        '&:hover': {
+            backgroundColor: '#f5f5f5',
+            borderColor: '#363c90'
+        }
+    },
+
+    signup:{
+        margin: "5vh auto",
+        padding: 10,
+        height: '90vh',
+        width: '30vw',
+        backgroundColor: '#ffffff'
+    },
+    
+    footerSigninButton: {
+        backgroundColor: '#4b53bc',
+        margin: '5px',
+        color: '#ffffff',
+        fontWeight: 'bold',
+        width: '12vw',
+        borderRadius: 0,
+        textTransform: 'none',
+        border: '2px solid',
+        borderColor: '#ffffff',
+        '&:hover': {
+            backgroundColor: '#363c90',
+            borderColor: '#f5f5f5',
+        }
+    },
+
+    footerSignupButton: {
+        backgroundColor: '#ffffff',
+        margin: '5px',
+        color: '#4b53bc',
+        fontWeight: 'bold',
+        width: '12vw',
+        borderRadius: 0,
+        textTransform: 'none',
+        border: '2px solid',
+        borderColor: '#4b53bc',
+        '&:hover': {
+            backgroundColor: '#f5f5f5',
+            borderColor: '#363c90'
+        }
+    },
+
+    listIcon: {
+        color: '#f5f5f5',
+        fontSize: '2rem'
+    },
+
+    listText: {
+        color: '#f5f5f5',
+        padding: '2%',
+        fontSize: '2rem',
+        fontWeight: 'bold'
+    },
+
+    footerHeading: {
+        color: '#737373',
+        fontWeight: 'bold'
+    },
+
+    footerList: {
+        color: '#737373',
+        fontSize: '0.75rem'
+    }
+
+}));
+
+export default useStyles;
