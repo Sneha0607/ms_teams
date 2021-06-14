@@ -16,7 +16,11 @@ const Home = () => {
 
     return (
         <>
+        {/*Navbar inserted*/}
         <Navbar />
+
+        {/*Tagline and default image*/}
+
         <div className={classes.homeRoot}>
           <Grid container spacing={0}>
             <Grid item xs={12} sm={6} className={classes.paper}>
@@ -28,10 +32,10 @@ const Home = () => {
                 </Typography>
                 <List>
                   <ListItem>
-                    <Button variant='contained' className={classes.signupButton} color="inherit">Sign up for free</Button>
+                    <Button variant='contained' className={classes.signupButton} href='/signup'>Sign up for free</Button>
                   </ListItem>
                   <ListItem>
-                    <Button variant='outlined' className={classes.signinButton} color="inherit">Sign in</Button>
+                    <Button variant='outlined' className={classes.signinButton} href='/signin'>Sign in</Button>
                   </ListItem>
                 </List>  
             </Grid>
@@ -43,6 +47,9 @@ const Home = () => {
           </Grid>
 
           <br/><br/><br/>
+
+          {/*Intoduction to MS Teams*/}
+          
           <Typography align='center' variant='h4' style={{padding: '1%', fontWeight: 'bold'}}>
             Microsoft Teams is for everyone
           </Typography>
@@ -51,6 +58,8 @@ const Home = () => {
             Your docs, photos, videos, chat history, and meeting notes are always there, so it’s easier to work together.<br/>        
             Set up your team’s space with all the apps you need so you can stay in just one place instead of jumping around.<br/>         
           </Typography>
+
+          {/*Work, Home & School*/}
 
           <Container maxWidth='lg'>
             <Grid container justify='center' spacing={0}> 
@@ -63,6 +72,8 @@ const Home = () => {
               </Grid>
             </Grid>
           </Container>
+
+          {/*About Chat Functionality*/}
 
           <img style={{height: '78vh', width: '100vw', marginTop: '10%'}} src={process.env.PUBLIC_URL + 'images/chat.png'} alt="chat"/>
 
@@ -82,6 +93,8 @@ const Home = () => {
             </Grid>
           </Container>
 
+          {/*About Meet Functionality*/}
+
           <img style={{height: '78vh', width: '100vw', marginTop: '5%'}} src={process.env.PUBLIC_URL + 'images/meet.png'} alt="meet"/>
 
           <br/><br/>
@@ -100,6 +113,8 @@ const Home = () => {
             </Grid>
           </Container>
 
+          {/*About Call Functionality*/}
+
           <img style={{height: '78vh', width: '100vw', marginTop: '5%'}} src={process.env.PUBLIC_URL + 'images/call.png'} alt="call"/>
 
           <br/><br/>
@@ -117,6 +132,8 @@ const Home = () => {
               </Grid>        
             </Grid>
           </Container>
+
+          {/*About Collaborate Functionality*/}
 
           <img style={{height: '78vh', width: '100vw', marginTop: '5%'}} src={process.env.PUBLIC_URL + 'images/collaborate.png'} alt="collaborate"/>
 
@@ -138,13 +155,15 @@ const Home = () => {
 
           <br/><br/>
 
+          {/*Home, Business, Enterprise and Education Section*/}
+
           <Grid container spacing={0} style={{backgroundColor: '#4b53bc', marginTop: '5%'}}>
             <Grid item xs={12} sm={6} className={classes.paper}>
               <Typography variant='h4' style={{fontWeight: 'medium', color: '#ffffff'}}>
                 Get started with Microsoft Teams today
               </Typography>
-              <Button variant='contained' className={classes.footerSignupButton} color="inherit">Sign up for free</Button>
-              <Button variant='outlined' className={classes.footerSigninButton} color="inherit">Sign in</Button>   
+              <Button variant='contained' className={classes.footerSignupButton} href='/signup'>Sign up for free</Button>
+              <Button variant='outlined' className={classes.footerSigninButton} color='/signin'>Sign in</Button>   
             </Grid>
             <Grid item xs={12} sm={6}>
               <List component='nav'>
@@ -176,8 +195,11 @@ const Home = () => {
             </Grid>        
           </Grid>
 
+          {/*Social Media Links*/}
+
           <Typography variant='h6' style={{padding: '4%', fontWeight: 'bold'}}>Follow Microsoft 365</Typography>
           
+        {/*Footer inserted*/}
         <Footer />
         </div>
         </>

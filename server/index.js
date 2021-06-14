@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+
 const app = express();
 //const server = require("http").createServer(app);
 
@@ -25,11 +26,8 @@ app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
 
 
 /*
-import express from 'express';
-const app = express();
 import bodyParser from 'body-parser';
-import db from './firebasedatabase.js';
-import cors from 'cors';
+
 
 
 app.use(express.json());
