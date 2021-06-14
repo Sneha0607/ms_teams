@@ -137,6 +137,14 @@ const useStyles = makeStyles((theme) => ({
         width: '30vw',
         backgroundColor: '#ffffff'
     },
+
+    buttonSignup: {
+        marginTop: '2%'
+    },
+
+    buttonSignin: {
+        marginTop: '2%'
+    },
     
     footerSigninButton: {
         backgroundColor: '#4b53bc',
