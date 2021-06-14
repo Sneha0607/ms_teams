@@ -19,7 +19,7 @@ const Signin = () => {
             return setEmailError('All fields are required!');
         }
         
-        firebase.auth().signInWithEmailAndPassword(email, password).then(()=>{history.push('/');}).catch(err=>{
+        firebase.auth().signInWithEmailAndPassword(email, password).then(()=>{history.push('/teams');}).catch(err=>{
             switch(err.code){
                 case "auth/user-not-found":
                 case "auth/invalid-email":
@@ -47,7 +47,7 @@ const Signin = () => {
                         {passwordError && <Alert severity = "error">{passwordError}</Alert>}
                        <TextField className = {classes.textField} variant = "outlined" color = "primary"  label = "E-mail"  onChange = {(e)=>{setEmail(e.target.value)}} error = {emailError} />
                        <TextField className = {classes.textField} variant = "outlined" color = "primary"  label = "Password" type = "Password" onChange = {(e)=>{setPassword(e.target.value)}} error = {passwordError}/>
-                       <Button className = {classes.buttonSignin} color = "primary" type = "submit" variant = "contained" fullWidth  >Log in</Button>
+                       <Button className = {classes.buttonSignin} color = "primary" type = "submit" variant = "contained" fullWidth >Sign in</Button>
                     </form>
                     <FormControlLabel control = {<Checkbox name = "rememberMe" color = "primary"/>} label = "Remember me"/>
                     <p>

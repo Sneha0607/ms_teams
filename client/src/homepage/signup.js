@@ -15,7 +15,6 @@ const Signup = () => {
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const [nameError, setNameError] = useState('');
-
     const history = useHistory();
 
     const handleSignup = (e) => {
@@ -36,6 +35,7 @@ const Signup = () => {
             const newUser = {
                 displayname: name,
                 email: email,
+                password: password,
                 userid:cred.user.uid
             };
             console.log(newUser);
@@ -45,7 +45,7 @@ const Signup = () => {
             .catch(err=> {
                 console.log(err);
             });
-        }).then(()=>{history.push('/');})
+        }).then(()=>{history.push('/teams');})
         .catch(err=>{
             switch(err.code){
                 case "auth/email-already-in-use":

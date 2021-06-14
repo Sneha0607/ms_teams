@@ -1,8 +1,9 @@
 import React from 'react';
 import useStyles from './styles';
+import firebase from '../firebase';
 import { Drawer, AppBar, CssBaseline, Toolbar, Typography, ListItemIcon } from '@material-ui/core';
 import { MenuList, MenuItem, InputBase, Menu, Tooltip } from '@material-ui/core';
-
+import {useHistory} from 'react-router-dom';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MessageIcon from '@material-ui/icons/Message';
 import GroupIcon from '@material-ui/icons/Group';
@@ -22,6 +23,13 @@ const Sidebar = () => {
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+    const history = useHistory();
+
+    const handleLogout = () =>{
+        firebase.auth().signOut();
+        history.push('/');
+    };
 
     const handleProfileMenuOpen = (event) => {
         setAnchorEl(event.currentTarget);
@@ -44,7 +52,7 @@ const Sidebar = () => {
     const renderMenu = (
         <Menu anchorEl={anchorEl} anchorOrigin={{ vertical: 'top', horizontal: 'right' }} id={menuId} keepMounted transformOrigin={{ vertical: 'top', horizontal: 'right' }} open={isMenuOpen} onClose={handleMenuClose} >
             <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-            <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+            <MenuItem onClick={()=>{handleLogout();}}>Logout</MenuItem>
         </Menu>
     );
 
