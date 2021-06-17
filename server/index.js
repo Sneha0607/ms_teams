@@ -37,4 +37,13 @@ app.post('/createuser', function(req, res){
 
 });
 
+app.get('/userprofile/:userid', function(req, res){
+    const userid = req.params.userid;
+    db.ref('/users/'+ userid).on('value', snap=>{
+        const user = snap.val();
+        res.send(JSON.stringify(user));
+   });
+    
+});
+
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));

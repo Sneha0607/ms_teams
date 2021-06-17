@@ -7,6 +7,7 @@ import Signup from './homepage/signup';
 import Signin from './homepage/signin';
 import Teams from './teams/teams';
 import Chat from './chat/chat';
+import Sidebar from './components/sidebar';
 
 const App = () => {
   const [user, setUser] = useState('');
@@ -31,6 +32,7 @@ const App = () => {
         <>
         <CssBaseline>
         <Router>
+          <Sidebar />
         <Switch>
           <Route path = '/teams' component = {Teams}/>
           <Route path = '/chat' component = {Chat}/>

@@ -1,5 +1,4 @@
 import React from 'react';
-import Sidebar from '../components/sidebar';
 import useStyles from './styles';
 import GroupAddIcon from '@material-ui/icons/GroupAdd';
 import SettingsIcon from '@material-ui/icons/Settings';
@@ -10,7 +9,7 @@ const Teams = () => {
 
     return (
         <div className={classes.content}>
-        <Sidebar />
+
         <div className={classes.grow}>
             <AppBar position="static" className={classes.appbar} elevation={0}>
                 <Toolbar>

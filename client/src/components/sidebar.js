@@ -1,6 +1,8 @@
 import React from 'react';
 import useStyles from './styles';
 import firebase from '../firebase';
+import axios from 'axios';
+import { useEffect, useState, Fragment} from 'react';
 import { Drawer, AppBar, CssBaseline, Toolbar, Typography, ListItemIcon } from '@material-ui/core';
 import { MenuList, MenuItem, InputBase, Menu, Tooltip } from '@material-ui/core';
 import {useHistory} from 'react-router-dom';
@@ -18,7 +20,9 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 
 const Sidebar = () => {
     const classes = useStyles();
-
+    
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
     const isMenuOpen = Boolean(anchorEl);
@@ -51,7 +55,7 @@ const Sidebar = () => {
     const menuId = 'primary-search-account-menu';
     const renderMenu = (
         <Menu anchorEl={anchorEl} anchorOrigin={{ vertical: 'top', horizontal: 'right' }} id={menuId} keepMounted transformOrigin={{ vertical: 'top', horizontal: 'right' }} open={isMenuOpen} onClose={handleMenuClose} >
-            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+            <MenuItem onClick={handleMenuClose}>{name}</MenuItem>
             <MenuItem onClick={()=>{handleLogout();}}>Logout</MenuItem>
         </Menu>
     );
@@ -67,6 +71,24 @@ const Sidebar = () => {
             </MenuItem>
         </Menu>
     );
+
+    const getUserProfile = () =>  {
+        const user = firebase.auth().currentUser;
+        try {
+          axios.get('http://localhost:5000/userprofile/'+ user.uid).then(res =>{
+            setName(res.data.name);
+            setEmail(res.data.email);
+          });
+         } catch (error) {
+           
+         }
+
+    }
+
+    useEffect(()=>{
+      getUserProfile();
+    }, []);
+
 
     return (
         <div className={classes.root}>
@@ -87,6 +109,7 @@ const Sidebar = () => {
                     </div>
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
+                        <Typography variant='h6'>{name}</Typography>
                         <IconButton edge="end" aria-label="account of current user" aria-controls={menuId} aria-haspopup="true" onClick={handleProfileMenuOpen} color="inherit">
                             <AccountCircle />
                         </IconButton>
