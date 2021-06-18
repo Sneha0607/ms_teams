@@ -8,6 +8,7 @@ import Signin from './homepage/signin';
 import Teams from './teams/teams';
 import Chat from './chat/chat';
 import Sidebar from './components/sidebar';
+import Room from './teams/Room';
 
 const App = () => {
   const [user, setUser] = useState('');
@@ -35,6 +36,7 @@ const App = () => {
           <Sidebar />
         <Switch>
           <Route path = '/teams' component = {Teams}/>
+          <Route path = '/room/:roomID' component={Room} />
           <Route path = '/chat' component = {Chat}/>
         </Switch>
         </Router>
@@ -57,7 +59,3 @@ const App = () => {
 }
 
 export default App;
-
-<>
-        
-    </>

@@ -1,49 +1,55 @@
-import express from 'express';
+const express = require("express");
+const http = require("http");
 const app = express();
+const server = http.createServer(app);
+const socket = require("socket.io");
+const io = socket(server);
 
-import db from './firebasedatabase.js';
-import cors from 'cors';
+const PORT = process.env.PORT || 5000;
 
-app.use(
-    cors({
-      origin: 'http://localhost:3000',
-      credentials: true,
-    })
-);
+const users = {};
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-const PORT = process.env.port || 5000;
-app.get('/', (req, res)=>{
-    res.send('Server is running!');
+const socketToRoom = {};
+
+app.get("/", (req, res) => {
+    res.send("Server is running");
 });
 
-//User created in database
+io.on('connection', socket => {
+    socket.on("join room", roomID => {
+        if (users[roomID]) {
+            const length = users[roomID].length;
+            if (length === 4) {
+                socket.emit("room full");
+                return;
+            }
+            users[roomID].push(socket.id);
+        } else {
+            users[roomID] = [socket.id];
+        }
+        socketToRoom[socket.id] = roomID;
+        const usersInThisRoom = users[roomID].filter(id => id !== socket.id);
 
-app.post('/createuser', function(req, res){
-    const newUser = {
-        Name: req.body.displayname,
-        Email: req.body.email,
-        Password: req.body.password,
-        userid: req.body.userid
-    };
-    db.ref('users/' + newUser.userid).set({
-        name: newUser.Name,
-        email: newUser.Email,
-        password: newUser.Password,
-        userid:newUser.userid
+        socket.emit("all users", usersInThisRoom);
     });
-    console.log(newUser);
+
+    socket.on("sending signal", payload => {
+        io.to(payload.userToSignal).emit('user joined', { signal: payload.signal, callerID: payload.callerID });
+    });
+
+    socket.on("returning signal", payload => {
+        io.to(payload.callerID).emit('receiving returned signal', { signal: payload.signal, id: socket.id });
+    });
+
+    socket.on('disconnect', () => {
+        const roomID = socketToRoom[socket.id];
+        let room = users[roomID];
+        if (room) {
+            room = room.filter(id => id !== socket.id);
+            users[roomID] = room;
+        }
+    });
 
 });
 
-app.get('/userprofile/:userid', function(req, res){
-    const userid = req.params.userid;
-    db.ref('/users/'+ userid).on('value', snap=>{
-        const user = snap.val();
-        res.send(JSON.stringify(user));
-   });
-    
-});
-
-app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
+server.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
