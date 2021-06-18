@@ -2,7 +2,7 @@ import React from 'react';
 import useStyles from './styles';
 import firebase from '../firebase';
 import axios from 'axios';
-import { useEffect, useState, Fragment} from 'react';
+import { useEffect, useState } from 'react';
 import { Drawer, AppBar, CssBaseline, Toolbar, Typography, ListItemIcon } from '@material-ui/core';
 import { MenuList, MenuItem, InputBase, Menu, Tooltip } from '@material-ui/core';
 import {useHistory} from 'react-router-dom';

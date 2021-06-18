@@ -55,6 +55,48 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('md')]: {
       display: 'none',
     },
+  },
+
+  startMeeting: {
+    marginTop: '20vh',
+    marginLeft: '30vw',
+    align: 'center'
+  },
+
+  newMeeting: {
+    width: '20%',
+    height: '8vh',
+    fontSize: '1rem',
+    backgroundColor: '#464775',
+    color: '#ffffff',
+    padding: '1%',
+    '&:hover': {
+      backgroundColor: '#464775',
+      fontWeight: 'bold'
+    }
+  },
+
+  codeText: {
+    marginTop: '5%',
+    height: '7vh',
+    width: '25%',
+    borderRadius: '5px'
+  },
+
+  joinButton: {
+    width: '10%',
+    height: '7vh',
+    fontSize: '1rem',
+    backgroundColor: '#464775',
+    color: '#ffffff',
+    padding: '1%',
+    marginTop: '5%',
+    marginLeft: '1%',
+    borderRadius: '5px',
+    '&:hover': {
+      backgroundColor: '#464775',
+      fontWeight: 'bold'
+    }
   }
 
 }));

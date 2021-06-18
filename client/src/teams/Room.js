@@ -2,12 +2,18 @@ import React, { useEffect, useRef, useState } from "react";
 import io from "socket.io-client";
 import Peer from "simple-peer";
 import styled from "styled-components";
+import { AppBar, IconButton, Toolbar } from "@material-ui/core";
+import MicIcon from '@material-ui/icons/Mic';
+import MicOffIcon from '@material-ui/icons/MicOff';
+import VideocamIcon from '@material-ui/icons/Videocam';
+import VideocamOffIcon from '@material-ui/icons/VideocamOff';
+import CallEndIcon from '@material-ui/icons/CallEnd';
 
 const Container = styled.div`
-    padding: 20px;
+    padding: 10px;
     display: flex;
-    height: 100vh;
-    width: 90%;
+    height: 90vh;
+    width: 100%;
     margin: auto;
     flex-wrap: wrap;
 `;
@@ -110,13 +116,26 @@ const Room = (props) => {
     }
 
     return (
-        <Container style={{marginTop: '10vh'}}>
+        <Container style={{marginTop: '10vh', backgroundColor: '#1b1a1a', width: '100vw'}}>
             <StyledVideo muted ref={userVideo} autoPlay playsInline />
             {peers.map((peer, index) => {
                 return (
                     <Video key={index} peer={peer} />
                 );
             })}
+            <AppBar position='fixed' style={{top: 'auto', bottom: '0', paddingLeft: '45vw', backgroundColor: '#393838', height: '10vh'}}>
+                <Toolbar>
+                    <IconButton style={{color: '#ffffff', fontSize: '2rem'}}>
+                        <MicIcon/>
+                    </IconButton>
+                    <IconButton style={{color: '#ffffff', fontSize: '2rem'}}>
+                        <VideocamIcon/>
+                    </IconButton>
+                    <IconButton style={{color: '#9d2f42', fontSize: '2rem'}}>
+                        <CallEndIcon/>
+                    </IconButton>
+                </Toolbar>
+            </AppBar>
         </Container>
     );
 };

@@ -3,7 +3,7 @@ import useStyles from './styles';
 import GroupAddIcon from '@material-ui/icons/GroupAdd';
 import SettingsIcon from '@material-ui/icons/Settings';
 import { AppBar, Toolbar, IconButton, Typography, Tooltip } from '@material-ui/core';
-import CreateRoom from './CreateRoom';
+import CreateRoom from './createRoom';
 
 const Teams = () => {
     const classes = useStyles();

@@ -8,7 +8,7 @@ import Signin from './homepage/signin';
 import Teams from './teams/teams';
 import Chat from './chat/chat';
 import Sidebar from './components/sidebar';
-import Room from './teams/Room';
+import Room from './teams/room';
 
 const App = () => {
   const [user, setUser] = useState('');
