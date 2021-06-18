@@ -58,7 +58,8 @@ const useStyles = makeStyles((theme) => ({
 
     paper: {
       padding: theme.spacing(10),
-      textAlign: 'left'
+      textAlign: 'left',
+      //backgroundColor: '#f5f5f5'
     },
 
     homeTitle: {

@@ -1,6 +1,7 @@
 import React from 'react';
 import useStyles from './styles';
-import { Typography, Button, Grid, GridListTile, List, ListItem, ListItemIcon, Container, ListItemText } from '@material-ui/core';
+import { Typography, Grid, GridListTile, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import { IconButton, AppBar, Button, Container, Toolbar } from '@material-ui/core';
 import Navbar from './navbar';
 import Footer from './footer';
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
@@ -23,7 +24,7 @@ const Home = () => {
 
         <div className={classes.homeRoot}>
           <Grid container spacing={0}>
-            <Grid item xs={12} sm={6} className={classes.paper}>
+            <Grid item xs={12} sm={6} className={classes.paper} style={{backgroundColor: '#f5f5f5'}}>
                 <Typography variant='h3' className={classes.homeTitle}>
                   Microsoft Teams
                 </Typography>
@@ -197,7 +198,16 @@ const Home = () => {
 
           {/*Social Media Links*/}
 
-          <Typography variant='h6' style={{padding: '4%', fontWeight: 'bold'}}>Follow Microsoft 365</Typography>
+          <AppBar position='static' style={{backgroundColor: '#ffffff'}}>
+            <Toolbar>
+              <Typography variant='h6' style={{padding: '4%', fontWeight: 'bold', color: '#000000'}}>
+                Follow Microsoft 365
+              </Typography>
+              <IconButton style={{color: '#000000'}} href='https://www.linkedin.com/showcase/microsoft-365/'><LinkedInIcon/></IconButton>
+              <IconButton style={{color: '#000000'}} href='https://twitter.com/microsoft365'><TwitterIcon/></IconButton>
+              <IconButton style={{color: '#000000'}} href='https://www.microsoft.com/en-gb/microsoft-365/blog/'><BorderColorIcon/></IconButton>
+            </Toolbar>
+          </AppBar>
           
         {/*Footer inserted*/}
         <Footer />
