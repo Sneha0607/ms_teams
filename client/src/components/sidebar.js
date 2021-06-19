@@ -153,9 +153,9 @@ const Sidebar = () => {
                             </ListItemIcon>
                         </MenuItem>
 
-                        <MenuItem button className={classes.menuItem} component='a' href='/assignments'>
+                        <MenuItem button className={classes.menuItem} component='a' href='/tasks'>
                             <ListItemIcon>
-                                <Tooltip title='Assignments' placement='right'>
+                                <Tooltip title='Tasks' placement='right'>
                                     <AssignmentIcon className={classes.icons}/>
                                 </Tooltip>
                             </ListItemIcon>

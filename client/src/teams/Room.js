@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useHistory } from 'react-router';
 import io from "socket.io-client";
 import Peer from "simple-peer";
 import styled from "styled-components";
@@ -10,17 +11,17 @@ import VideocamOffIcon from '@material-ui/icons/VideocamOff';
 import CallEndIcon from '@material-ui/icons/CallEnd';
 
 const Container = styled.div`
-    padding: 10px;
+    padding: 2%;
     display: flex;
     height: 90vh;
     width: 100%;
-    margin: auto;
     flex-wrap: wrap;
 `;
 
 const StyledVideo = styled.video`
-    height: 40%;
+    height: 45%;
     width: 50%;
+    marginLeft: 5%
 `;
 
 const Video = (props) => {
@@ -49,6 +50,7 @@ const Room = (props) => {
     const userVideo = useRef();
     const peersRef = useRef([]);
     const roomID = props.match.params.roomID;
+    const history = useHistory();
 
     useEffect(() => {
         socketRef.current = io.connect("/");
@@ -115,6 +117,16 @@ const Room = (props) => {
         return peer;
     }
 
+    //SET MUTE UNMUTE OPTIONS
+
+    
+      
+    //LEAVE MEETING
+
+    const leaveMeeting = () => {
+        alert('You are leaving the meeting!')
+    }
+
     return (
         <Container style={{marginTop: '10vh', backgroundColor: '#1b1a1a', width: '100vw'}}>
             <StyledVideo muted ref={userVideo} autoPlay playsInline />
@@ -131,7 +143,7 @@ const Room = (props) => {
                     <IconButton style={{color: '#ffffff', fontSize: '2rem'}}>
                         <VideocamIcon/>
                     </IconButton>
-                    <IconButton style={{color: '#9d2f42', fontSize: '2rem'}}>
+                    <IconButton onClick={leaveMeeting} href='/teams' style={{color: '#9d2f42', fontSize: '2rem'}}>
                         <CallEndIcon/>
                     </IconButton>
                 </Toolbar>
