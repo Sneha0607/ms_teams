@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import {useHistory} from 'react-router';
-import firebase from '../firebase';
-import axios from 'axios';
+import firebase, { db } from '../firebase';
 import useStyles from './styles';
 import {Button, Grid, Link, TextField, Typography} from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
 
 const Signup = () => {
     const classes = useStyles();
+    
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -32,19 +32,21 @@ const Signup = () => {
         
         //Check authentication 
         firebase.auth().createUserWithEmailAndPassword(email, password).then((cred)=>{
-            const newUser = {
-                displayname: name,
+            const user = {
+                displayName: name,
                 email: email,
                 password: password,
-                userid:cred.user.uid
+                uid: cred.user.uid
             };
-            console.log(newUser);
+            console.log(user);
+
+            //PUSHING DATA IN DATABASE
     
-            axios.post('http://localhost:5000/createuser', newUser)
-            .then(()=> console.log('User Registered!'))
-            .catch(err=> {
-                console.log(err);
-            });
+            const userRef = db.doc(`users/${user.uid}`);
+            userRef.set({
+                name, email, createdAt: new Date(), uid: user.uid
+            })
+
         }).then(()=>{history.push('/teams');})
         .catch(err=>{
             switch(err.code){

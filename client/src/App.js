@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { CssBaseline } from '@material-ui/core';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import firebase from './firebase';
+import { AuthProvider } from './contexts/AuthContext';
 import Home from './homepage/home';
 import Signup from './homepage/signup';
 import Signin from './homepage/signin';
@@ -33,12 +34,14 @@ const App = () => {
         <>
         <CssBaseline>
         <Router>
-          <Sidebar />
-        <Switch>
-          <Route path = '/teams' component = {Teams}/>
-          <Route path = '/room/:roomID' component={Room} />
-          <Route path = '/chat' component = {Chat}/>
-        </Switch>
+          <AuthProvider>
+            <Sidebar />
+            <Switch>
+              <Route path = '/teams' component = {Teams}/>
+              <Route path = '/room/:roomID' component={Room} />
+              <Route path = '/chat' component = {Chat}/>
+            </Switch>
+          </AuthProvider>
         </Router>
         </CssBaseline>
         </>  

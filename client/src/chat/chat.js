@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import useStyles from './styles';
+import { db } from '../firebase';
+import { useAuth } from '../contexts/AuthContext';
 import GroupAddIcon from '@material-ui/icons/GroupAdd';
 import SettingsIcon from '@material-ui/icons/Settings';
 import { AppBar, Toolbar, IconButton, Typography } from '@material-ui/core';
 
 const Chat = () => {
     const classes = useStyles();
+    const [users, setUsers] = useState([]);
+    const { currentUser } = useAuth();
+
+    useEffect(() => {
+        db.collection(`users`).onSnapshot(snapshot => {
+            setUsers(snapshot.docs.map(doc => doc.data()))
+        });
+    }, [])
 
     return (
         <div className={classes.content}>
@@ -35,6 +45,17 @@ const Chat = () => {
                     </div>
                 </Toolbar>
             </AppBar>
+
+            {
+                users.map(
+                    (user)=>(
+                        <div style={{marginLeft: '10vw'}}>
+                            <h4>{user.name}</h4>
+                            <h4>{user.email}</h4>
+                        </div>
+                    )
+                )
+            }
         </div>
     </div>
     )
