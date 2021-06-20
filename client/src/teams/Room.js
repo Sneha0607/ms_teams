@@ -1,9 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useHistory } from 'react-router';
-import io from "socket.io-client";
-import Peer from "simple-peer";
-import styled from "styled-components";
-import { AppBar, IconButton, Toolbar } from "@material-ui/core";
+import React, { useEffect, useRef, useState } from 'react';
+import io from 'socket.io-client';
+import Peer from 'simple-peer';
+import styled from 'styled-components';
+import { AppBar, IconButton, Toolbar, Typography } from '@material-ui/core';
 import MicIcon from '@material-ui/icons/Mic';
 import MicOffIcon from '@material-ui/icons/MicOff';
 import VideocamIcon from '@material-ui/icons/Videocam';
@@ -50,7 +49,6 @@ const Room = (props) => {
     const userVideo = useRef();
     const peersRef = useRef([]);
     const roomID = props.match.params.roomID;
-    const history = useHistory();
 
     useEffect(() => {
         socketRef.current = io.connect("/");

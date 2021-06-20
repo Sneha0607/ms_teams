@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   startMeeting: {
-    marginTop: '20vh',
+    marginTop: '18vh',
     marginLeft: '30vw',
     align: 'center'
   },
