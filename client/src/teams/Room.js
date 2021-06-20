@@ -2,7 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import io from 'socket.io-client';
 import Peer from 'simple-peer';
 import styled from 'styled-components';
-import { AppBar, IconButton, Toolbar, Typography } from '@material-ui/core';
+import useStyles from './styles';
+import { IconButton, Toolbar, MenuItem, MenuList, Drawer } from '@material-ui/core';
 import MicIcon from '@material-ui/icons/Mic';
 import MicOffIcon from '@material-ui/icons/MicOff';
 import VideocamIcon from '@material-ui/icons/Videocam';
@@ -44,6 +45,9 @@ const videoConstraints = {
 };
 
 const Room = (props) => {
+
+    const classes = useStyles();
+
     const [peers, setPeers] = useState([]);
     const socketRef = useRef();
     const userVideo = useRef();
@@ -133,19 +137,29 @@ const Room = (props) => {
                     <Video key={index} peer={peer} />
                 );
             })}
-            <AppBar position='fixed' style={{top: 'auto', bottom: '0', paddingLeft: '45vw', backgroundColor: '#393838', height: '10vh'}}>
-                <Toolbar>
-                    <IconButton style={{color: '#ffffff', fontSize: '2rem'}}>
-                        <MicIcon/>
-                    </IconButton>
-                    <IconButton style={{color: '#ffffff', fontSize: '2rem'}}>
-                        <VideocamIcon/>
-                    </IconButton>
-                    <IconButton onClick={leaveMeeting} href='/teams' style={{color: '#9d2f42', fontSize: '2rem'}}>
-                        <CallEndIcon/>
-                    </IconButton>
-                </Toolbar>
-            </AppBar>
+
+            <Drawer className={classes.drawer} variant="permanent" classes={{ paper: classes.drawerPaper }} anchor='right'>
+                <Toolbar />
+                <div className={classes.drawerContainer}>
+                    <MenuList>
+                        <MenuItem >
+                            <IconButton style={{color: '#ffffff', fontSize: '2rem'}}>
+                                <MicIcon/>
+                            </IconButton>
+                        </MenuItem>
+                        <MenuItem >
+                            <IconButton style={{color: '#ffffff', fontSize: '2rem'}}>
+                                    <VideocamIcon />
+                            </IconButton>
+                        </MenuItem>
+                        <MenuItem >
+                            <IconButton onClick={leaveMeeting} href='/teams' style={{color: '#9d2f42', fontSize: '2rem'}}>
+                                <CallEndIcon/>
+                            </IconButton>
+                        </MenuItem>
+                    </MenuList>
+                </div>
+            </Drawer>
         </Container>
     );
 };

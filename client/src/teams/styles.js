@@ -97,7 +97,21 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: '#464775',
       fontWeight: 'bold'
     }
-  }
+  },
+
+  drawer: {
+    flexShrink: 0,    
+  },
+
+  drawerPaper: {
+    backgroundColor: '#393838',
+    width: '5vw',
+    height: '91vh',
+  },
+
+  toolbar: {
+    overflow: 'auto'
+  },
 
 }));
   

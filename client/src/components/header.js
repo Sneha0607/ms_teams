@@ -101,7 +101,7 @@ const Header = () => {
                             users.map(
                                 (user)=>{
                                     if(user.uid === currentUser.uid)
-                                        return (<Typography variant='h6' style={{marginTop: '10%'}}>{user.name}</Typography>)
+                                        return (<Typography variant='h6' style={{marginTop: '5%'}}>{user.name}</Typography>)
                                 }
                             )
                         }

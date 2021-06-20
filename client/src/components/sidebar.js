@@ -19,7 +19,7 @@ const Sidebar = () => {
             
             <Header/>
             
-            <Drawer className={classes.drawer} variant="permanent" classes={{   paper: classes.drawerPaper, }}>
+            <Drawer className={classes.drawer} variant="permanent" classes={{ paper: classes.drawerPaper }}>
                 <Toolbar />
                 <div className={classes.drawerContainer}>
                     <MenuList>
