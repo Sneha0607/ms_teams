@@ -9,6 +9,8 @@ import MicOffIcon from '@material-ui/icons/MicOff';
 import VideocamIcon from '@material-ui/icons/Videocam';
 import VideocamOffIcon from '@material-ui/icons/VideocamOff';
 import CallEndIcon from '@material-ui/icons/CallEnd';
+import ScreenShareIcon from '@material-ui/icons/ScreenShare';
+
 
 const Container = styled.div`
     padding: 2%;
@@ -49,15 +51,23 @@ const Room = (props) => {
     const classes = useStyles();
 
     const [peers, setPeers] = useState([]);
+    const [stream, setStream] = useState();
+    const [audioMuted, setAudioMuted] = useState(false)
+    const [videoMuted, setVideoMuted] = useState(false)
+    const [isfullscreen, setFullscreen] = useState(false)
     const socketRef = useRef();
     const userVideo = useRef();
     const peersRef = useRef([]);
+    const userStream = useRef();
+
     const roomID = props.match.params.roomID;
 
     useEffect(() => {
         socketRef.current = io.connect("/");
         navigator.mediaDevices.getUserMedia({ video: videoConstraints, audio: true }).then(stream => {
             userVideo.current.srcObject = stream;
+            setStream(stream);
+            userStream.current = stream;
             socketRef.current.emit("join room", roomID);
             socketRef.current.on("all users", users => {
                 const peers = [];
@@ -119,9 +129,47 @@ const Room = (props) => {
         return peer;
     }
 
-    //SET MUTE UNMUTE OPTIONS
+    //TOGGLE AUDIO AND VIDEO OPTIONS
 
+    function toggleMuteAudio(){
+        if(stream){
+          setAudioMuted(!audioMuted)
+          stream.getAudioTracks()[0].enabled = audioMuted
+        }
+    }
     
+    function toggleMuteVideo(){
+        if(stream){
+          setVideoMuted(!videoMuted)
+          stream.getVideoTracks()[0].enabled = videoMuted
+        }
+    }
+    
+    let audioControl;
+    if(audioMuted){
+      audioControl=<IconButton onClick={()=>toggleMuteAudio()} style={{color: '#ffffff', fontSize: '2rem'}}>
+        <MicOffIcon/>
+      </IconButton>
+    } 
+    else {
+      audioControl=<IconButton onClick={()=>toggleMuteAudio()} style={{color: '#ffffff', fontSize: '2rem'}}>
+        <MicIcon/>
+      </IconButton>
+    }
+
+    let videoControl;
+    if(videoMuted){
+      videoControl=<IconButton onClick={()=>toggleMuteVideo()} style={{color: '#ffffff', fontSize: '2rem'}}>
+        <VideocamOffIcon/>
+      </IconButton>
+    } 
+    else {
+      videoControl=<IconButton onClick={()=>toggleMuteVideo()} style={{color: '#ffffff', fontSize: '2rem'}}>
+        <VideocamIcon/>
+      </IconButton>
+    }
+
+
       
     //LEAVE MEETING
 
@@ -143,14 +191,10 @@ const Room = (props) => {
                 <div className={classes.drawerContainer}>
                     <MenuList>
                         <MenuItem >
-                            <IconButton style={{color: '#ffffff', fontSize: '2rem'}}>
-                                <MicIcon/>
-                            </IconButton>
+                            {audioControl}
                         </MenuItem>
                         <MenuItem >
-                            <IconButton style={{color: '#ffffff', fontSize: '2rem'}}>
-                                    <VideocamIcon />
-                            </IconButton>
+                            {videoControl}
                         </MenuItem>
                         <MenuItem >
                             <IconButton onClick={leaveMeeting} href='/teams' style={{color: '#9d2f42', fontSize: '2rem'}}>

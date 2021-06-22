@@ -113,6 +113,32 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'auto'
   },
 
+  controlsContainer: {
+    position: 'absolute',
+    bottom: '0',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    height: '4rem',
+    zIndex: '999',
+    width: '100vw',
+    backgroundColor: 'rgba(0,0,0,0.1)',
+  },
+
+  iconContainer: {
+    borderRadius: '50%',
+    border: '1px solid var(--primary-color)',
+    width: '0.25rem',
+    height: '0.25rem',
+    cursor: 'pointer',
+    backgroundColor: 'var(--primary-color-hover)',
+    boxShadow: 'var(--lift-shadow)',
+    transition: 'background-color .2s cubic-bezier(.4,0,.2,1)',
+    '&:hover': {
+      backgroundColor: 'rgba(var(--color-background),0.2)'
+    }
+  }
+
+
 }));
   
 export default useStyles;
