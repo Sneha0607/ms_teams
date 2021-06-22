@@ -8,6 +8,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import IconButton from '@material-ui/core/IconButton';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+import MobileMenu from './mobileMenu';
 
 const Header = () => {
 
@@ -83,7 +84,7 @@ const Header = () => {
         <CssBaseline />
             <AppBar position="fixed" className={classes.appBar} elevation={0}>
                 <Toolbar>
-                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="open drawer">
+                    <IconButton edge="start" className={classes.menuButton} color="inherit">
                         <MoreHorizIcon />
                     </IconButton>
                     <Typography className={classes.title} variant="h6" noWrap>

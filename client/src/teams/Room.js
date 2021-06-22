@@ -10,6 +10,8 @@ import VideocamIcon from '@material-ui/icons/Videocam';
 import VideocamOffIcon from '@material-ui/icons/VideocamOff';
 import CallEndIcon from '@material-ui/icons/CallEnd';
 import ScreenShareIcon from '@material-ui/icons/ScreenShare';
+import FullscreenIcon from '@material-ui/icons/Fullscreen';
+import FullscreenExitIcon from '@material-ui/icons/FullscreenExit';
 
 
 const Container = styled.div`
@@ -36,10 +38,9 @@ const Video = (props) => {
     }, []);
 
     return (
-        <StyledVideo playsInline autoPlay ref={ref} />
+        <StyledVideo controls playsInline autoPlay ref={ref} />
     );
 }
-
 
 const videoConstraints = {
     height: window.innerHeight / 2,
@@ -77,7 +78,10 @@ const Room = (props) => {
                         peerID: userID,
                         peer,
                     })
-                    peers.push(peer);
+                    peers.push({
+                        peerID: userID,
+                        peer,
+                    });
                 })
                 setPeers(peers);
             })
@@ -89,13 +93,28 @@ const Room = (props) => {
                     peer,
                 })
 
-                setPeers(users => [...users, peer]);
+                const peerObj = {
+                    peer,
+                    peerID: payload.callerID
+                }
+
+                setPeers(users => [...users, peerObj]);
             });
 
             socketRef.current.on("receiving returned signal", payload => {
                 const item = peersRef.current.find(p => p.peerID === payload.id);
                 item.peer.signal(payload.signal);
             });
+
+            socketRef.current.on("user left", id => {
+                const peerObj = peersRef.current.find(p => p.peerID === id);
+                if(peerObj) {
+                    peerObj.peer.destroy();
+                }
+                const peers = peersRef.current.filter(p => p.peerID !== id);
+                peersRef.current = peers;
+                setPeers(peers);
+            })
         })
     }, []);
 
@@ -147,29 +166,43 @@ const Room = (props) => {
     
     let audioControl;
     if(audioMuted){
-      audioControl=<IconButton onClick={()=>toggleMuteAudio()} style={{color: '#ffffff', fontSize: '2rem'}}>
+      audioControl=<IconButton onClick={()=>toggleMuteAudio()} style={{color: '#ffffff'}}>
         <MicOffIcon/>
       </IconButton>
     } 
     else {
-      audioControl=<IconButton onClick={()=>toggleMuteAudio()} style={{color: '#ffffff', fontSize: '2rem'}}>
+      audioControl=<IconButton onClick={()=>toggleMuteAudio()} style={{color: '#ffffff'}}>
         <MicIcon/>
       </IconButton>
     }
 
     let videoControl;
     if(videoMuted){
-      videoControl=<IconButton onClick={()=>toggleMuteVideo()} style={{color: '#ffffff', fontSize: '2rem'}}>
+      videoControl=<IconButton onClick={()=>toggleMuteVideo()} style={{color: '#ffffff'}}>
         <VideocamOffIcon/>
       </IconButton>
     } 
     else {
-      videoControl=<IconButton onClick={()=>toggleMuteVideo()} style={{color: '#ffffff', fontSize: '2rem'}}>
+      videoControl=<IconButton onClick={()=>toggleMuteVideo()} style={{color: '#ffffff'}}>
         <VideocamIcon/>
       </IconButton>
     }
 
+    //SCREEN SHARE OPTION
 
+
+    
+    //FULL SCREEN
+    let fullscreenButton;  
+    if(isfullscreen){
+        fullscreenButton=<IconButton onClick={()=>{setFullscreen(false)}} style={{color: '#ffffff'}}>
+            <FullscreenExitIcon/>
+        </IconButton>
+    } else {
+        fullscreenButton=<IconButton onClick={()=>{setFullscreen(true)}} style={{color: '#ffffff'}}>
+            <FullscreenIcon/>
+        </IconButton>
+    }
       
     //LEAVE MEETING
 
@@ -179,10 +212,10 @@ const Room = (props) => {
 
     return (
         <Container style={{marginTop: '10vh', backgroundColor: '#1b1a1a', width: '100vw'}}>
-            <StyledVideo muted ref={userVideo} autoPlay playsInline />
-            {peers.map((peer, index) => {
+            <StyledVideo controls muted ref={userVideo} autoPlay playsInline />
+            {peers.map((peer) => {
                 return (
-                    <Video key={index} peer={peer} />
+                    <Video key={peer.peerID} peer={peer.peer} />
                 );
             })}
 
@@ -196,8 +229,16 @@ const Room = (props) => {
                         <MenuItem >
                             {videoControl}
                         </MenuItem>
+                        <MenuItem>
+                            <IconButton style={{color: '#ffffff'}}>
+                                <ScreenShareIcon/>
+                            </IconButton>
+                        </MenuItem>
+                        <MenuItem>
+                            {fullscreenButton}
+                        </MenuItem>
                         <MenuItem >
-                            <IconButton onClick={leaveMeeting} href='/teams' style={{color: '#9d2f42', fontSize: '2rem'}}>
+                            <IconButton onClick={leaveMeeting} href='/teams' style={{color: '#9d2f42'}}>
                                 <CallEndIcon/>
                             </IconButton>
                         </MenuItem>
