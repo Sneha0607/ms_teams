@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { CssBaseline, IconButton, Typography, AppBar, Toolbar } from '@material-ui/core';
-import {BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
-import useStyles from './styles';
+import { CssBaseline } from '@material-ui/core';
+import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import firebase from './firebase';
 import { AuthProvider } from './contexts/AuthContext';
 import Home from './homepage/home';
@@ -11,13 +10,11 @@ import Teams from './teams/teams';
 import Chat from './chat/chat';
 import Sidebar from './components/sidebar';
 import Room from './teams/room';
-import HearingIcon from '@material-ui/icons/Hearing';
-import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import Calendar from './calendar/calendar';
+import Tasks from './tasks/tasks';
 
 const App = () => {
   const [user, setUser] = useState('');
-  
-  const classes = useStyles();
 
   const authlistener = () =>{
     firebase.auth().onAuthStateChanged((user)=>{
@@ -34,36 +31,6 @@ const App = () => {
     authlistener();
   }, []);
 
-  const commands = [
-    {
-        command: ["Go to *", "Go to * page", "Open *", "Open * page", "*"],
-        callback: (redirectPage) => setRedirectUrl(redirectPage),
-    },
-  ]
-
-  const {transcript} = useSpeechRecognition({commands});
-  const [redirectUrl, setRedirectUrl] = useState('');
-  const pages = ['teams', 'chat', 'tasks', 'activity', 'calls', 'calendar'];
-  const urls = {
-      teams: '/teams',
-      chat: '/chat',
-      tasks: '/tasks',
-      activity: '/activity',
-      calls: '/calls',
-      calendar: '/calendar'
-  };
-
-  if(!SpeechRecognition.browserSupportsSpeechRecognition) {
-      return null;
-  }
-  let redirect = '';
-  if(redirectUrl) {
-      if(pages.includes(redirectUrl)) {
-          redirect = <Redirect to={urls[redirectUrl]} />
-      } else {
-          redirect = <p>Could not find page: {redirectUrl}</p>
-      }
-  }
 
   return (
       <>
@@ -73,23 +40,15 @@ const App = () => {
         <Router>
           <AuthProvider>
             <Sidebar />
-            {/* <Switch> */}
-              <Route path = '/teams' component = {Teams}/>
-              <Route path = '/room/:roomID' component={Room} />
-              <Route path = '/chat' component = {Chat}/>
-
-              {redirect}
-            {/* </Switch> */}
+              <Switch>
+                <Route path = '/teams' component = {Teams}/>
+                <Route path = '/room/:roomID' component={Room} />
+                <Route path = '/chat' component = {Chat}/>
+                <Route path = '/calendar' component = {Calendar}/>
+                <Route path = '/tasks' component = {Tasks} />
+            </Switch>
           </AuthProvider>
         </Router>
-        <AppBar position="fixed" className={classes.appBar}>
-              <Toolbar>
-                <IconButton onClick={SpeechRecognition.startListening} edge="start" className={classes.hearButton}>
-                  <HearingIcon />
-                </IconButton>          
-                <Typography>Click and speak to navigate between pages: {transcript}</Typography>
-              </Toolbar>
-            </AppBar>
         </CssBaseline>
         </>  
         : 
