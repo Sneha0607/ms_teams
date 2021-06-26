@@ -8,10 +8,10 @@ import Signup from './homepage/signup';
 import Signin from './homepage/signin';
 import Teams from './teams/teams';
 import Chat from './chat/chat';
-import Sidebar from './components/sidebar';
 import Room from './teams/room';
 import Calendar from './calendar/calendar';
 import Tasks from './tasks/tasks';
+import Navbar from './components/navbar';
 
 const App = () => {
   const [user, setUser] = useState('');
@@ -39,7 +39,7 @@ const App = () => {
         <CssBaseline>
         <Router>
           <AuthProvider>
-            <Sidebar />
+            <Navbar />
               <Switch>
                 <Route path = '/teams' component = {Teams}/>
                 <Route path = '/room/:roomID' component={Room} />

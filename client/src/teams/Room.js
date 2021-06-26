@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 import Peer from 'simple-peer';
 import styled from 'styled-components';
 import useStyles from './styles';
-import { IconButton, Toolbar, MenuItem, MenuList, Drawer } from '@material-ui/core';
+import { IconButton, Toolbar, MenuItem, MenuList, Drawer, AppBar } from '@material-ui/core';
 import MicIcon from '@material-ui/icons/Mic';
 import MicOffIcon from '@material-ui/icons/MicOff';
 import VideocamIcon from '@material-ui/icons/Videocam';
@@ -13,11 +13,10 @@ import ScreenShareIcon from '@material-ui/icons/ScreenShare';
 import FullscreenIcon from '@material-ui/icons/Fullscreen';
 import FullscreenExitIcon from '@material-ui/icons/FullscreenExit';
 
-
 const Container = styled.div`
-    padding: 2%;
+    padding: 2vw;
     display: flex;
-    height: 90vh;
+    height: 85vh;
     width: 100%;
     flex-wrap: wrap;
 `;
@@ -219,32 +218,21 @@ const Room = (props) => {
                 );
             })}
 
-            <Drawer className={classes.drawer} variant="permanent" classes={{ paper: classes.drawerPaper }} anchor='right'>
-                <Toolbar />
-                <div className={classes.drawerContainer}>
-                    <MenuList>
-                        <MenuItem >
-                            {audioControl}
-                        </MenuItem>
-                        <MenuItem >
-                            {videoControl}
-                        </MenuItem>
-                        <MenuItem>
-                            <IconButton style={{color: '#ffffff'}}>
-                                <ScreenShareIcon/>
-                            </IconButton>
-                        </MenuItem>
-                        <MenuItem>
-                            {fullscreenButton}
-                        </MenuItem>
-                        <MenuItem >
-                            <IconButton onClick={leaveMeeting} href='/teams' style={{color: '#9d2f42'}}>
-                                <CallEndIcon/>
-                            </IconButton>
-                        </MenuItem>
-                    </MenuList>
-                </div>
-            </Drawer>
+            {/* CONTROLS */}
+
+            <AppBar position="fixed" className={classes.controls}>
+                <Toolbar className={classes.controlsToolbar}>
+                    {audioControl}     
+                    {videoControl}
+                    <IconButton style={{color: '#ffffff'}}>
+                        <ScreenShareIcon/>
+                    </IconButton>
+                    {fullscreenButton}
+                    <IconButton onClick={leaveMeeting} href='/teams' style={{color: '#9d2f42'}}>
+                        <CallEndIcon/>
+                    </IconButton>
+                </Toolbar>
+            </AppBar>
         </Container>
     );
 };

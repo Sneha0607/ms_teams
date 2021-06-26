@@ -99,16 +99,6 @@ const useStyles = makeStyles((theme) => ({
     }
   },
 
-  drawer: {
-    flexShrink: 0,    
-  },
-
-  drawerPaper: {
-    backgroundColor: '#393838',
-    width: '5vw',
-    height: '91vh',
-  },
-
   toolbar: {
     overflow: 'auto'
   },
@@ -136,8 +126,25 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
       backgroundColor: 'rgba(var(--color-background),0.2)'
     }
-  }
+  },
 
+  text: {
+    padding: theme.spacing(2, 2, 0),
+  },
+
+  controls: {
+    top: 'auto',
+    bottom: 0,
+    backgroundColor: '#393838',
+    paddingRight: '50vw',
+  },
+
+  controlsToolbar: {
+    paddingLeft: '40vw',
+    [theme.breakpoints.down('md')]: {
+      paddingLeft: '30vw',
+    }
+  },
 
 }));
   
