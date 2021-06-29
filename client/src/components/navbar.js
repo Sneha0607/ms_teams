@@ -18,6 +18,7 @@ import CallIcon from '@material-ui/icons/Call';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 const Navbar = () => {
   const classes = useStyles();
@@ -25,9 +26,7 @@ const Navbar = () => {
   const [open, setOpen] = React.useState(false);
   const [users, setUsers] = useState([]);
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const isMenuOpen = Boolean(anchorEl);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   const history = useHistory();
   const { currentUser } = useAuth();
 
@@ -56,17 +55,8 @@ const Navbar = () => {
       setAnchorEl(event.currentTarget);
   };
 
-  const handleMobileMenuClose = () => {
-      setMobileMoreAnchorEl(null);
-  };
-
   const handleMenuClose = () => {
       setAnchorEl(null);
-      handleMobileMenuClose();
-  };
-
-  const handleMobileMenuOpen = (event) => {
-      setMobileMoreAnchorEl(event.currentTarget);
   };
 
   const menuId = 'primary-search-account-menu';
@@ -87,18 +77,6 @@ const Navbar = () => {
     </Menu>
   );
 
-  const mobileMenuId = 'primary-search-account-menu-mobile';
-
-  const renderMobileMenu = (
-      <Menu anchorEl={mobileMoreAnchorEl} anchorOrigin={{ vertical: 'top', horizontal: 'right' }} id={mobileMenuId} keepMounted transformOrigin={{ vertical: 'top', horizontal: 'right' }} open={isMobileMenuOpen} onClose={handleMobileMenuClose} >
-          <MenuItem onClick={handleProfileMenuOpen}>
-              <IconButton aria-label="account of current user" aria-controls="primary-search-account-menu" aria-haspopup="true" color="inherit">
-                  <AccountCircle />
-              </IconButton>
-              <p>Profile</p>
-          </MenuItem>
-      </Menu>
-  );
 
   return (
     <div className={classes.navbarRoot}>
@@ -122,7 +100,7 @@ const Navbar = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
+          <Typography variant="h6" noWrap className={classes.titleText}>
             Microsoft Teams
           </Typography>
 
@@ -141,7 +119,7 @@ const Navbar = () => {
                 users.map(
                     (user)=>{
                         if(user.uid === currentUser.uid)
-                            return (<Typography variant='h6' style={{marginTop: '5%'}}>{user.name}</Typography>)
+                            return (<Typography variant='h6' className={classes.userName}>{user.name}</Typography>)
                     }
                 )
               }
@@ -149,15 +127,9 @@ const Navbar = () => {
                   <AccountCircle />
               </IconButton>
             </div>
-            <div className={classes.sectionMobile}>
-                <IconButton aria-label="show more" aria-controls={mobileMenuId} aria-haspopup="true" onClick={handleMobileMenuOpen} color="inherit">
-                    <AccountCircle />
-                </IconButton>
-            </div>
         </Toolbar>
       </AppBar>
 
-      {renderMobileMenu}
       {renderMenu}
 
       <Drawer
@@ -232,6 +204,15 @@ const Navbar = () => {
                 </ListItemIcon>
               </Tooltip>
               <ListItemText>Calls</ListItemText>
+            </ListItem>
+
+            <ListItem button onClick={handleLogout}>
+              <Tooltip title='Logout' placement='right'>
+                <ListItemIcon className={classes.icons}>
+                  <ExitToAppIcon/>
+                </ListItemIcon>
+              </Tooltip>
+              <ListItemText>Log out</ListItemText>
             </ListItem>
           
         </List>

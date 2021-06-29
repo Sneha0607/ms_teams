@@ -12,6 +12,8 @@ import Room from './teams/room';
 import Calendar from './calendar/calendar';
 import Tasks from './tasks/tasks';
 import Navbar from './components/navbar';
+import JoinTeam from './teams/joinTeam';
+import Team from './teams/team';
 
 const App = () => {
   const [user, setUser] = useState('');
@@ -42,10 +44,12 @@ const App = () => {
             <Navbar />
               <Switch>
                 <Route path = '/teams' component = {Teams}/>
+                <Route path = '/join-create' component = {JoinTeam}/>
+                <Route path = '/my-teams/:teamID' component = {Team}/>
                 <Route path = '/room/:roomID' component={Room} />
                 <Route path = '/chat' component = {Chat}/>
                 <Route path = '/calendar' component = {Calendar}/>
-                <Route path = '/tasks' component = {Tasks} />
+                <Route path = '/tasks' component = {Tasks}/>
             </Switch>
           </AuthProvider>
         </Router>
@@ -56,9 +60,9 @@ const App = () => {
         <CssBaseline>
         <Router>
         <Switch>
-          <Route path = '/' exact component = {Home} />
-          <Route path = '/signup' component = {Signup} />
-          <Route path = '/signin' component = {Signin} />       
+          <Route path = '/' exact component = {Home}/>
+          <Route path = '/signup' component = {Signup}/>
+          <Route path = '/signin' component = {Signin}/>       
         </Switch>
         </Router>
         </CssBaseline>

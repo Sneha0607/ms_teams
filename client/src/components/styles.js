@@ -5,94 +5,86 @@ const drawerWidth = 200;
 const useStyles = makeStyles((theme) => ({
     
   body: {
-      margin: "0",
-      padding: "0",
+    margin: "0",
+    padding: "0",
   },
 
-  title: {
-      display: 'none',
-      [theme.breakpoints.up('sm')]: {
-        display: 'block',
-        fontSize: '1.25rem',
-        marginLeft: theme.spacing(2),
-        
-      },
+  titleText: {
+    [theme.breakpoints.down('md')]: {
+      display: 'none'
+    }
   },
 
   search: {
-      position: 'relative',
-      borderRadius: theme.shape.borderRadius,
+    position: 'relative',
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: "#dadae3",
+    '&:hover': {
       backgroundColor: "#dadae3",
-      '&:hover': {
-        backgroundColor: "#dadae3",
-      },
-      marginRight: theme.spacing(2),
-      marginLeft: 0,
-      width: '100%',
-      [theme.breakpoints.up('sm')]: {
-        marginLeft: theme.spacing(15),
-        width: '50%',
-      },
+    },
+    marginRight: theme.spacing(2),
+    marginLeft: 0,
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      marginLeft: theme.spacing(15),
+      width: '50%',
+    },
   },
 
   searchIcon: {
-      padding: theme.spacing(0, 2),
-      height: '100%',
-      position: 'absolute',
-      pointerEvents: 'none',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      color: '#929295'
+    padding: theme.spacing(0, 2),
+    height: '100%',
+    position: 'absolute',
+    pointerEvents: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: '#929295'
   },
 
   inputRoot: {
-      color: '#50538d',
+    color: '#50538d',
   },
 
   inputInput: {
-      padding: theme.spacing(1, 1, 1, 0),
-      // vertical padding + font size from searchIcon
-      paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-      transition: theme.transitions.create('width'),
-      width: '100%',
-      color: '#000000',
-      [theme.breakpoints.up('md')]: {
-        width: '20ch',
-        '&:focus': {
-            
-            color: '#000000',
-            width: '100%',
-        }
-      },
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    color: '#000000',
+    [theme.breakpoints.up('md')]: {
+      width: '20ch',
+      '&:focus': {
+          color: '#000000',
+          width: '100%',
+      }
+    },
   },
 
   grow: {
-      flexGrow: 1,
+    flexGrow: 1,
   },
 
   sectionDesktop: {
-      display: 'none',
-      [theme.breakpoints.up('md')]: {
-        display: 'flex',
-      },
+    display: 'flex'
   },
     
   sectionMobile: {
-      display: 'flex',
-      [theme.breakpoints.up('md')]: {
-        display: 'none',
-      },
+    display: 'flex',
+    [theme.breakpoints.up('md')]: {
+      display: 'none',
+    },
   },
   
   icons: {
-      color: '#929295',
-      '&:hover': {
-          color: '#464775'
-      },
-      '&:selected': {
-          color: '#464775'
-      }
+    color: '#929295',
+    '&:hover': {
+        color: '#464775'
+    },
+    '&:selected': {
+        color: '#464775'
+    }
   },
 
   navbarRoot: {
@@ -145,9 +137,9 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
     overflowX: 'hidden',
-    width: theme.spacing(7) + 1,
+    width: theme.spacing(6) + 1,
     [theme.breakpoints.up('sm')]: {
-      width: theme.spacing(9) + 1,
+      width: theme.spacing(8) + 1,
     },
   },
 

@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
 
   title: {
     color: '#000000',
-    marginLeft: '5vw',
+    marginLeft: '8vw',
     fontWeight: 'bold'
   },
 
@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   newMeeting: {
-    width: '20%',
+    width: '15vw',
     height: '8vh',
     fontSize: '1rem',
     backgroundColor: '#464775',
@@ -73,18 +73,28 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
       backgroundColor: '#464775',
       fontWeight: 'bold'
+    },
+    [theme.breakpoints.down('md')]: {
+      fontSize: '0.75rem',
+      padding: 0,
+      width: '30vw',
+      height: '5vh'
     }
   },
 
   codeText: {
     marginTop: '5%',
     height: '7vh',
-    width: '25%',
-    borderRadius: '5px'
+    width: '20vw',
+    borderRadius: '5px',
+    [theme.breakpoints.down('md')]: {
+      height: '3vh',
+      width: '35vw'
+    }
   },
 
   joinButton: {
-    width: '10%',
+    width: '10vw',
     height: '7vh',
     fontSize: '1rem',
     backgroundColor: '#464775',
@@ -96,6 +106,12 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
       backgroundColor: '#464775',
       fontWeight: 'bold'
+    },
+    [theme.breakpoints.down('md')]: {
+      fontSize: '0.75rem',
+      padding: 0,
+      width: '20vw',
+      height: '5vh'
     }
   },
 

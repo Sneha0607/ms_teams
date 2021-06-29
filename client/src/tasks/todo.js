@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { List, ListItem, ListItemText, ListItemAvatar, Button, Modal } from "@material-ui/core";
+import { List, ListItem, ListItemText, Button, Modal } from "@material-ui/core";
 import { db } from '../firebase';
 import useStyles from './styles';
 import { useAuth } from '../contexts/AuthContext';
@@ -44,11 +44,13 @@ const Todo = (props) => {
           </Button>
         </div>
       </Modal>
+
       <List className={classes.todoList}>
         <ListItem>
-          <ListItemAvatar></ListItemAvatar>
           <ListItemText primary={props.todo.todo} secondary="Uploaded Task 🤞"  />
         </ListItem>
+
+        {/* DONE BUTTON */}
         <Button
           variant="contained"
           onClick={(Event) =>
@@ -60,6 +62,7 @@ const Todo = (props) => {
           Done
         </Button>
 
+        {/* EDIT BUTTON */}
         <Button
           variant="contained"
           color="primary"

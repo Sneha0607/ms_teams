@@ -57,9 +57,10 @@ const useStyles = makeStyles((theme) => ({
         }
     },
 
-    todoList: {
+    tasksList: {
         textAlign: 'center',
         flexDirection: 'column',
+        height: '3vw',
     },
 }));
   

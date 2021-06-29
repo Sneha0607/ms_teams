@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, FormControl, InputLabel, Input, FormHelperText, Typography } from '@material-ui/core';
+import { Button, FormControl, InputLabel, Input, FormHelperText, Typography, List, ListItem } from '@material-ui/core';
 import Todo from './todo';
 import {db} from '../firebase';
 import firebase from 'firebase';
@@ -40,7 +40,10 @@ const Tasks = () => {
     return (
       <div className={classes.tasks}>
         {/* Wraping up in form to make sure enter key will submiting the form  */}
-        <Typography variant='h1' className = {classes.tasksHeader}>Manage Your Tasks</Typography>
+        <Typography variant='h1' className = {classes.tasksHeader}>
+          MANAGE YOUR TASKS
+        </Typography>
+        
         <form className={classes.form}>
           <FormControl>
             <InputLabel><span role="img" aria-label="emoji">✅</span> Write a Task</InputLabel>
@@ -53,11 +56,14 @@ const Tasks = () => {
             Add
           </Button>
         </form>
-        <ul className={classes.tasksList}>
+        
+        {/* FETCHING TASKS FROM DATABASE */}
+        <List className={classes.tasksList}>
           {todos.map(todo => (
            <Todo todo={todo} />
           ))}
-        </ul>
+        </List>
+
       </div>
     )
 }
