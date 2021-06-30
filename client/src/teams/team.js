@@ -11,6 +11,9 @@ import VideoCallIcon from '@material-ui/icons/VideoCall';
 import KeyboardIcon from '@material-ui/icons/Keyboard';
 import { v1 as uuid } from "uuid";
 import { useHistory } from 'react-router';
+import { useAuth } from '../contexts/AuthContext';
+import Posts from './posts';
+
 
 const Team = (props) => {
   const { window } = props;
@@ -21,7 +24,7 @@ const Team = (props) => {
   const [code, setCode] = useState('')
   const [open, setOpen] = useState(false);
   const history = useHistory();
-
+  const { currentUser } = useAuth();
   useEffect(() => {
     db.collection("teams").onSnapshot(snapshot => {
         setTeams(snapshot.docs.map(doc => doc.data()))
@@ -39,6 +42,13 @@ const Team = (props) => {
 
   const create = () => {
     const id = uuid();
+
+    //PUSHING TEAM DATA IN DATABASE
+    const teamRef = db.doc(`teams/${teamCode}/meetings/${id}`);
+    teamRef.set({
+       code: id, createdAt: new Date(), creatorId: currentUser.uid, creatorEmail: currentUser.email,
+    })
+
     history.push(`/room/${id}`);
     alert(`Copy your meeting code : ${id}`);
   }
@@ -186,7 +196,7 @@ const Team = (props) => {
       </nav>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        
+        <Posts />
       </main>
     </div>
   );

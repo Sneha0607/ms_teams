@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '10vh',
     marginLeft: '10vw',
     backgroundColor: '#f5f5f5',
-    color: '#000000'
+    color: '#000000',
   },
 
   menuButton: {

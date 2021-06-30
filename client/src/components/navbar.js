@@ -6,7 +6,7 @@ import clsx from 'clsx';
 import useStyles from './styles';
 import { useTheme } from '@material-ui/core/styles';
 import { Drawer, AppBar, Toolbar, List, Typography, CssBaseline, IconButton, ListItem, ListItemIcon, ListItemText, Menu, MenuItem,
-  Divider, InputBase, Tooltip } from '@material-ui/core';
+  Divider, InputBase, Tooltip, Avatar } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
@@ -119,13 +119,18 @@ const Navbar = () => {
                 users.map(
                     (user)=>{
                         if(user.uid === currentUser.uid)
-                            return (<Typography variant='h6' className={classes.userName}>{user.name}</Typography>)
+                            return (
+                            <>
+                            <Typography variant='h6' className={classes.userName}>{user.name}</Typography>
+                            <IconButton edge="end" aria-label="account of current user" aria-controls={menuId} aria-haspopup="true" onClick={handleProfileMenuOpen} color="inherit">
+                              <Avatar src={user.avatar} />
+                            </IconButton>
+                            </>
+                            )
                     }
                 )
               }
-              <IconButton edge="end" aria-label="account of current user" aria-controls={menuId} aria-haspopup="true" onClick={handleProfileMenuOpen} color="inherit">
-                  <AccountCircle />
-              </IconButton>
+              
             </div>
         </Toolbar>
       </AppBar>

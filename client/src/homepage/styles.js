@@ -85,7 +85,13 @@ const useStyles = makeStyles((theme) => ({
         padding: 10,
         height: '80vh',
         width: '30vw',
-        backgroundColor: '#ffffff'
+        backgroundColor: '#ffffff',
+        [theme.breakpoints.down('md')]: {
+            width: '50vw'
+        },
+        [theme.breakpoints.down('sm')]: {
+            width: '80vw'
+        }
     },
 
     bigLogo: {
@@ -136,7 +142,13 @@ const useStyles = makeStyles((theme) => ({
         padding: 10,
         height: '90vh',
         width: '30vw',
-        backgroundColor: '#ffffff'
+        backgroundColor: '#ffffff',
+        [theme.breakpoints.down('md')]: {
+            width: '50vw'
+        },
+        [theme.breakpoints.down('sm')]: {
+            width: '80vw'
+        }
     },
 
     buttonSignup: {

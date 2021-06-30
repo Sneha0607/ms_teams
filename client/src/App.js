@@ -14,7 +14,6 @@ import Tasks from './tasks/tasks';
 import Navbar from './components/navbar';
 import JoinTeam from './teams/joinTeam';
 import Team from './teams/team';
-import VideoCall from './teams/videoCall/video-call';
 
 const App = () => {
   const [user, setUser] = useState('');
@@ -48,7 +47,6 @@ const App = () => {
                 <Route path = '/join-create' component = {JoinTeam}/>
                 <Route path = '/teams/:teamID' exact component = {Team}/>
                 <Route path = '/room/:roomID' component={Room} />
-                <Route path = '/video-call' component = {VideoCall} />
                 <Route path = '/chat' component = {Chat}/>
                 <Route path = '/calendar' component = {Calendar}/>
                 <Route path = '/tasks' component = {Tasks}/>
