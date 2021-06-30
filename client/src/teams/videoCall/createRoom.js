@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import useStyles from "./styles";
+import useStyles from "../styles";
 import { Button, TextField, Typography, InputAdornment, Modal } from "@material-ui/core";
 import { v1 as uuid } from "uuid";
 import { useHistory } from 'react-router';

@@ -121,6 +121,7 @@ const useStyles = makeStyles((theme) => ({
     width: drawerWidth,
     flexShrink: 0,
     whiteSpace: 'nowrap',
+    backgroundColor: '#ebebeb'
   },
 
   drawerOpen: {
@@ -129,6 +130,7 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
+    backgroundColor: '#ebebeb'
   },
 
   drawerClose: {
@@ -141,6 +143,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       width: theme.spacing(8) + 1,
     },
+    backgroundColor: '#ebebeb',
   },
 
   toolbar: {

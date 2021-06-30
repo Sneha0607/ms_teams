@@ -64,8 +64,6 @@ const useStyles = makeStyles((theme) => ({
   },
 
   newMeeting: {
-    width: '15vw',
-    height: '8vh',
     fontSize: '1rem',
     backgroundColor: '#464775',
     color: '#ffffff',
@@ -83,9 +81,10 @@ const useStyles = makeStyles((theme) => ({
   },
 
   codeText: {
-    marginTop: '5%',
-    height: '7vh',
+    height: '2vh',
     width: '20vw',
+    marginLeft: '2vh',
+    marginRight: '2vh',
     borderRadius: '5px',
     [theme.breakpoints.down('md')]: {
       height: '3vh',
@@ -94,15 +93,12 @@ const useStyles = makeStyles((theme) => ({
   },
 
   joinButton: {
-    width: '10vw',
-    height: '7vh',
+
     fontSize: '1rem',
     backgroundColor: '#464775',
     color: '#ffffff',
+    marginTop: '2vh',
     padding: '1%',
-    marginTop: '5%',
-    marginLeft: '1%',
-    borderRadius: '5px',
     '&:hover': {
       backgroundColor: '#464775',
       fontWeight: 'bold'
@@ -110,7 +106,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       fontSize: '0.75rem',
       padding: 0,
-      width: '20vw',
+      width: '30vw',
       height: '5vh'
     }
   },
@@ -162,44 +158,6 @@ const useStyles = makeStyles((theme) => ({
     }
   },
 
-  grid: {
-    width: '90vw',
-    marginLeft: '13vw',
-    marginTop: '5vh',
-    [theme.breakpoints.up('md')]: {
-      marginLeft: '7vw'
-    },
-    [theme.breakpoints.up('lg')]: {
-      marginLeft: '5.5vw'
-    }
-  },
-
-  paper: {
-    border: '1px solid #c4c4c4',
-    padding: '1%',
-    marginBottom: '4%',
-    backgroundColor: '#ffffff',
-    '&:hover': {
-      backgroundColor: '#edebeb'
-    }
-  },
-
-  gridItem: {
-    
-  },
-
-  link: {
-    textDecoration: 'none',
-    color: 'black'
-  },
-
-  sidebar: {
-    marginLeft: '10vw',
-    marginTop: '10vh',
-    width: '10vw',
-    height: '90vh',
-    backgroundColor: 'blue'
-  }
 }));
   
 export default useStyles;

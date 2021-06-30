@@ -1,14 +1,48 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
+import {db} from '../firebase';
 import useStyles from './styles';
 import GroupAddIcon from '@material-ui/icons/GroupAdd';
 import SettingsIcon from '@material-ui/icons/Settings';
-import { AppBar, Toolbar, IconButton, Typography, Tooltip } from '@material-ui/core';
-import CreateRoom from './createRoom';
+import { AppBar, Toolbar, IconButton, Typography, Tooltip, Grid, Avatar, Paper } from '@material-ui/core';
 
 const Teams = () => {
+
     const classes = useStyles();
+    const { currentUser } = useAuth();
+    const [teams, setTeams] = useState([]);
+    const [myTeams, setMyTeams] = useState([]);
+    
+    //FETCHING TEAMS DATA FROM DATABASE
+    useEffect(() => {
+        db.collection("users").doc(currentUser.uid).collection("teams").onSnapshot(snapshot => {
+            setMyTeams(snapshot.docs.map(doc => doc.data()));
+        });
+    }, [])
+
+    //FETCHING TEAMS DATA FROM DATABASE
+    useEffect(() => {
+        db.collection("teams").onSnapshot(snapshot => {
+            setTeams(snapshot.docs.map(doc => doc.data()))
+        });
+    }, [])
+
+    
+    // useEffect(() => {
+    //     const fetchTeams = async () => {
+    //         const teamsCollection = await db.collection("teams").get();
+    //         setTeams(teamsCollection.docs.map(doc => {
+    //             return doc.data();
+    //         }))
+    //     }
+    //     fetchTeams();
+    // }, [])
+
+
 
     return (
+
         <div className={classes.content}>
 
         <div className={classes.grow}>
@@ -44,7 +78,72 @@ const Teams = () => {
                     </div>
                 </Toolbar>
             </AppBar>
-            <CreateRoom />
+
+            <Grid 
+            container 
+            className={classes.grid}
+            spacing={5}
+        >
+            {
+                teams.map(
+                    (team)=>{ 
+                        return (
+                            
+                            <Grid item xs={12} md={6} lg={4} key={team.code} className={classes.gridItem}>
+                                <Link to={`/teams/${team.code}`} className={classes.link}>
+                                <div className={classes.paper}>
+                                    <div align='center'>
+                                        {team.avatar ? 
+                                        <img
+                                        height='80vw'
+                                        width='80vw' 
+                                        src={team.avatar} 
+                                        alt='avatar'
+                                    />
+                                    :
+                                    <img 
+                                        height='80vw'
+                                        width='80vw'
+                                        src={process.env.PUBLIC_URL + 'images/avatar1.png'} 
+                                        alt='avatar'
+                                    />
+                                    }
+                                    
+                                    </div>
+                                    <Typography 
+                                        align='center'
+                                        variant='h5'
+                                    >
+                                        {team.name}
+                                    </Typography>
+                                    <Typography
+                                        align='center'
+                                       
+                                    >
+                                        Created on {new Date(team.createdAt.seconds * 1000).toLocaleDateString("en-US")}
+                                    </Typography>
+                                </div>
+                                </Link>
+                            </Grid>
+                        ) 
+                    }
+                )
+            }
+        </Grid>
+        </div>
+
+        <div>
+
+            {/* <Link to={`/rooms/${id}`} key={id}>
+            <div className="sidebarChat">
+                <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`}/>
+                <div className="sidebarChat_info">
+                    <h2>{name}</h2>
+                    <p>{messages[0]?.message}</p>
+                </div>
+            </div>
+            </Link> */}
+            
         </div>
     </div>
     )
