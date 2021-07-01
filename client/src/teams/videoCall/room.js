@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 import Peer from 'simple-peer';
 import styled from 'styled-components';
 import useStyles from '../styles';
-import { IconButton, Toolbar, MenuItem, MenuList, Drawer, AppBar } from '@material-ui/core';
+import { IconButton, Toolbar, AppBar } from '@material-ui/core';
 import MicIcon from '@material-ui/icons/Mic';
 import MicOffIcon from '@material-ui/icons/MicOff';
 import VideocamIcon from '@material-ui/icons/Videocam';
@@ -17,6 +17,8 @@ import LinkIcon from '@material-ui/icons/Link';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Participants from './participants';
+import Chat from './chat';
 
 const Container = styled.div`
     padding: 2vw;
@@ -256,16 +258,16 @@ const Room = (props) => {
 
     
     //FULL SCREEN
-    let fullscreenButton;  
-    if(isfullscreen){
-        fullscreenButton=<IconButton onClick={()=>{setFullscreen(false)}} style={{color: '#ffffff'}}>
-            <FullscreenExitIcon/>
-        </IconButton>
-    } else {
-        fullscreenButton=<IconButton onClick={()=>{setFullscreen(true)}} style={{color: '#ffffff'}}>
-            <FullscreenIcon/>
-        </IconButton>
-    }
+    // let fullscreenButton;  
+    // if(isfullscreen){
+    //     fullscreenButton=<IconButton onClick={()=>{setFullscreen(false)}} style={{color: '#ffffff'}}>
+    //         <FullscreenExitIcon/>
+    //     </IconButton>
+    // } else {
+    //     fullscreenButton=<IconButton onClick={()=>{setFullscreen(true)}} style={{color: '#ffffff'}}>
+    //         <FullscreenIcon/>
+    //     </IconButton>
+    // }
 
     //COPY LINK TO CLIPBOARD
     const url = window.location.href;
@@ -294,8 +296,10 @@ const Room = (props) => {
                 <Toolbar className={classes.controlsToolbar}>
                     {audioControl}     
                     {videoControl}
+                    <Participants />
+                    <Chat />
                     {/* {screenShare} */}
-                    {fullscreenButton}
+                    {/* {fullscreenButton} */}
                     <CopyToClipboard text={url}>
                         <IconButton onClick={copied}>
                             <LinkIcon style={{color: '#ffffff'}}/>

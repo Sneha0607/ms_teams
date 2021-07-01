@@ -22,16 +22,17 @@ const Team = (props) => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [teams, setTeams] = useState([]);
   const [code, setCode] = useState('')
-  const [open, setOpen] = useState(false);
   const history = useHistory();
   const { currentUser } = useAuth();
+
+
   useEffect(() => {
     db.collection("teams").onSnapshot(snapshot => {
         setTeams(snapshot.docs.map(doc => doc.data()))
     });
   }, [])
 
-  //FETCHING THE PARTICULAR TEAM DETAILS FROM DATABASE
+  //FETCHING THE PARTICULAR TEAM CODE FROM URL
   const location = useLocation();
   const teamCode = location.pathname.substring(location.pathname.lastIndexOf('/')+1);
 
@@ -43,10 +44,26 @@ const Team = (props) => {
   const create = () => {
     const id = uuid();
 
-    //PUSHING TEAM DATA IN DATABASE
+    //PUSHING MEETING DATA IN DATABASE
     const teamRef = db.doc(`teams/${teamCode}/meetings/${id}`);
     teamRef.set({
-       code: id, createdAt: new Date(), creatorId: currentUser.uid, creatorEmail: currentUser.email,
+      code: id, createdAt: new Date(), creatorId: currentUser.uid, creatorEmail: currentUser.email,
+    })
+
+    const meetingRef = db.doc(`meetings/${id}`);
+    meetingRef.set({
+      code: id, createdAt: new Date(), creatorId: currentUser.uid, creatorEmail: currentUser.email, 
+    })
+
+    //PUSHING PARTICIPANTS DATA IN DATABASE
+    const participantsRef = db.doc(`teams/${teamCode}/meetings/${id}/participants/${currentUser.uid}`);
+    participantsRef.set({
+      email: currentUser.email, uid: currentUser.uid, joinedAt: new Date(),
+    })
+
+    const meetingParticipantsRef = db.doc(`meetings/${id}/participants/${currentUser.uid}`);
+    meetingParticipantsRef.set({
+      email: currentUser.email, uid: currentUser.uid, joinedAt: new Date(),
     })
 
     history.push(`/room/${id}`);
@@ -54,7 +71,20 @@ const Team = (props) => {
   }
 
   const join = (e) => {
+
+    //PUSHING PARTICIPANTS DATA IN DATABASE
+    const participantsRef = db.doc(`teams/${teamCode}/meetings/${code}/participants/${currentUser.uid}`);
+    participantsRef.set({
+      email: currentUser.email, uid: currentUser.uid, joinedAt: new Date(),
+    })
+
+    const meetingParticipantsRef = db.doc(`meetings/${code}/participants/${currentUser.uid}`);
+    meetingParticipantsRef.set({
+      email: currentUser.email, uid: currentUser.uid, joinedAt: new Date(),
+    })
+
     history.push(`/room/${code}`);
+
   }
 
   const drawer = (

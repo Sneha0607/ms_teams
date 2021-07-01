@@ -148,13 +148,13 @@ const useStyles = makeStyles((theme) => ({
     top: 'auto',
     bottom: 0,
     backgroundColor: '#393838',
-    paddingRight: '50vw',
+    alignItems: 'center'
   },
 
   controlsToolbar: {
-    paddingLeft: '40vw',
+    alignItems: 'center',
     [theme.breakpoints.down('md')]: {
-      paddingLeft: '30vw',
+      paddingLeft: '0',
     }
   },
 

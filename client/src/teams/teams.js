@@ -1,25 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
 import {db} from '../firebase';
 import useStyles from './styles';
 import GroupAddIcon from '@material-ui/icons/GroupAdd';
 import SettingsIcon from '@material-ui/icons/Settings';
-import { AppBar, Toolbar, IconButton, Typography, Tooltip, Grid, Avatar, Paper } from '@material-ui/core';
+import { AppBar, Toolbar, IconButton, Typography, Tooltip, Grid } from '@material-ui/core';
 
 const Teams = () => {
 
     const classes = useStyles();
-    const { currentUser } = useAuth();
     const [teams, setTeams] = useState([]);
-    const [myTeams, setMyTeams] = useState([]);
     
-    //FETCHING TEAMS DATA FROM DATABASE
-    useEffect(() => {
-        db.collection("users").doc(currentUser.uid).collection("teams").onSnapshot(snapshot => {
-            setMyTeams(snapshot.docs.map(doc => doc.data()));
-        });
-    }, [])
 
     //FETCHING TEAMS DATA FROM DATABASE
     useEffect(() => {
