@@ -61,6 +61,10 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'center',
         flexDirection: 'column',
         height: '3vw',
+        paddingLeft: '5%',
+        [theme.breakpoints.down('sm')]: {
+            paddingLeft: '7%'
+        }
     },
 }));
   

@@ -211,9 +211,11 @@ const Navbar = () => {
               <ListItemText>Calls</ListItemText>
             </ListItem>
 
+            <Divider />
+
             <ListItem button onClick={handleLogout}>
               <Tooltip title='Logout' placement='right'>
-                <ListItemIcon className={classes.icons}>
+                <ListItemIcon className={classes.logoutIcon}>
                   <ExitToAppIcon/>
                 </ListItemIcon>
               </Tooltip>

@@ -87,6 +87,16 @@ const useStyles = makeStyles((theme) => ({
     }
   },
 
+  logoutIcon: {
+    color: '#9d2f42',
+    '&:hover': {
+        color: '#9d2f42'
+    },
+    '&:selected': {
+        color: '#9d2f42'
+    }
+  },
+
   navbarRoot: {
       display: 'flex',
   },

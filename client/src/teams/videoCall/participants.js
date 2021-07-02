@@ -73,7 +73,6 @@ const Participants = () => {
                         }
                     )
                 }
-
             </List>
         </div>
     );
