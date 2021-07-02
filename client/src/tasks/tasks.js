@@ -32,6 +32,13 @@ const Tasks = () => {
         todo: input,
         timestamp: firebase.firestore.FieldValue.serverTimestamp()
       })
+
+      //PUSHING IN USER ACTIVITY
+      db.collection("users").doc(currentUser.uid).collection("activity")
+      .add({
+          activity: `You added a task: ${input}!`,
+          doneAt: new Date()
+      })
   
       // to remove the entered words from input after clicking button
       setInput("");

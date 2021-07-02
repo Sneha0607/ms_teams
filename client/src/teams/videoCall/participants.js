@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { db } from '../../firebase';
 import { useLocation } from 'react-router';
 import { makeStyles } from '@material-ui/core/styles';
-import { IconButton, Drawer, List, ListItem, Divider, Typography } from '@material-ui/core';
+import { IconButton, Drawer, List, ListItem, Divider, Typography, ListItemAvatar, ListItemText, Avatar } from '@material-ui/core';
 import PeopleIcon from '@material-ui/icons/People';
 
 const useStyles = makeStyles({
@@ -68,7 +68,14 @@ const Participants = () => {
                     participants.map(
                         (participant)=>{ 
                             return (
-                            <ListItem>{participant.email}</ListItem>
+                                <ListItem>
+                                    <ListItemAvatar>
+                                        <Avatar alt="avatar" />
+                                    </ListItemAvatar>
+                                    <ListItemText>
+                                        {participant.email}
+                                    </ListItemText>
+                                </ListItem>
                             ) 
                         }
                     )

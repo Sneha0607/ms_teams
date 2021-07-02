@@ -111,7 +111,8 @@ const Teams = () => {
                                         align='center'
                                        
                                     >
-                                        Created on {new Date(team.createdAt.seconds * 1000).toLocaleDateString("en-US")}
+                                        Created on {new Date(team.createdAt.seconds * 1000).toLocaleDateString("en-US")}, 
+                                        at {new Date(team.createdAt.seconds * 1000).getHours()}:{new Date(team.createdAt.seconds * 1000).getMinutes()} hrs
                                     </Typography>
                                 </div>
                                 </Link>

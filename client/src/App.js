@@ -14,6 +14,7 @@ import Tasks from './tasks/tasks';
 import Navbar from './components/navbar';
 import JoinTeam from './teams/joinTeam';
 import Team from './teams/team';
+import Activity from './activity/activity';
 
 const App = () => {
   const [user, setUser] = useState('');
@@ -50,6 +51,7 @@ const App = () => {
                 <Route path = '/chat' component = {Chat}/>
                 <Route path = '/calendar' component = {Calendar}/>
                 <Route path = '/tasks' component = {Tasks}/>
+                <Route path = '/activity' component = {Activity}/>
             </Switch>
           </AuthProvider>
         </Router>

@@ -53,7 +53,10 @@ const Posts = () => {
                                 <Typography>NEW MEETING!
                                     <p><b>Created By: {meeting.creatorEmail}</b></p>
                                     <p>Meeting Code: {meeting.code}</p>
-                                    <p>On: {new Date(meeting.createdAt?.toDate()).toUTCString()}</p>
+                                    <p>
+                                        Created on {new Date(meeting.createdAt.seconds * 1000).toLocaleDateString("en-US")}, 
+                                        at {new Date(meeting.createdAt.seconds * 1000).getHours()}:{new Date(meeting.createdAt.seconds * 1000).getMinutes()} hrs
+                                    </p>
                                 </Typography>
                             </ListItem>
                         </div>

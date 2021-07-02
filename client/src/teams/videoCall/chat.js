@@ -78,9 +78,9 @@ const Chat = () => {
                                 (chat)=>{ 
                                     return (
                                         <>
-                                            <ListItem>
+                                            <ListItem style={{ margin: '0' }}>
                                                 <Typography>
-                                                    <p>{chat.senderEmail}</p>
+                                                    {chat.senderEmail}
                                                     <p><b>{chat.message}</b></p>
                                                 </Typography>
                                             </ListItem>

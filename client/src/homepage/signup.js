@@ -40,11 +40,17 @@ const Signup = () => {
             };
             console.log(user);
 
-            //PUSHING DATA IN DATABASE
-    
+            //PUSHING USER DATA IN DATABASE
             const userRef = db.doc(`users/${user.uid}`);
             userRef.set({
                 name, email, createdAt: new Date(), uid: user.uid
+            })
+
+            //PUSHING IN USER ACTIVITY
+            db.collection("users").doc(user.uid).collection("activity")
+            .add({
+                activity: "Welcome to Teams!!",
+                doneAt: new Date()
             })
 
         }).then(()=>{history.push('/teams');})

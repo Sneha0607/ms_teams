@@ -41,6 +41,8 @@ const Team = (props) => {
     setMobileOpen(!mobileOpen);
   };
 
+  /*************CREATE MEETING FUNCTION************/
+
   const create = () => {
     const id = uuid();
 
@@ -66,9 +68,18 @@ const Team = (props) => {
       email: currentUser.email, uid: currentUser.uid, joinedAt: new Date(),
     })
 
+    //PUSHING IN USER ACTIVITY
+    db.collection("users").doc(currentUser.uid).collection("activity")
+    .add({
+        activity: `You created a meeting!`,
+        doneAt: new Date()
+    })
+
     history.push(`/room/${id}`);
     alert(`Copy your meeting code : ${id}`);
   }
+
+  /*************JOIN MEETING FUNCTION************/
 
   const join = (e) => {
 
@@ -83,8 +94,14 @@ const Team = (props) => {
       email: currentUser.email, uid: currentUser.uid, joinedAt: new Date(),
     })
 
-    history.push(`/room/${code}`);
+    //PUSHING IN USER ACTIVITY
+    db.collection("users").doc(currentUser.uid).collection("activity")
+    .add({
+        activity: `You joined a meeting!`,
+        doneAt: new Date()
+    })
 
+    history.push(`/room/${code}`);
   }
 
   const drawer = (

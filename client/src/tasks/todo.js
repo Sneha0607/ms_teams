@@ -24,6 +24,19 @@ const Todo = (props) => {
       setOpen(false);
     };
 
+    const doneTodo = () => {
+
+      //PUSHING IN USER ACTIVITY
+      db.collection("users").doc(currentUser.uid).collection("activity")
+      .add({
+          activity: `You completed the task: ${props.todo.todo}!`,
+          doneAt: new Date()
+      })
+
+      //delete the todo from 
+      db.collection("users").doc(currentUser.uid).collection("tasks").doc(props.todo.id).delete();
+    }
+
   return (
     <>
       <Modal open={open} onClose={(e) => setOpen(false)}>
@@ -53,9 +66,7 @@ const Todo = (props) => {
         {/* DONE BUTTON */}
         <Button
           variant="contained"
-          onClick={(Event) =>
-            db.collection("users").doc(currentUser.uid).collection("tasks").doc(props.todo.id).delete()
-          }
+          onClick={doneTodo}
           className={classes.buttonDone}
           startIcon={<DoneIcon />}
         >

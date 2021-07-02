@@ -46,6 +46,13 @@ const JoinTeam = () => {
             name, code: team.code, createdAt: new Date(), creatorid: team.creatorid, avatar: fileUrl
         })
 
+        //PUSHING IN USER ACTIVITY
+        db.collection("users").doc(currentUser.uid).collection("activity")
+        .add({
+            activity: `You created a team: ${name}`,
+            doneAt: new Date()
+        })
+
         history.push(`teams/${newCode}`);
         
         //setFileUrl(null);
