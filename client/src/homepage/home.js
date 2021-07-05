@@ -2,22 +2,21 @@ import React from 'react';
 import useStyles from './styles';
 import { Typography, Grid, GridListTile, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import { IconButton, AppBar, Button, Container, Toolbar } from '@material-ui/core';
-import Navbar from './navbar';
-import Footer from './footer';
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
 import HomeWorkOutlinedIcon from '@material-ui/icons/HomeWorkOutlined';
 import BusinessOutlinedIcon from '@material-ui/icons/BusinessOutlined';
 import CastForEducationOutlinedIcon from '@material-ui/icons/CastForEducationOutlined';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import TwitterIcon from '@material-ui/icons/Twitter';
-import BorderColorIcon from '@material-ui/icons/BorderColor';
+import Navbar from './navbar';
+import Footer from './footer';
 
 const Home = () => {
     const classes = useStyles();
 
     return (
         <>
-        {/*Navbar inserted*/}
+        {/*Navbar*/}
         <Navbar />
 
         {/*Tagline and default image*/}
@@ -26,7 +25,7 @@ const Home = () => {
           <Grid container spacing={0}>
             <Grid item xs={12} sm={6} className={classes.paper} style={{backgroundColor: '#f5f5f5'}}>
                 <Typography variant='h3' className={classes.homeTitle}>
-                  Microsoft Teams
+                  Teams
                 </Typography>
                 <Typography variant='h4' className={classes.tagLine}>
                   Meet, chat, call, and collaborate in just one place.
@@ -42,17 +41,17 @@ const Home = () => {
             </Grid>
             <Grid item xs={12} sm={6}>
               <GridListTile >
-                <img className={classes.img} src={process.env.PUBLIC_URL + 'images/home1.jpg'} alt="example"/>
+                <img className={classes.img} src={process.env.PUBLIC_URL + 'images/home1.jpg'} alt="teams"/>
               </GridListTile>
             </Grid>        
           </Grid>
 
           <br/><br/><br/>
 
-          {/*Intoduction to MS Teams*/}
+          {/*Intoduction to Teams*/}
           
           <Typography align='center' variant='h4' style={{padding: '1%', fontWeight: 'bold'}}>
-            Microsoft Teams is for everyone
+            Teams is for everyone
           </Typography>
           <Typography align='center' style={{fontSize: '1rem', padding: '1%', margin: '1%'}}>
             Whether it’s chat, calls, or video, anyone can engage at any time, bringing everyone closer.<br/>         
@@ -74,97 +73,33 @@ const Home = () => {
             </Grid>
           </Container>
 
-          {/*About Chat Functionality*/}
+          {/*About Functionalities*/}
 
-          <img style={{height: '78vh', width: '100vw', marginTop: '10%'}} src={process.env.PUBLIC_URL + 'images/chat.png'} alt="chat"/>
+          <Typography align='center' variant='h3' style={{padding: '1%', fontWeight: 'bold', marginTop: '5vh', marginBottom: '3vh'}}>
+            CHAT - CALL - COLLABORATE
+          </Typography>
 
-          <br/><br/>
-          <Container maxWidth='md'>
-            <Grid container spacing={0}>
-              <Grid item xs={12} sm={6}>
-                <Typography variant='h4' style={{fontWeight: 'bold'}}>
-                  Chat
-                 </Typography>
+          <Container maxWidth='lg'>
+            <Grid container justify='center' spacing={0}> 
+              <Grid item xs={6} md={6} lg={6}>
+                <img style={{height: '54vh', width: '47vw', padding: '0'}} src={process.env.PUBLIC_URL + 'images/collaborate.jpg'} alt="collaborate"/>
+                <img style={{height: '45vh', width: '47vw', padding: '0'}} src={process.env.PUBLIC_URL + 'images/call.jpg'} alt="call"/>
               </Grid>
-              <Grid item xs={12} sm={6}>
-                <Typography style={{fontSize: '1rem'}}>
-                  Share your opinion and have fun with your team. Send GIFs, stickers, and emojis in a group chat or in one-to-one messages.
-                </Typography>
-              </Grid>        
+              <Grid item xs={6} md={6} lg={6}>
+                <img style={{height: '100vh', width: '43vw'}} src={process.env.PUBLIC_URL + 'images/chat.jpg'} alt="chat"/>
+              </Grid>
             </Grid>
           </Container>
-
-          {/*About Meet Functionality*/}
-
-          <img style={{height: '78vh', width: '100vw', marginTop: '5%'}} src={process.env.PUBLIC_URL + 'images/meet.png'} alt="meet"/>
-
-          <br/><br/>
-          <Container maxWidth='md'>
-            <Grid container spacing={0}>
-              <Grid item xs={12} sm={6}>
-                <Typography variant='h4' style={{fontWeight: 'bold'}}>
-                  Meet
-                 </Typography>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <Typography style={{fontSize: '1rem'}}>
-                  Instantly go from group chat to video conference with the touch of a button. Teams of two or 10,000 can meet in one place from anywhere.
-                </Typography>
-              </Grid>        
-            </Grid>
-          </Container>
-
-          {/*About Call Functionality*/}
-
-          <img style={{height: '78vh', width: '100vw', marginTop: '5%'}} src={process.env.PUBLIC_URL + 'images/call.png'} alt="call"/>
-
-          <br/><br/>
-          <Container maxWidth='md'>
-            <Grid container spacing={0}>
-              <Grid item xs={12} sm={6}>
-                <Typography variant='h4' style={{fontWeight: 'bold'}}>
-                  Call
-                </Typography>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <Typography style={{fontSize: '1rem'}}>
-                  Make and receive calls directly in Microsoft Teams with advanced features like group calling, cloud voicemail, and call transfers.
-                </Typography>
-              </Grid>        
-            </Grid>
-          </Container>
-
-          {/*About Collaborate Functionality*/}
-
-          <img style={{height: '78vh', width: '100vw', marginTop: '5%'}} src={process.env.PUBLIC_URL + 'images/collaborate.png'} alt="collaborate"/>
-
-          <br/><br/>
-          <Container maxWidth='md'>
-            <Grid container spacing={0}>
-              <Grid item xs={12} sm={6}>
-                <Typography variant='h4' style={{fontWeight: 'bold'}}>
-                  Collaborate
-                </Typography>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <Typography style={{fontSize: '1rem'}}>
-                  Easily find, share, and edit files in real time using familiar apps like Word, PowerPoint, and Excel in Microsoft Teams.
-                </Typography>
-              </Grid>        
-            </Grid>
-          </Container>
-
-          <br/><br/>
-
+          
           {/*Home, Business, Enterprise and Education Section*/}
 
           <Grid container spacing={0} style={{backgroundColor: '#4b53bc', marginTop: '5%'}}>
             <Grid item xs={12} sm={6} className={classes.paper}>
               <Typography variant='h4' style={{fontWeight: 'medium', color: '#ffffff'}}>
-                Get started with Microsoft Teams today
+                Get started with Teams today
               </Typography>
               <Button variant='contained' className={classes.footerSignupButton} href='/signup'>Sign up for free</Button>
-              <Button variant='outlined' className={classes.footerSigninButton} color='/signin'>Sign in</Button>   
+              <Button variant='outlined' className={classes.footerSigninButton} href='/signin'>Sign in</Button>   
             </Grid>
             <Grid item xs={12} sm={6}>
               <List component='nav'>
@@ -201,15 +136,15 @@ const Home = () => {
           <AppBar position='static' style={{backgroundColor: '#ffffff'}}>
             <Toolbar>
               <Typography variant='h6' style={{padding: '4%', fontWeight: 'bold', color: '#000000'}}>
-                Follow Microsoft 365
+                Developed by Sneha Singh
+                <p>Follow me</p>
               </Typography>
-              <IconButton style={{color: '#000000'}} href='https://www.linkedin.com/showcase/microsoft-365/'><LinkedInIcon/></IconButton>
-              <IconButton style={{color: '#000000'}} href='https://twitter.com/microsoft365'><TwitterIcon/></IconButton>
-              <IconButton style={{color: '#000000'}} href='https://www.microsoft.com/en-gb/microsoft-365/blog/'><BorderColorIcon/></IconButton>
+              <IconButton style={{color: '#000000'}} href='https://www.linkedin.com/in/snehasingh2001/'><LinkedInIcon/></IconButton>
+              <IconButton style={{color: '#000000'}} href='https://twitter.com/sneha_0607'><TwitterIcon/></IconButton>
             </Toolbar>
           </AppBar>
           
-        {/*Footer inserted*/}
+        {/*Footer*/}
         <Footer />
         </div>
         </>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
-import firebase from '../firebase';
+import { auth } from '../firebase';
 import useStyles from './styles';
 import {Button, Checkbox, FormControlLabel, Grid, Link, TextField, Typography } from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
@@ -15,12 +15,14 @@ const Signin = () => {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        if(email === ''|| password ===''){
+        if(email === ''|| password ==='') {
             return setEmailError('All fields are required!');
         }
         
-        firebase.auth().signInWithEmailAndPassword(email, password).then(()=>{history.push('/teams');}).catch(err=>{
-            switch(err.code){
+        auth.signInWithEmailAndPassword(email, password)
+        .then(()=>{history.push('/teams');})
+        .catch(err=>{
+            switch(err.code) {
                 case "auth/user-not-found":
                 case "auth/invalid-email":
                     setEmailError(err.message);
@@ -30,30 +32,71 @@ const Signin = () => {
                     break; 
                 default: break;         
             }
-
         });
     }
 
     return(
        <main>
-            <Grid container style={{background: 'linear-gradient(to right bottom, #eee7cc, #dbe3e9)'}}>
-                <Grid item className={classes.signin}>
-                    <img className={classes.bigLogo} src={process.env.PUBLIC_URL + 'images/ms_logo.jpg'} alt="ms_logo"/>
-                    <Typography variant = "h5" align = "left" color = "textPrimary" family = "Roboto" gutterBottom>
+            <Grid 
+                container 
+                style={{background: 'linear-gradient(to right bottom, #eee7cc, #dbe3e9)'}}
+            >
+                <Grid 
+                    item 
+                    className={classes.signin}
+                >
+                    <img 
+                        className={classes.bigLogo} 
+                        src={process.env.PUBLIC_URL + 'images/ms_logo.jpg'} 
+                        alt="ms_logo"
+                    />
+                    <Typography 
+                        variant = "h5" 
+                        align = "left" 
+                        color = "textPrimary" 
+                        family = "Roboto" 
+                        gutterBottom
+                    >
                         Sign in
                     </Typography>
                     <form onSubmit = {handleLogin}>
                         {emailError && <Alert severity = "error">{emailError}</Alert>}
                         {passwordError && <Alert severity = "error">{passwordError}</Alert>}
-                       <TextField className = {classes.textField} variant = "outlined" color = "primary"  label = "E-mail"  onChange = {(e)=>{setEmail(e.target.value)}} error = {emailError} />
-                       <TextField className = {classes.textField} variant = "outlined" color = "primary"  label = "Password" type = "Password" onChange = {(e)=>{setPassword(e.target.value)}} error = {passwordError}/>
-                       <Button className = {classes.buttonSignin} color = "primary" type = "submit" variant = "contained" fullWidth >Sign in</Button>
+                        <TextField 
+                            className = {classes.textField} 
+                            variant = "outlined" 
+                            color = "primary"  
+                            label = "E-mail"  
+                            onChange = {(e)=>{setEmail(e.target.value)}} 
+                            error = {emailError} 
+                        />
+                        <TextField 
+                            className = {classes.textField} 
+                            variant = "outlined" 
+                            color = "primary"  
+                            label = "Password" 
+                            type = "Password" 
+                            onChange = {(e)=>{setPassword(e.target.value)}} 
+                            error = {passwordError}
+                        />
+                        <Button 
+                            className = {classes.buttonSignin} 
+                            color = "primary" 
+                            type = "submit" 
+                            variant = "contained" 
+                            fullWidth 
+                        >
+                            Sign in
+                        </Button>
                     </form>
-                    <FormControlLabel control = {<Checkbox name = "rememberMe" color = "primary"/>} label = "Remember me"/>
+                    <FormControlLabel 
+                        control = {<Checkbox name = "rememberMe" color = "primary"/>} 
+                        label = "Remember me"
+                    />
                     <p>
                         <Typography variant = "h7"  color = "textPrimary" family = "Roboto" gutterBottom>
-                           <Link href = "#" >Forgot Password?</Link>
-                       </Typography>
+                            <Link href = "#" >Forgot Password?</Link>
+                        </Typography>
                     </p>
                     <p>
                        <Typography variant = "h7"  color = "textPrimary" family = "Roboto" gutterBottom>

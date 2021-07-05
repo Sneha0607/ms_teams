@@ -4,7 +4,7 @@ import { useAuth } from '../contexts/AuthContext';
 import firebase, { db } from '../firebase';
 import {Button, Grid, TextField, Typography } from '@material-ui/core';
 
-const JoinTeam = () => {
+const CreateTeam = () => {
 
     const { currentUser } = useAuth();
     const [name, setName] = useState('');
@@ -109,13 +109,11 @@ const JoinTeam = () => {
                                 Create Team
                             </Button>
                         )}
-
                     </form>
                 </Grid>
-
             </Grid>
         </div>
     )
 }
 
-export default JoinTeam;
+export default CreateTeam;

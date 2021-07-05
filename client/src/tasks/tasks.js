@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, FormControl, InputLabel, Input, FormHelperText, Typography, List, ListItem } from '@material-ui/core';
+import { Button, FormControl, InputLabel, Input, FormHelperText, Typography, List } from '@material-ui/core';
 import Todo from './todo';
 import {db} from '../firebase';
 import firebase from 'firebase';
@@ -21,7 +21,7 @@ const Tasks = () => {
           id:doc.id, 
           todo: doc.data().todo
         })))
-    })}, [])
+    })}, [currentUser.uid])
   
     // Function on button add TODo
     const addTodo = (Event) => {
@@ -53,13 +53,24 @@ const Tasks = () => {
         
         <form className={classes.form}>
           <FormControl>
-            <InputLabel><span role="img" aria-label="emoji">✅</span> Write a Task</InputLabel>
-            <Input value={input} onChange={Event => setInput(Event.target.value)} />
+            <InputLabel>
+              <span role="img" aria-label="emoji">✅</span> Write a Task
+            </InputLabel>
+            <Input 
+              value={input} 
+              onChange={Event => setInput(Event.target.value)} 
+            />
             <FormHelperText>We'll make you productive 
               <span role="img" aria-label="emoji">🕒</span> 
             </FormHelperText>
           </FormControl>
-          <Button disabled={!input} type="submit" variant="contained" color="primary" onClick={addTodo}>
+          <Button  
+            disabled={!input} 
+            type="submit" 
+            variant="contained" 
+            color="primary" 
+            onClick={addTodo}
+          >
             Add
           </Button>
         </form>

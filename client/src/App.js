@@ -12,7 +12,7 @@ import Room from './teams/videoCall/room';
 import Calendar from './calendar/calendar';
 import Tasks from './tasks/tasks';
 import Navbar from './components/navbar';
-import JoinTeam from './teams/joinTeam';
+import CreateTeam from './teams/createTeam';
 import Team from './teams/team';
 import Activity from './activity/activity';
 
@@ -45,7 +45,7 @@ const App = () => {
             <Navbar />
               <Switch>
                 <Route path = '/teams' exact component = {Teams}/>
-                <Route path = '/join-create' component = {JoinTeam}/>
+                <Route path = '/create-team' component = {CreateTeam}/>
                 <Route path = '/teams/:teamID' exact component = {Team}/>
                 <Route path = '/room/:roomID' component={Room} />
                 <Route path = '/chat' component = {Chat}/>

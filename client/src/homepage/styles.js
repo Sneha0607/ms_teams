@@ -2,6 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
 
+    /***********NAVBAR STYLES**********/
     body: {
         margin: "0",
         padding: "0",
@@ -17,8 +18,8 @@ const useStyles = makeStyles((theme) => ({
     },
 
     logo: {
-        height: '10%',
-        width: '10%',
+        height: '3%',
+        width: '3%',
     },
 
     navbarTitle: {
@@ -31,7 +32,6 @@ const useStyles = makeStyles((theme) => ({
         margin: '5px',
         color: '#ffffff',
         textTransform: 'none',
-        fontWeight: 'bold',
         '&:hover': {
             backgroundColor: '#4b53bc',
             textDecoration: 'underline'
@@ -52,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'center',
     },
 
+    /**********HOME STYLES**********/
     homeRoot: {
         flexGrow: 1,
     },
@@ -72,12 +73,42 @@ const useStyles = makeStyles((theme) => ({
     },
 
     img: {
-        height: '80vh',
+        height: '90vh',
         width: '1',
         overflow: 'hidden',
         flexWrap: 'wrap',
         justifyContent: 'space-around',
         display: 'flex',
+    },
+
+    signupButton: {
+        backgroundColor: '#4b53bc',
+        margin: '5px',
+        color: '#ffffff',
+        width: '18vw',
+        borderRadius: 0,
+        textTransform: 'none',
+        border: '2px solid',
+        borderColor: '#ffffff',
+        '&:hover': {
+            backgroundColor: '#363c90',
+            borderColor: '#f5f5f5',
+        }
+    },
+
+    signinButton: {
+        backgroundColor: '#ffffff',
+        margin: '5px',
+        color: '#000000',
+        width: '18vw',
+        borderRadius: 0,
+        textTransform: 'none',
+        border: '2px solid',
+        borderColor: '#4b53bc',
+        '&:hover': {
+            backgroundColor: '#f5f5f5',
+            borderColor: '#363c90'
+        }
     },
 
     signin:{
@@ -105,38 +136,6 @@ const useStyles = makeStyles((theme) => ({
         height: '5%'
     },
 
-    signupButton: {
-        backgroundColor: '#4b53bc',
-        margin: '5px',
-        color: '#ffffff',
-        fontWeight: 'bold',
-        width: '18vw',
-        borderRadius: 0,
-        textTransform: 'none',
-        border: '2px solid',
-        borderColor: '#ffffff',
-        '&:hover': {
-            backgroundColor: '#363c90',
-            borderColor: '#f5f5f5',
-        }
-    },
-
-    signinButton: {
-        backgroundColor: '#ffffff',
-        margin: '5px',
-        color: '#000000',
-        fontWeight: 'bold',
-        width: '18vw',
-        borderRadius: 0,
-        textTransform: 'none',
-        border: '2px solid',
-        borderColor: '#4b53bc',
-        '&:hover': {
-            backgroundColor: '#f5f5f5',
-            borderColor: '#363c90'
-        }
-    },
-
     signup:{
         margin: "5vh auto",
         padding: 10,
@@ -157,6 +156,11 @@ const useStyles = makeStyles((theme) => ({
 
     buttonSignin: {
         marginTop: '2%'
+    },
+
+    image: {
+        marginTop: '5%',
+        width: '50vw'
     },
     
     footerSigninButton: {
@@ -203,6 +207,7 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 'bold'
     },
 
+    /**********FOOTER STYLES**********/
     footerHeading: {
         color: '#737373',
         fontWeight: 'bold'

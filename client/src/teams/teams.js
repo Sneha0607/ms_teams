@@ -11,25 +11,12 @@ const Teams = () => {
     const classes = useStyles();
     const [teams, setTeams] = useState([]);
     
-
     //FETCHING TEAMS DATA FROM DATABASE
     useEffect(() => {
         db.collection("teams").onSnapshot(snapshot => {
             setTeams(snapshot.docs.map(doc => doc.data()))
         });
     }, [])
-
-    
-    // useEffect(() => {
-    //     const fetchTeams = async () => {
-    //         const teamsCollection = await db.collection("teams").get();
-    //         setTeams(teamsCollection.docs.map(doc => {
-    //             return doc.data();
-    //         }))
-    //     }
-    //     fetchTeams();
-    // }, [])
-
 
 
     return (
@@ -40,7 +27,7 @@ const Teams = () => {
             <AppBar position="static" className={classes.appbar} elevation={0}>
                 <Toolbar>
                     <Typography className={classes.title} variant="h6" noWrap>
-                        Teams
+                        All Teams
                     </Typography>
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>  
@@ -50,7 +37,7 @@ const Teams = () => {
                             </IconButton>
                         </Tooltip>
                         <Tooltip title='Join or create team' placement='bottom'>
-                            <IconButton aria-label="settings" className={classes.menuButton} href='/join-create'>
+                            <IconButton aria-label="settings" className={classes.menuButton} href='/create-team'>
                                 <GroupAddIcon />
                             </IconButton>
                         </Tooltip>
@@ -74,7 +61,7 @@ const Teams = () => {
             container 
             className={classes.grid}
             spacing={5}
-        >
+            >
             {
                 teams.map(
                     (team)=>{ 
@@ -99,7 +86,6 @@ const Teams = () => {
                                         alt='avatar'
                                     />
                                     }
-                                    
                                     </div>
                                     <Typography 
                                         align='center'
@@ -108,8 +94,7 @@ const Teams = () => {
                                         {team.name}
                                     </Typography>
                                     <Typography
-                                        align='center'
-                                       
+                                        align='center'  
                                     >
                                         Created on {new Date(team.createdAt.seconds * 1000).toLocaleDateString("en-US")}, 
                                         at {new Date(team.createdAt.seconds * 1000).getHours()}:{new Date(team.createdAt.seconds * 1000).getMinutes()} hrs

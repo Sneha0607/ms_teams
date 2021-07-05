@@ -120,9 +120,9 @@ const Team = (props) => {
                   <ListItem>
                     {
                       team.avatar ? 
-                      <img height='100vh' width='100vh' src={team.avatar}/>
+                      <img height='100vh' width='100vh' src={team.avatar} alt='team_avatar'/>
                       :
-                      <img height='100vh' width='100vh' src={process.env.PUBLIC_URL + '/images/avatar1.png'} />
+                      <img height='100vh' width='100vh' src={process.env.PUBLIC_URL + '/images/avatar1.png'} alt='team_avatar'/>
                     }
                     
                   </ListItem>

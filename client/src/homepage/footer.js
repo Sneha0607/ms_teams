@@ -16,7 +16,7 @@ const Footer = () => {
                             <Typography className={classes.footerHeading}>What's New</Typography>
                         </ListItem>
                         <ListItem>
-                            <Typography className={classes.footerList}>Microsoft 365</Typography>
+                            <Typography className={classes.footerList}>My 365</Typography>
                         </ListItem>
                         <ListItem>
                             <Typography className={classes.footerList}>Surface Pro X</Typography>
@@ -36,7 +36,7 @@ const Footer = () => {
                 <Grid item xs={12} md={4} lg={2}>
                     <List>
                         <ListItem>
-                            <Typography className={classes.footerHeading}>Microsoft Store</Typography>
+                            <Typography className={classes.footerHeading}>My Store</Typography>
                         </ListItem>
                         <ListItem>
                             <Typography className={classes.footerList}>Account profile</Typography>
@@ -45,7 +45,7 @@ const Footer = () => {
                             <Typography className={classes.footerList}>Download Center</Typography>
                         </ListItem>
                         <ListItem>
-                            <Typography className={classes.footerList}>Microsoft Store Support</Typography>
+                            <Typography className={classes.footerList}>My Store Support</Typography>
                         </ListItem>
                         <ListItem>
                             <Typography className={classes.footerList}>Returns</Typography>
@@ -62,7 +62,7 @@ const Footer = () => {
                             <Typography className={classes.footerHeading}>Education</Typography>
                         </ListItem>
                         <ListItem>
-                            <Typography className={classes.footerList}>Microsoft in education</Typography>
+                            <Typography className={classes.footerList}>My in education</Typography>
                         </ListItem>
                         <ListItem>
                             <Typography className={classes.footerList}>Office for students</Typography>
@@ -71,7 +71,7 @@ const Footer = () => {
                             <Typography className={classes.footerList}>Office 365 for schools</Typography>
                         </ListItem>
                         <ListItem>
-                            <Typography className={classes.footerList}>Microsoft Azure in education</Typography>
+                            <Typography className={classes.footerList}>My Azure in education</Typography>
                         </ListItem>
                     </List>
                 </Grid>
@@ -80,9 +80,6 @@ const Footer = () => {
                     <List>
                         <ListItem>
                             <Typography className={classes.footerHeading}>Enterprise</Typography>
-                        </ListItem>
-                        <ListItem>
-                            <Typography className={classes.footerList}>Azure</Typography>
                         </ListItem>
                         <ListItem>
                             <Typography className={classes.footerList}>AppSource</Typography>
@@ -114,7 +111,7 @@ const Footer = () => {
                             <Typography className={classes.footerHeading}>Developer</Typography>
                         </ListItem>
                         <ListItem>
-                            <Typography className={classes.footerList}>Microsoft Visual Studio</Typography>
+                            <Typography className={classes.footerList}>My Visual Studio</Typography>
                         </ListItem>
                         <ListItem>
                             <Typography className={classes.footerList}>Developer Center</Typography>
@@ -143,7 +140,7 @@ const Footer = () => {
                             <Typography className={classes.footerList}>Company news</Typography>
                         </ListItem>
                         <ListItem>
-                            <Typography className={classes.footerList}>Privacy at Microsoft</Typography>
+                            <Typography className={classes.footerList}>Privacy</Typography>
                         </ListItem>
                         <ListItem>
                             <Typography className={classes.footerList}>Investors</Typography>

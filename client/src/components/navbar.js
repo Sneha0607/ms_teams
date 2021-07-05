@@ -101,7 +101,7 @@ const Navbar = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap className={classes.titleText}>
-            Microsoft Teams
+            Teams
           </Typography>
 
           {/* SEARCH BAR */}
