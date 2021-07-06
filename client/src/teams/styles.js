@@ -184,10 +184,6 @@ const useStyles = makeStyles((theme) => ({
     }
   },
 
-  gridItem: {
-    
-  },
-
   link: {
     textDecoration: 'none',
     color: 'black'

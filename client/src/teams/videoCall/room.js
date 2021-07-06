@@ -61,7 +61,6 @@ const Room = (props) => {
     const [stream, setStream] = useState();
     const [audioMuted, setAudioMuted] = useState(false)
     const [videoMuted, setVideoMuted] = useState(false)
-    const [isfullscreen, setFullscreen] = useState(false)
     const socketRef = useRef();
     const userVideo = useRef();
     const peersRef = useRef([]);
@@ -256,18 +255,6 @@ const Room = (props) => {
     //     });
     // }
 
-    
-    //FULL SCREEN
-    // let fullscreenButton;  
-    // if(isfullscreen){
-    //     fullscreenButton=<IconButton onClick={()=>{setFullscreen(false)}} style={{color: '#ffffff'}}>
-    //         <FullscreenExitIcon/>
-    //     </IconButton>
-    // } else {
-    //     fullscreenButton=<IconButton onClick={()=>{setFullscreen(true)}} style={{color: '#ffffff'}}>
-    //         <FullscreenIcon/>
-    //     </IconButton>
-    // }
 
     //COPY LINK TO CLIPBOARD
     const url = window.location.href;
@@ -299,7 +286,6 @@ const Room = (props) => {
                     <Participants />
                     <Chat />
                     {/* {screenShare} */}
-                    {/* {fullscreenButton} */}
                     <CopyToClipboard text={url}>
                         <IconButton onClick={copied}>
                             <LinkIcon style={{color: '#ffffff'}}/>

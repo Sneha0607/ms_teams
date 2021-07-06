@@ -65,8 +65,7 @@ const Teams = () => {
             {
                 teams.map(
                     (team)=>{ 
-                        return (
-                            
+                        return ( 
                             <Grid item xs={12} md={6} lg={4} key={team.code} className={classes.gridItem}>
                                 <Link to={`/teams/${team.code}`} className={classes.link}>
                                 <div className={classes.paper}>
@@ -107,20 +106,6 @@ const Teams = () => {
                 )
             }
         </Grid>
-        </div>
-
-        <div>
-
-            {/* <Link to={`/rooms/${id}`} key={id}>
-            <div className="sidebarChat">
-                <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`}/>
-                <div className="sidebarChat_info">
-                    <h2>{name}</h2>
-                    <p>{messages[0]?.message}</p>
-                </div>
-            </div>
-            </Link> */}
-            
         </div>
     </div>
     )

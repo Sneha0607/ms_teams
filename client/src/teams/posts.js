@@ -3,6 +3,7 @@ import { useLocation, useHistory } from 'react-router';
 import { List, ListItem, Typography, Button } from '@material-ui/core';
 import { db } from '../firebase';
 import { useAuth } from '../contexts/AuthContext';
+import Chats from './chats';
 
 const Posts = () => {
 
@@ -18,8 +19,8 @@ const Posts = () => {
         .onSnapshot(snapshot => {
             setMeetings(snapshot.docs.map(doc => doc.data()))
         });
-    }, [])
-
+    }, [teamCode])
+    
 
     return (
         <List style={{ marginTop: '10vh', marginLeft: '10vw' }}>
@@ -50,15 +51,16 @@ const Posts = () => {
                                         </Button>
                                     </div>
                                 </div>
-                                <Typography>NEW MEETING!
-                                    <p><b>Created By: {meeting.creatorEmail}</b></p>
-                                    <p>Meeting Code: {meeting.code}</p>
-                                    <p>
+                                <div>
+                                    <Typography variant='h6'>Created By: {meeting.creatorEmail}</Typography>
+                                    <Typography variant='body2'>Meeting Code: {meeting.code}
+                                    <br/>
                                         Created on {new Date(meeting.createdAt.seconds * 1000).toLocaleDateString("en-US")}, 
                                         at {new Date(meeting.createdAt.seconds * 1000).getHours()}:{new Date(meeting.createdAt.seconds * 1000).getMinutes()} hrs
-                                    </p>
-                                </Typography>
+                                    </Typography>
+                                </div>
                             </ListItem>
+                            <Chats meetingCode={meeting.code} />
                         </div>
                         ) 
                     }

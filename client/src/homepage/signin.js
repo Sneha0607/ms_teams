@@ -47,7 +47,7 @@ const Signin = () => {
                 >
                     <img 
                         className={classes.bigLogo} 
-                        src={process.env.PUBLIC_URL + 'images/ms_logo.jpg'} 
+                        src={process.env.PUBLIC_URL + 'images/teams.png'} 
                         alt="ms_logo"
                     />
                     <Typography 

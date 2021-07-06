@@ -17,7 +17,6 @@ import DateRangeIcon from '@material-ui/icons/DateRange';
 import CallIcon from '@material-ui/icons/Call';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import SearchIcon from '@material-ui/icons/Search';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 const Navbar = () => {
@@ -119,18 +118,17 @@ const Navbar = () => {
                 users.map(
                     (user)=>{
                         if(user.uid === currentUser.uid)
-                            return (
-                            <>
+                          return (
+                          <>
                             <Typography variant='h6' className={classes.userName}>{user.name}</Typography>
                             <IconButton edge="end" aria-label="account of current user" aria-controls={menuId} aria-haspopup="true" onClick={handleProfileMenuOpen} color="inherit">
                               <Avatar src={user.avatar} />
                             </IconButton>
-                            </>
-                            )
+                          </>
+                          )
                     }
                 )
               }
-              
             </div>
         </Toolbar>
       </AppBar>
@@ -156,6 +154,7 @@ const Navbar = () => {
           </IconButton>
         </div>
         <Divider />
+
         <List>
             <ListItem button component='a' href='/activity'>
               <Tooltip title='Activity' placement='right'>
@@ -221,7 +220,6 @@ const Navbar = () => {
               </Tooltip>
               <ListItemText>Log out</ListItemText>
             </ListItem>
-          
         </List>
       </Drawer>
     </div>

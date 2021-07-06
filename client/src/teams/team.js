@@ -3,14 +3,13 @@ import { AppBar, CssBaseline, Avatar, Drawer, Hidden, List, Toolbar, IconButton,
   InputBase } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 import { db } from '../firebase';
-import { useLocation } from 'react-router';
+import { useLocation, useHistory } from 'react-router';
 import useStyles from './teamStyle';
 import MenuIcon from '@material-ui/icons/Menu';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import VideoCallIcon from '@material-ui/icons/VideoCall';
 import KeyboardIcon from '@material-ui/icons/Keyboard';
 import { v1 as uuid } from "uuid";
-import { useHistory } from 'react-router';
 import { useAuth } from '../contexts/AuthContext';
 import Posts from './posts';
 

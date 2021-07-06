@@ -14,7 +14,7 @@ const Activity = () => {
         .onSnapshot(snapshot => {
             setActivities(snapshot.docs.map(doc => doc.data()))
         });
-    }, [])
+    }, [currentUser.uid])
 
     return (
         <div style={{ marginLeft: '10vw', marginTop: '10vh' }}>
@@ -37,6 +37,11 @@ const Activity = () => {
                                     width: '80vw'
                                 }}
                             >
+                                <img 
+                                    style={{height: '2%', width: '3%', margin: '1%'}} 
+                                    src={process.env.PUBLIC_URL + 'images/teams.png'}
+                                    alt='teams_logo'
+                                />
                                 <Typography>
                                     {new Date(activity.doneAt.seconds * 1000).toLocaleDateString("en-US")},
                                     {new Date(activity.doneAt.seconds * 1000).getHours()}:{new Date(activity.doneAt.seconds * 1000).getMinutes()}

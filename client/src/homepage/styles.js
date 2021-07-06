@@ -111,6 +111,7 @@ const useStyles = makeStyles((theme) => ({
         }
     },
 
+    /**********SIGNUP AND SIGNIN STYLES**********/
     signin:{
         margin: "10vh auto",
         padding: 10,
@@ -127,7 +128,7 @@ const useStyles = makeStyles((theme) => ({
 
     bigLogo: {
         height: '8%',
-        width: '40%',
+        width: '10%',
     },
 
     textField: {
