@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { AppBar, CssBaseline, Avatar, Drawer, Hidden, List, Toolbar, IconButton, Typography, ListItem, Button, 
-  InputBase } from '@material-ui/core';
+import { AppBar, CssBaseline, Drawer, Hidden, List, Toolbar, IconButton, Typography, ListItem, Button, InputBase } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 import { db } from '../firebase';
 import { useLocation, useHistory } from 'react-router';
@@ -12,7 +11,7 @@ import KeyboardIcon from '@material-ui/icons/Keyboard';
 import { v1 as uuid } from "uuid";
 import { useAuth } from '../contexts/AuthContext';
 import Posts from './posts';
-
+import Avatar from 'react-avatar';
 
 const Team = (props) => {
   const { window } = props;
@@ -115,20 +114,9 @@ const Team = (props) => {
             (team)=>{ 
               if(team.code == teamCode)
               return (
-                <>
-                  <ListItem>
-                    {
-                      team.avatar ? 
-                      <img height='100vh' width='100vh' src={team.avatar} alt='team_avatar'/>
-                      :
-                      <img height='100vh' width='100vh' src={process.env.PUBLIC_URL + '/images/avatar1.png'} alt='team_avatar'/>
-                    }
-                    
-                  </ListItem>
-                  <ListItem>
-                    <Typography variant='h6'>{team.name}</Typography>
-                  </ListItem>
-                </>
+                <ListItem>
+                  <Avatar value={team.name} size='100' textSizeRatio={1.75}/>                    
+                </ListItem>
               ) 
             }
           )
@@ -162,15 +150,7 @@ const Team = (props) => {
               (team)=>{ 
                 if(team.code == teamCode)
                 return (
-                  <>
-                      {
-                        team.avatar ? 
-                        <Avatar src={team.avatar} className={classes.teamAvatar}/>
-                        :
-                        <Avatar src={process.env.PUBLIC_URL + '/images/avatar1.png'} className={classes.teamAvatar}/>
-                      }
-                      <Typography variant='h6' className={classes.teamName} noWrap>{team.name}</Typography>
-                  </>
+                  <Avatar className={classes.teamAvatar} value={team.name} size='40' textSizeRatio={1.75} round={true}/>
                 ) 
               }
             )
@@ -185,8 +165,8 @@ const Team = (props) => {
           </Button>
 
           <form onSubmit={join}>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
+          <div className={classes.keyboard}>
+            <div className={classes.keyboardIcon}>
               <KeyboardIcon />
             </div>
             <InputBase

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import {useHistory} from 'react-router';
 import { useAuth } from '../contexts/AuthContext';
-import firebase, { db } from '../firebase';
+import { db } from '../firebase';
 import {Button, Grid, TextField, Typography } from '@material-ui/core';
 
 const CreateTeam = () => {
@@ -14,19 +14,6 @@ const CreateTeam = () => {
     const [users, setUsers] = useState([]);
     const history = useHistory();
 
-    const [fileUrl, setFileUrl] = useState(null);
-
-    const onFileChange = async (e) => {
-        const file = e.target.files[0];
-        const storageRef = firebase.storage().ref();
-        const fileRef = storageRef.child(file.name);
-        await fileRef.put(file).then(() => {
-            console.log("Uploaded File", file.name);
-        });
-        console.log(fileUrl);
-        setFileUrl(await fileRef.getDownloadURL());
-    }
-
     //FUNCTION TO GENERATE TEAM CODE
     const handleGenerateCode = (e) => {
         e.preventDefault();
@@ -37,13 +24,12 @@ const CreateTeam = () => {
           name: name,
           code: newCode,
           creatorid: currentUser.uid,
-          avatar: fileUrl
         }
 
         //PUSHING TEAM DATA IN DATABASE
         const teamRef = db.doc(`teams/${team.code}`);
         teamRef.set({
-            name, code: team.code, createdAt: new Date(), creatorid: team.creatorid, avatar: fileUrl
+            name, code: team.code, createdAt: new Date(), creatorid: team.creatorid
         })
 
         //PUSHING IN USER ACTIVITY
@@ -55,7 +41,6 @@ const CreateTeam = () => {
 
         history.push(`teams/${newCode}`);
         
-        //setFileUrl(null);
     }
 
     //FETCHING TEAMS DATA FROM DATABASE
@@ -89,10 +74,6 @@ const CreateTeam = () => {
                             color = "primary" 
                             placeholder = 'Enter Team Name'
                             onChange = {(e)=>{setName(e.target.value)}} 
-                        />
-                        <input
-                            type='file'
-                            onChange={onFileChange}
                         />
                         {teamCreated ? (
                             <Typography>

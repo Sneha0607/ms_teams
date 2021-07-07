@@ -6,7 +6,7 @@ import clsx from 'clsx';
 import useStyles from './styles';
 import { useTheme } from '@material-ui/core/styles';
 import { Drawer, AppBar, Toolbar, List, Typography, CssBaseline, IconButton, ListItem, ListItemIcon, ListItemText, Menu, MenuItem,
-  Divider, InputBase, Tooltip, Avatar } from '@material-ui/core';
+  Divider, InputBase, Tooltip } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
@@ -18,6 +18,7 @@ import CallIcon from '@material-ui/icons/Call';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import SearchIcon from '@material-ui/icons/Search';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import Avatar from 'react-avatar';
 
 const Navbar = () => {
   const classes = useStyles();
@@ -122,7 +123,7 @@ const Navbar = () => {
                           <>
                             <Typography variant='h6' className={classes.userName}>{user.name}</Typography>
                             <IconButton edge="end" aria-label="account of current user" aria-controls={menuId} aria-haspopup="true" onClick={handleProfileMenuOpen} color="inherit">
-                              <Avatar src={user.avatar} />
+                              <Avatar name={user.name} size='40' textSizeRatio={1.75} round={true}/>
                             </IconButton>
                           </>
                           )

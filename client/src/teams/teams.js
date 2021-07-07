@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import {db} from '../firebase';
+import { db } from '../firebase';
 import useStyles from './styles';
 import GroupAddIcon from '@material-ui/icons/GroupAdd';
 import SettingsIcon from '@material-ui/icons/Settings';
 import { AppBar, Toolbar, IconButton, Typography, Tooltip, Grid } from '@material-ui/core';
+import Avatar from 'react-avatar';
 
 const Teams = () => {
 
@@ -58,9 +59,9 @@ const Teams = () => {
             </AppBar>
 
             <Grid 
-            container 
-            className={classes.grid}
-            spacing={5}
+                container 
+                className={classes.grid}
+                spacing={5}
             >
             {
                 teams.map(
@@ -69,29 +70,9 @@ const Teams = () => {
                             <Grid item xs={12} md={6} lg={4} key={team.code} className={classes.gridItem}>
                                 <Link to={`/teams/${team.code}`} className={classes.link}>
                                 <div className={classes.paper}>
-                                    <div align='center'>
-                                        {team.avatar ? 
-                                        <img
-                                        height='80vw'
-                                        width='80vw' 
-                                        src={team.avatar} 
-                                        alt='avatar'
-                                    />
-                                    :
-                                    <img 
-                                        height='80vw'
-                                        width='80vw'
-                                        src={process.env.PUBLIC_URL + 'images/avatar1.png'} 
-                                        alt='avatar'
-                                    />
-                                    }
+                                    <div align='center' style={{ margin: '3%' }}>
+                                        <Avatar value={team.name} size='90' textSizeRatio={1.75}/>
                                     </div>
-                                    <Typography 
-                                        align='center'
-                                        variant='h5'
-                                    >
-                                        {team.name}
-                                    </Typography>
                                     <Typography
                                         align='center'  
                                     >

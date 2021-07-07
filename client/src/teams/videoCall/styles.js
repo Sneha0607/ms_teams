@@ -155,6 +155,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     [theme.breakpoints.down('md')]: {
       paddingLeft: '0',
+      marginLeft: '0'
     }
   },
 

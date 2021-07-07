@@ -41,7 +41,10 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '10vh',
     marginLeft: '5vw',
     backgroundColor: '#f0f0f0',
-    borderLeft: '1px solid #92a7a7'
+    borderLeft: '1px solid #92a7a7',
+    [theme.breakpoints.down('md')]: {
+      marginLeft: '7vw'
+    }
   },
 
   content: {
@@ -50,10 +53,10 @@ const useStyles = makeStyles((theme) => ({
   },
 
   teamAvatar: {
-    marginLeft: '5vw',
+    marginLeft: '3vw',
+    marginRight: '1vw',
     [theme.breakpoints.down('sm')]: {
       marginLeft: '0',
-      display: 'none'
     }
   },
 
@@ -73,7 +76,7 @@ const useStyles = makeStyles((theme) => ({
     textTransform: 'none'
   },
 
-  search: {
+  keyboard: {
     position: 'relative',
     borderRadius: '0',
     border: '1px solid #929292',
@@ -90,7 +93,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   
-  searchIcon: {
+  keyboardIcon: {
     padding: theme.spacing(0, 2),
     height: '100%',
     position: 'absolute',
@@ -99,9 +102,11 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
   inputRoot: {
     color: 'inherit',
   },
+
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon

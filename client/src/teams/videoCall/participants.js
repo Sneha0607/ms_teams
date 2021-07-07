@@ -3,8 +3,9 @@ import clsx from 'clsx';
 import { db } from '../../firebase';
 import { useLocation } from 'react-router';
 import { makeStyles } from '@material-ui/core/styles';
-import { IconButton, Drawer, List, ListItem, Divider, Typography, ListItemAvatar, ListItemText, Avatar } from '@material-ui/core';
+import { IconButton, Drawer, List, ListItem, Divider, Typography, ListItemAvatar, ListItemText } from '@material-ui/core';
 import PeopleIcon from '@material-ui/icons/People';
+import Avatar from 'react-avatar';
 
 const useStyles = makeStyles({
     
@@ -70,7 +71,12 @@ const Participants = () => {
                             return (
                                 <ListItem>
                                     <ListItemAvatar>
-                                        <Avatar alt="avatar" />
+                                        <Avatar 
+                                            name={participant.email} 
+                                            size='40' 
+                                            textSizeRatio={1.75} 
+                                            round={true}
+                                        />
                                     </ListItemAvatar>
                                     <ListItemText>
                                         {participant.email}
