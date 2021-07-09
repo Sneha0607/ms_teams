@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { db } from '../firebase';
 import useStyles from './styles';
-import { List, ListItem, Typography, TextField, Button, Toolbar, AppBar } from '@material-ui/core';
+import { List, ListItem, Typography, TextField, Button } from '@material-ui/core';
 import SendIcon from '@material-ui/icons/Send';
+import Avatar from 'react-avatar';
 
 const Chat = () => {
 
@@ -70,11 +71,13 @@ const Chat = () => {
                 <ListItem
                   className={classes.posts}
                 >
-                  <img 
-                    className={classes.icon} 
-                    src={process.env.PUBLIC_URL + 'images/teams.png'}
-                    alt='teams_logo'
-                  />
+                    <Avatar 
+                      style={{ margin: '1%' }}
+                      name={chat.senderEmail} 
+                      size='40' 
+                      textSizeRatio={1.75} 
+                      round={true}
+                    />
                     <Typography>
                         <Typography variant='subtitle2'>{chat.senderEmail}</Typography>
                         <Typography variant='caption'>

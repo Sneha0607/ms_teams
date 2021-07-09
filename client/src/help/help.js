@@ -10,6 +10,7 @@ import DateRangeIcon from '@material-ui/icons/DateRange';
 import CallIcon from '@material-ui/icons/Call';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import HelpIcon from '@material-ui/icons/Help';
+import Speech from 'react-speech';
 
 const Help = () => {
 
@@ -23,6 +24,8 @@ const Help = () => {
             setUsers(snapshot.docs.map(doc => doc.data()))
         });
     }, [])
+
+    const text = "Hello user!Welcome to Teams!You can use teams to create groups, meetings and chat with the community, you can even manage your daily tasks and todos and can also view your activities in this app! Thank you!";
 
     return (
         <div className={classes.root}>
@@ -46,6 +49,16 @@ const Help = () => {
                 }!
                 Welcome to Teams! Here's a quick guide for you!
             </Typography>
+
+            <Speech 
+                style={{ marginLeft: '25vw' }}
+                textAsButton={true} 
+                displayText="Click to listen" 
+                text={text}
+                voice="Google UK English Female"
+                rate="0.90"
+            />
+
             <List className={classes.listRoot}>
                 <ListItem>
                     <ListItemAvatar>

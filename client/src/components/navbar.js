@@ -18,8 +18,10 @@ import CallIcon from '@material-ui/icons/Call';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import SearchIcon from '@material-ui/icons/Search';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import VolumeDownIcon from '@material-ui/icons/VolumeDown';
 import HelpIcon from '@material-ui/icons/Help';
 import Avatar from 'react-avatar';
+import Speech from 'react-speech';
 
 const Navbar = () => {
   const classes = useStyles();
@@ -78,6 +80,7 @@ const Navbar = () => {
     </Menu>
   );
 
+  const text = "Hello user!You can utilize this sidebar to navigate through the various features of this app!Try all of these and enjoy! Do share your feedback in the community chat section! Thank you!";
 
   return (
     <div className={classes.navbarRoot}>
@@ -207,6 +210,20 @@ const Navbar = () => {
                 </ListItemIcon>
               </Tooltip>
               <ListItemText>Calls</ListItemText>
+            </ListItem>
+
+            <ListItem button >
+              <Tooltip title='Guide' placement='right'>
+                <ListItemIcon className={classes.icons}>
+                  <VolumeDownIcon/>
+                  <Speech 
+                    text={text}
+                    voice="Google UK English Female"
+                    rate="0.90"
+                  />
+                </ListItemIcon>
+              </Tooltip>
+              <ListItemText>Guide</ListItemText>
             </ListItem>
 
             <ListItem button component='a' href='/'>
