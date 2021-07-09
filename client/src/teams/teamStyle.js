@@ -44,6 +44,9 @@ const useStyles = makeStyles((theme) => ({
     borderLeft: '1px solid #92a7a7',
     [theme.breakpoints.down('md')]: {
       marginLeft: '7vw'
+    },
+    [theme.breakpoints.down('sm')]: {
+      marginLeft: '9vw'
     }
   },
 
@@ -57,14 +60,6 @@ const useStyles = makeStyles((theme) => ({
     marginRight: '1vw',
     [theme.breakpoints.down('sm')]: {
       marginLeft: '0',
-    }
-  },
-
-  teamName: {
-    marginLeft: '2vw',
-    [theme.breakpoints.down('sm')]: {
-      marginLeft: '0',
-      display: 'none'
     }
   },
 

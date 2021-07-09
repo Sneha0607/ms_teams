@@ -74,10 +74,17 @@ const Teams = () => {
                                         <Avatar value={team.name} size='90' textSizeRatio={1.75}/>
                                     </div>
                                     <Typography
-                                        align='center'  
+                                        align='center'
+                                        variant='subtitle1'  
                                     >
                                         Created on {new Date(team.createdAt.seconds * 1000).toLocaleDateString("en-US")}, 
                                         at {new Date(team.createdAt.seconds * 1000).getHours()}:{new Date(team.createdAt.seconds * 1000).getMinutes()} hrs
+                                    </Typography>
+                                    <Typography
+                                        align='center'
+                                        variant='subtitle2'
+                                    >
+                                        by {team.creatorEmail}
                                     </Typography>
                                 </div>
                                 </Link>

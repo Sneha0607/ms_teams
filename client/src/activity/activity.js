@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { db } from '../firebase';
 import { useAuth } from '../contexts/AuthContext';
+import useStyles from './styles';
 import { List, ListItem, Typography } from '@material-ui/core';
 
 const Activity = () => {
 
     const { currentUser } = useAuth();
     const [activities, setActivities] = useState([]);
+    const classes = useStyles();
     
     //FETCHING ACTIVITIES OF CURRENT USER FROM DATABASE
     useEffect(() => {
@@ -17,10 +19,10 @@ const Activity = () => {
     }, [currentUser.uid])
 
     return (
-        <div style={{ marginLeft: '10vw', marginTop: '10vh' }}>
+        <div className={classes.root}>
             <Typography
                 variant='h4'
-                style={{ paddingTop: '3vh', fontWeight: 'bold' }}
+                className={classes.title}
             >
                 YOUR ACTIVITY
             </Typography>
@@ -30,15 +32,10 @@ const Activity = () => {
                     (activity)=>{ 
                         return (
                             <ListItem
-                                style={{ 
-                                    border: '1px solid #c4c4c4',
-                                    marginBottom: '2%',
-                                    backgroundColor: '#ffffff',
-                                    width: '80vw'
-                                }}
+                                className={classes.posts}
                             >
                                 <img 
-                                    style={{height: '2%', width: '3%', margin: '1%'}} 
+                                    className={classes.icon}
                                     src={process.env.PUBLIC_URL + 'images/teams.png'}
                                     alt='teams_logo'
                                 />

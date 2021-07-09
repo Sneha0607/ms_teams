@@ -67,7 +67,7 @@ const Navbar = () => {
             users.map(
                 (user)=>{
                     if(user.uid === currentUser.uid)
-                        return (<MenuItem onClick={handleMenuClose}>{user.name}</MenuItem>)
+                        return (<MenuItem onClick={handleMenuClose} key={user.uid}>{user.name}</MenuItem>)
                 }
             )
         }
@@ -120,12 +120,9 @@ const Navbar = () => {
                     (user)=>{
                         if(user.uid === currentUser.uid)
                           return (
-                          <>
-                            <Typography variant='h6' className={classes.userName}>{user.name}</Typography>
-                            <IconButton edge="end" aria-label="account of current user" aria-controls={menuId} aria-haspopup="true" onClick={handleProfileMenuOpen} color="inherit">
-                              <Avatar name={user.name} size='40' textSizeRatio={1.75} round={true}/>
-                            </IconButton>
-                          </>
+                          <IconButton edge="end" aria-label="account of current user" aria-controls={menuId} aria-haspopup="true" onClick={handleProfileMenuOpen} color="inherit">
+                            <Avatar name={user.name} size='40' textSizeRatio={1.75} round={true}/>
+                          </IconButton>
                           )
                     }
                 )
@@ -167,12 +164,12 @@ const Navbar = () => {
             </ListItem>
 
             <ListItem button component='a' href='/chat'>
-              <Tooltip title='Chat' placement='right'>
+              <Tooltip title='Community Chat' placement='right'>
                 <ListItemIcon className={classes.icons}>
                   <MessageIcon/>
                 </ListItemIcon>
               </Tooltip>
-              <ListItemText>Chat</ListItemText>
+              <ListItemText>Community Chat</ListItemText>
             </ListItem>
 
             <ListItem button component='a' href='/teams'>

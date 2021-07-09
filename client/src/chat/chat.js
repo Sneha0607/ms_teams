@@ -1,32 +1,88 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router';
+import { useAuth } from '../contexts/AuthContext';
 import { db } from '../firebase';
-import { List, ListItem } from '@material-ui/core';
-import Messages from './messages';
+import useStyles from './styles';
+import { List, ListItem, Typography, TextField, Button, Toolbar, AppBar } from '@material-ui/core';
+import SendIcon from '@material-ui/icons/Send';
 
 const Chat = () => {
 
-  const [meetings, setMeetings] = useState([]);
-  const history = useHistory();
+  const { currentUser } = useAuth();
+  const [message, setMessage] = useState('');
+  const [chats, setChats] = useState([]);
+  const classes = useStyles();
 
+  const sendMessage = (e) => {
+    e.preventDefault();
+    
+    //PUSHING MESSAGE IN DATABASE
+    db.collection("messages").add({
+        message: message,
+        senderEmail: currentUser.email,
+        senderUid: currentUser.uid,
+        sentAt: new Date(),
+    })
+
+    setMessage('');
+  }
+
+  /**********FETCH COMMUNITY MESSAGES FROM DATABASE**********/
   useEffect(() => {
-    db.collection("meetings").orderBy("createdAt", "desc")
+    db.collection(`messages`).orderBy("sentAt", "desc")
     .onSnapshot(snapshot => {
-        setMeetings(snapshot.docs.map(doc => doc.data()))
+        setChats(snapshot.docs.map(doc => doc.data()))
     });
-  }, [])
+  })
 
 
   return (
-    <div>
-      <Messages/>
-      <List style={{ marginLeft: '5vw', marginTop: '10vh', height: '100vh', width: '20vw'}}>
+
+    <div className={classes.root}>
+      <Typography
+          variant='h4'
+          className={classes.title}
+      >
+          COMMUNITY POSTS
+      </Typography>
+      <List>
+        <ListItem
+          className={classes.createPost}
+        >
+          <form onSubmit={sendMessage} style={{ justifyContent:'center' }}>
+            <TextField
+                id="outlined-basic"  
+                variant="outlined"
+                placeholder='Post your message...'
+                value={message}
+                onChange = {(e)=>{setMessage(e.target.value)}}
+                className={classes.textField}  
+            />
+            <Button
+              type='submit'
+              startIcon={<SendIcon style={{ fontSize: '2rem', color: '#ffffff' }}/>}
+            />
+          </form>
+        </ListItem>
         {
-          meetings.map(
-            (meeting)=>{
+          chats.map(
+            (chat)=>{
               return (
-                <ListItem component='a' onClick={(e)=>history.push(`chat/${meeting.code}`)}>
-                    {meeting.code}
+                <ListItem
+                  className={classes.posts}
+                >
+                  <img 
+                    className={classes.icon} 
+                    src={process.env.PUBLIC_URL + 'images/teams.png'}
+                    alt='teams_logo'
+                  />
+                    <Typography>
+                        <Typography variant='subtitle2'>{chat.senderEmail}</Typography>
+                        <Typography variant='caption'>
+                        {new Date(chat.sentAt.seconds * 1000).toLocaleDateString("en-US")},
+                        {new Date(chat.sentAt.seconds * 1000).getHours()}:{new Date(chat.sentAt.seconds * 1000).getMinutes()}
+                        </Typography>
+                        <Typography>{chat.message}</Typography>
+                    </Typography>
                 </ListItem>
               )
             }

@@ -15,21 +15,6 @@ const useStyles = makeStyles((theme) => ({
     }
   },
 
-  createPost: {
-    border: '1px solid #c4c4c4',
-    marginBottom: '2%',
-    backgroundColor: '#464775',
-    width: '80vw',
-    [theme.breakpoints.down('sm')]: {
-      marginLeft: '5%'
-    }
-  },
-
-  textField: {
-    backgroundColor: '#ffffff', 
-    width: '40vw',
-  },
-
   posts: {
     border: '1px solid #c4c4c4',
     marginBottom: '2%',

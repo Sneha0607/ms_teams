@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { AppBar, CssBaseline, Drawer, Hidden, List, Toolbar, IconButton, Typography, ListItem, Button, InputBase } from '@material-ui/core';
+import { AppBar, CssBaseline, Drawer, Hidden, List, Toolbar, IconButton, ListItem, Button, InputBase } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 import { db } from '../firebase';
 import { useLocation, useHistory } from 'react-router';
