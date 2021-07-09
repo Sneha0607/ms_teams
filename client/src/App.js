@@ -15,6 +15,7 @@ import Navbar from './components/navbar';
 import CreateTeam from './teams/createTeam';
 import Team from './teams/team';
 import Activity from './activity/activity';
+import Help from './help/help';
 
 const App = () => {
   const [user, setUser] = useState('');
@@ -44,6 +45,7 @@ const App = () => {
           <AuthProvider>
             <Navbar />
               <Switch>
+                <Route path = '/' exact component = {Help}/>
                 <Route path = '/teams' exact component = {Teams}/>
                 <Route path = '/create-team' component = {CreateTeam}/>
                 <Route path = '/teams/:teamID' exact component = {Team}/>

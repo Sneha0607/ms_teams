@@ -18,6 +18,7 @@ import CallIcon from '@material-ui/icons/Call';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import SearchIcon from '@material-ui/icons/Search';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import HelpIcon from '@material-ui/icons/Help';
 import Avatar from 'react-avatar';
 
 const Navbar = () => {
@@ -206,6 +207,15 @@ const Navbar = () => {
                 </ListItemIcon>
               </Tooltip>
               <ListItemText>Calls</ListItemText>
+            </ListItem>
+
+            <ListItem button component='a' href='/'>
+              <Tooltip title='Help' placement='right'>
+                <ListItemIcon className={classes.icons}>
+                  <HelpIcon/>
+                </ListItemIcon>
+              </Tooltip>
+              <ListItemText>Help</ListItemText>
             </ListItem>
 
             <Divider />
