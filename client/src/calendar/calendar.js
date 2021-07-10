@@ -1,12 +1,23 @@
-import React from 'react';
-import { ScheduleComponent, Inject, Day, Week, WorkWeek, Month, Agenda } from '@syncfusion/ej2-react-schedule';
+import React, { useState, useEffect } from 'react';
+import { db } from '../firebase';
+import { List, ListItem } from '@material-ui/core';
 
 const Calendar = () => {
-    return (
-        <div style={{ marginTop: '10vh', marginLeft: '5vw' }}>
-            <ScheduleComponent currentView='Month' >
-                <Inject services={[Day, Week, WorkWeek, Month, Agenda]}/>
-            </ScheduleComponent>
+
+    const [meetings, setMeetings] = useState([]);
+
+    useEffect(() => {
+        db.collection('meetings').orderBy("createdAt", "desc")
+        .onSnapshot(snapshot => {
+            setMeetings(snapshot.docs.map(doc => doc.data()))
+        });
+    })
+
+
+    
+    return(
+        <div style={{ marginTop: '15vh', marginLeft: '10vw', marginRight: '10vw', marginBottom: '10vh' }}>
+            
         </div>
     )
 }

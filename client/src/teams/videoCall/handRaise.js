@@ -2,7 +2,7 @@ import React from 'react';
 import { useLocation } from 'react-router';
 import { db } from '../../firebase';
 import { useAuth } from '../../contexts/AuthContext';
-import { IconButton, Drawer, List, ListItem, Divider, Typography, ListItemAvatar, ListItemText } from '@material-ui/core';
+import { IconButton } from '@material-ui/core';
 import PanToolIcon from '@material-ui/icons/PanTool';
 
 const HandRaise = () => {

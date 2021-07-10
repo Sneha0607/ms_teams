@@ -55,8 +55,19 @@ const Posts = () => {
                                     <Typography variant='h6'>Created By: {meeting.creatorEmail}</Typography>
                                     <Typography variant='body2'>Meeting Code: {meeting.code}
                                     <br/>
-                                        Created on {new Date(meeting.createdAt.seconds * 1000).toLocaleDateString("en-US")}, 
-                                        at {new Date(meeting.createdAt.seconds * 1000).getHours()}:{new Date(meeting.createdAt.seconds * 1000).getMinutes()} hrs
+                                    {
+                                        meeting.time ? 
+                                        <Typography>
+                                            Sceduled on {new Date(meeting.createdAt.seconds * 1000).toLocaleDateString("en-US")},
+                                            at {meeting.time} hrs
+                                        </Typography>
+                                        :
+                                        <Typography>
+                                            Created on {new Date(meeting.createdAt.seconds * 1000).toLocaleDateString("en-US")}, 
+                                            at {new Date(meeting.createdAt.seconds * 1000).getHours()}:{new Date(meeting.createdAt.seconds * 1000).getMinutes()} hrs
+                                        </Typography>
+                                    }
+                                        
                                     </Typography>
                                 </div>
                             </ListItem>

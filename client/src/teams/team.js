@@ -1,17 +1,53 @@
 import React, { useState, useEffect } from 'react';
-import { AppBar, CssBaseline, Drawer, Hidden, List, Toolbar, IconButton, ListItem, Button, InputBase } from '@material-ui/core';
-import { useTheme } from '@material-ui/core/styles';
+import { AppBar, CssBaseline, Drawer, Hidden, List, Toolbar, IconButton, ListItem, Button, InputBase, ListItemIcon,
+    ListItemText, Menu, MenuItem, Dialog, DialogActions, DialogContent, DialogTitle, Divider } from '@material-ui/core';
+import { useTheme, withStyles } from '@material-ui/core/styles';
 import { db } from '../firebase';
 import { useLocation, useHistory } from 'react-router';
 import useStyles from './teamStyle';
 import MenuIcon from '@material-ui/icons/Menu';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import VideoCallIcon from '@material-ui/icons/VideoCall';
+import DateRangeIcon from '@material-ui/icons/DateRange';
 import KeyboardIcon from '@material-ui/icons/Keyboard';
 import { v1 as uuid } from "uuid";
 import { useAuth } from '../contexts/AuthContext';
 import Posts from './posts';
 import Avatar from 'react-avatar';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import TimePicker from 'react-time-picker';
+
+const StyledMenu = withStyles({
+  paper: {
+    border: '1px solid #d3d4d5',
+  },
+})((props) => (
+  <Menu
+    elevation={0}
+    getContentAnchorEl={null}
+    anchorOrigin={{
+      vertical: 'bottom',
+      horizontal: 'center',
+    }}
+    transformOrigin={{
+      vertical: 'top',
+      horizontal: 'center',
+    }}
+    {...props}
+  />
+));
+
+const StyledMenuItem = withStyles((theme) => ({
+  root: {
+    '&:focus': {
+      backgroundColor: '#464775',
+      '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
+        color: theme.palette.common.white,
+      },
+    },
+  },
+}))(MenuItem);
 
 const Team = (props) => {
   const { window } = props;
@@ -22,8 +58,21 @@ const Team = (props) => {
   const [code, setCode] = useState('')
   const history = useHistory();
   const { currentUser } = useAuth();
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [open, setOpen] = useState(false);
+  const [value, onChange] = useState('10:00');
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
 
+  /**********FETCHING TEAMS DATA FROM DATABASE**********/
   useEffect(() => {
     db.collection("teams").onSnapshot(snapshot => {
         setTeams(snapshot.docs.map(doc => doc.data()))
@@ -77,6 +126,35 @@ const Team = (props) => {
     alert(`Copy your meeting code : ${id}`);
   }
 
+
+  /**********SCHEDULING MEETING FUNCTION**********/
+  
+  const schedule = (e) => {
+    e.preventDefault();
+    const id = uuid();
+
+    //PUSHING MEETING DATA IN DATABASE
+    const teamRef = db.doc(`teams/${teamCode}/meetings/${id}`);
+    teamRef.set({
+      code: id, createdAt: selectedDate, time: value, creatorId: currentUser.uid, creatorEmail: currentUser.email,
+    })
+
+    const meetingRef = db.doc(`meetings/${id}`);
+    meetingRef.set({
+      code: id, createdAt: selectedDate, time: value, creatorId: currentUser.uid, creatorEmail: currentUser.email, 
+    })
+
+    //PUSHING IN USER ACTIVITY
+    db.collection("users").doc(currentUser.uid).collection("activity")
+    .add({
+        activity: `You scheduled a meeting!`,
+        doneAt: new Date()
+    })
+
+    setOpen(false);
+  }
+
+
   /*************JOIN MEETING FUNCTION************/
 
   const join = (e) => {
@@ -129,6 +207,15 @@ const Team = (props) => {
     </div>
   );
 
+  /**********DATE PICKER**********/
+  const handleClickOpenCalendar = () => {
+    setOpen(true);
+  };
+
+  const handleCloseCalendar = () => {
+    setOpen(false);
+  };
+
   const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
@@ -157,12 +244,73 @@ const Team = (props) => {
           }
 
           <Button
-            onClick={create}  
+            onClick={handleClick}  
             className={classes.meetButton} 
             startIcon={<VideoCallIcon/>}
           >
             Meet
           </Button>
+
+          <StyledMenu
+            id="customized-menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+          >
+            <StyledMenuItem onClick={create}>
+              <ListItemIcon>
+                <VideoCallIcon fontSize="small" />
+              </ListItemIcon>
+              <ListItemText primary="Meet now" />
+            </StyledMenuItem>
+            <StyledMenuItem onClick={handleClickOpenCalendar}>
+              <ListItemIcon>
+                <DateRangeIcon fontSize="small" />
+              </ListItemIcon>
+              <ListItemText primary="Schedule a meeting" />
+            </StyledMenuItem>
+          </StyledMenu>
+
+          <Dialog 
+            fullWidth
+            maxWidth='sm' 
+            open={open} 
+            onClose={handleCloseCalendar} 
+            aria-labelledby="form-dialog-title"
+          >
+            <DialogTitle id="form-dialog-title">
+                Choose date and time to schedule meeting
+            </DialogTitle>
+            <Divider />
+            <DialogContent style={{ height: '50vh' }}>
+              <form onSubmit={schedule}>
+                <DatePicker
+                  selected={selectedDate}
+                  onChange={date=>setSelectedDate(date)}
+                  dateFormat='MM/dd/yyyy'
+                  minDate={new Date()}
+                  isClearable
+                  showYearDropdown
+                  scrollableMothYearDropdown
+                />
+                  <TimePicker
+                    onChange={onChange}
+                    value={value}
+                  />
+                <Button
+                  type='submit'
+                >
+                  Schedule Meeting
+                </Button>
+              </form>
+            </DialogContent>
+            <DialogActions>
+                <Button onClick={handleCloseCalendar} color="primary">
+                    Close
+                </Button>
+            </DialogActions>
+          </Dialog>
 
           <form onSubmit={join}>
           <div className={classes.keyboard}>

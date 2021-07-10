@@ -33,7 +33,7 @@ const Help = () => {
                 variant='h4'
                 className={classes.title}
             >
-                TEAMS GUIDE
+                TEAMS HELP
             </Typography>
             <Typography
                 className={classes.title}

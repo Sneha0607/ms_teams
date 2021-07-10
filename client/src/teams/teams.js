@@ -50,7 +50,7 @@ const Teams = () => {
                             </IconButton>
                         </Tooltip>
                         <Tooltip title='Join or create team' placement='bottom'>
-                            <IconButton aria-label="settings" className={classes.menuButton} href='/join-create'>
+                            <IconButton aria-label="settings" className={classes.menuButton} href='/create-team'>
                                 <GroupAddIcon />
                             </IconButton>
                         </Tooltip>
