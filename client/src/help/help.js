@@ -102,7 +102,7 @@ const Help = () => {
                             <DateRangeIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary="Calendar" secondary="You can plan all your activities" />
+                    <ListItemText primary="Calendar" secondary="You can keep a track of all the scheduled meetings" />
                 </ListItem>
 
                 <ListItem>

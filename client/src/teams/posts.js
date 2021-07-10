@@ -58,7 +58,7 @@ const Posts = () => {
                                     {
                                         meeting.time ? 
                                         <Typography>
-                                            Sceduled on {new Date(meeting.createdAt.seconds * 1000).toLocaleDateString("en-US")},
+                                            Scheduled on {new Date(meeting.createdAt.seconds * 1000).toLocaleDateString("en-US")},
                                             at {meeting.time} hrs
                                         </Typography>
                                         :

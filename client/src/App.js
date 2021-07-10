@@ -9,7 +9,7 @@ import Signin from './homepage/signin';
 import Teams from './teams/teams';
 import Chat from './chat/chat';
 import Room from './teams/videoCall/room';
-import Calendar from './calendar/calendar';
+import CalendarSchedule from './calendar/calendarSchedule';
 import Tasks from './tasks/tasks';
 import Navbar from './components/navbar';
 import CreateTeam from './teams/createTeam';
@@ -51,7 +51,7 @@ const App = () => {
                 <Route path = '/teams/:teamID' exact component = {Team}/>
                 <Route path = '/room/:roomID' component={Room} />
                 <Route path = '/chat' component = {Chat}/>
-                <Route path = '/calendar' component = {Calendar}/>
+                <Route path = '/calendar' component = {CalendarSchedule}/>
                 <Route path = '/tasks' component = {Tasks}/>
                 <Route path = '/activity' component = {Activity}/>
             </Switch>

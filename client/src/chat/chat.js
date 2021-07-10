@@ -33,7 +33,7 @@ const Chat = () => {
     .onSnapshot(snapshot => {
         setChats(snapshot.docs.map(doc => doc.data()))
     });
-  })
+  }, [])
 
 
   return (
