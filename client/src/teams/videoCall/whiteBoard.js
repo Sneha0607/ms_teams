@@ -1,8 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router';
-import { IconButton } from '@material-ui/core';
+import { IconButton, Tooltip } from '@material-ui/core';
 import CreateIcon from '@material-ui/icons/Create';
-import Container from './components/container/Container';
 
 const WhiteBoard = () => {
 
@@ -10,20 +9,22 @@ const WhiteBoard = () => {
     const location = useLocation();
     const meetingCode = location.pathname.substring(location.pathname.lastIndexOf('/')+1);
 
+    //FUNCTION TO OPEN WHITEBOARD IN NEW TAB
     const handleClick = () => {
-        const url = `/${meetingCode}/whiteboard`;
+        const url = `/room/${meetingCode}/whiteboard`;
         window.open(url, '_blank');
     }
 
     return (
         <div>
-            <IconButton 
-                onClick={handleClick} 
-                style={{color: '#ffffff'}}
-            >
-                <CreateIcon />
-            </IconButton>
-            
+            <Tooltip title='Open Whiteboard' placement='top'>
+                <IconButton 
+                    onClick={handleClick} 
+                    style={{color: '#ffffff'}}
+                >
+                    <CreateIcon />
+                </IconButton>
+            </Tooltip>         
         </div>
     )
 }

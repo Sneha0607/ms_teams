@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 import Peer from 'simple-peer';
 import styled from 'styled-components';
 import useStyles from '../styles';
-import { IconButton, Toolbar, AppBar } from '@material-ui/core';
+import { IconButton, Toolbar, AppBar, Tooltip } from '@material-ui/core';
 import MicIcon from '@material-ui/icons/Mic';
 import MicOffIcon from '@material-ui/icons/MicOff';
 import VideocamIcon from '@material-ui/icons/Videocam';
@@ -166,27 +166,36 @@ const Room = (props) => {
     
     let audioControl;
     if(audioMuted){
-      audioControl=<IconButton onClick={()=>toggleMuteAudio()} style={{color: '#ffffff'}}>
-        <MicOffIcon/>
-      </IconButton>
-    } 
+        audioControl = <Tooltip title='Microphone' placement='top'>
+            <IconButton onClick={()=>toggleMuteAudio()} style={{color: '#ffffff'}}>
+                <MicOffIcon/>
+            </IconButton>
+        </Tooltip>
+    }
     else {
-      audioControl=<IconButton onClick={()=>toggleMuteAudio()} style={{color: '#ffffff'}}>
-        <MicIcon/>
-      </IconButton>
+        audioControl = <Tooltip title='Microphone' placement='top'>
+            <IconButton onClick={()=>toggleMuteAudio()} style={{color: '#ffffff'}}>
+                <MicIcon/>
+            </IconButton>
+        </Tooltip>
     }
 
     let videoControl;
     if(videoMuted){
-      videoControl=<IconButton onClick={()=>toggleMuteVideo()} style={{color: '#ffffff'}}>
-        <VideocamOffIcon/>
-      </IconButton>
-    } 
-    else {
-      videoControl=<IconButton onClick={()=>toggleMuteVideo()} style={{color: '#ffffff'}}>
-        <VideocamIcon/>
-      </IconButton>
+        videoControl = <Tooltip title='Camera' placement='top'>
+            <IconButton onClick={()=>toggleMuteVideo()} style={{color: '#ffffff'}}>
+                <VideocamOffIcon/>
+            </IconButton>
+        </Tooltip>
     }
+    else {
+        videoControl = <Tooltip title='Camera' placement='top'>
+            <IconButton onClick={()=>toggleMuteVideo()} style={{color: '#ffffff'}}>
+                <VideocamIcon/>
+            </IconButton>
+        </Tooltip>
+    }
+
       
     //LEAVE MEETING
 
@@ -209,13 +218,15 @@ const Room = (props) => {
                 <Toolbar className={classes.controlsToolbar}>
                     {audioControl}     
                     {videoControl}
-                    <Participants />
-                    <Chat />
-                    <WhiteBoard />
-                    <Share />
-                    <IconButton onClick={leaveMeeting} href='/teams' style={{color: '#9d2f42'}}>
-                        <CallEndIcon/>
-                    </IconButton>
+                    <Participants/>
+                    <Chat/>
+                    <WhiteBoard/>
+                    <Share/>
+                    <Tooltip title='End Call' placement='top'>
+                        <IconButton onClick={leaveMeeting} href='/teams' style={{color: '#9d2f42'}}>
+                            <CallEndIcon/>
+                        </IconButton>
+                    </Tooltip>
                 </Toolbar>
             </AppBar>
         </Container>

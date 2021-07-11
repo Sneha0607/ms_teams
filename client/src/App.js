@@ -51,12 +51,12 @@ const App = () => {
                 <Route path = '/teams' exact component = {Teams}/>
                 <Route path = '/create-team' component = {CreateTeam}/>
                 <Route path = '/teams/:teamID' exact component = {Team}/>
-                <Route path = '/room/:roomID' component={Room}/>
+                <Route path = '/room/:roomID' exact component={Room}/>
                 <Route path = '/chat' component = {Chat}/>
                 <Route path = '/calendar' component = {CalendarSchedule}/>
                 <Route path = '/tasks' component = {Tasks}/>
                 <Route path = '/activity' component = {Activity}/>
-                <Route path = '/:roomID/whiteboard' component = {Container}/>
+                <Route path = '/room/:roomID/whiteboard' component = {Container}/>
             </Switch>
           </AuthProvider>
         </Router>

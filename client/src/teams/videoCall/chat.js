@@ -3,10 +3,11 @@ import { useLocation } from 'react-router';
 import { db } from '../../firebase';
 import { useAuth } from '../../contexts/AuthContext';
 import { IconButton, Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText,
-    DialogTitle, List, ListItem, Typography, Divider } from '@material-ui/core';
+    DialogTitle, List, ListItem, Typography, Divider, Tooltip } from '@material-ui/core';
 import ChatIcon from '@material-ui/icons/Chat';
 import SendIcon from '@material-ui/icons/Send';
 import jsPDF from 'jspdf';
+import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 
 const Chat = () => {
 
@@ -71,12 +72,14 @@ const Chat = () => {
 
     return (
         <div>
-            <IconButton 
-                onClick={handleClickOpen} 
-                style={{color: '#ffffff'}}
-            >
-                <ChatIcon />
-            </IconButton>
+            <Tooltip title='Chat' placement='top'>
+                <IconButton 
+                    onClick={handleClickOpen} 
+                    style={{color: '#ffffff'}}
+                >
+                    <ChatIcon />
+                </IconButton>
+            </Tooltip>
 
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">
@@ -122,7 +125,8 @@ const Chat = () => {
                 <DialogActions>
                     <Button 
                       onClick={exportChat}
-                      style={{ backgroundColor: '#464775', color: '#ffffff', margin: '2%' }}
+                      style={{ backgroundColor: '#464775', textTransform: 'none', color: '#ffffff', margin: '2%' }}
+                      startIcon={<ArrowDownwardIcon/>}
                     >
                       Export Chat
                     </Button>

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { IconButton, Dialog, DialogTitle, Divider, DialogContent, Button, DialogActions, DialogContentText, Typography } from '@material-ui/core';
+import { IconButton, Dialog, DialogTitle, Divider, DialogContent, Button, DialogActions, DialogContentText,
+     Typography, Tooltip } from '@material-ui/core';
 import ShareIcon from '@material-ui/icons/Share';
 import LinkIcon from '@material-ui/icons/Link';
 import { ToastContainer, toast } from 'react-toastify';
@@ -33,12 +34,14 @@ const Share = () => {
 
     return (
         <div>
-            <IconButton 
-                onClick={handleClickOpen} 
-                style={{color: '#ffffff'}}
-            >
-                <ShareIcon />
-            </IconButton>
+            <Tooltip title='Share Meeting Info' placement='top'>
+                <IconButton 
+                    onClick={handleClickOpen} 
+                    style={{color: '#ffffff'}}
+                >
+                    <ShareIcon />
+                </IconButton>
+            </Tooltip>
 
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">

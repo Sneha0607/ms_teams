@@ -73,7 +73,6 @@ const Navbar = () => {
                 }
             )
         }
-
         {/* LOGOUT USER */}
         <MenuItem onClick={()=>{handleLogout();}}>Logout</MenuItem>
     </Menu>

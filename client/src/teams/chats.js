@@ -6,6 +6,7 @@ import { Accordion, AccordionSummary, AccordionDetails, Typography, TextField, B
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import SendIcon from '@material-ui/icons/Send';
 import jsPDF from 'jspdf';
+import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -107,7 +108,8 @@ const Chats = (props) => {
                 </form>
                 <Button 
                   onClick={exportChat}
-                  style={{ backgroundColor: '#464775', color: '#ffffff', margin: '2%' }}
+                  style={{ backgroundColor: '#464775', textTransform: 'none', color: '#ffffff', margin: '2%' }}
+                  startIcon={<ArrowDownwardIcon/>}
                 >
                   Export Chat
                 </Button>

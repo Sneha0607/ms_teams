@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { db } from '../../firebase';
 import { useLocation } from 'react-router';
 import { makeStyles } from '@material-ui/core/styles';
-import { IconButton, Drawer, List, ListItem, Divider, Typography, ListItemAvatar, ListItemText } from '@material-ui/core';
+import { IconButton, Drawer, List, ListItem, Divider, Typography, ListItemAvatar, ListItemText, Tooltip } from '@material-ui/core';
 import PeopleIcon from '@material-ui/icons/People';
 import Avatar from 'react-avatar';
 
@@ -38,7 +38,7 @@ const Participants = () => {
 
 
     const classes = useStyles();
-    const [state, setState] = React.useState({
+    const [state, setState] = useState({
       top: false,
       left: false,
       bottom: false,
@@ -95,9 +95,11 @@ const Participants = () => {
         <div>
             {['right'].map((anchor) => (
             <React.Fragment key={anchor}>
-                <IconButton onClick={toggleDrawer(anchor, true)} style={{color: '#ffffff'}}>
-                    <PeopleIcon />
-                </IconButton>
+                <Tooltip title='Participants' placement='top'>
+                    <IconButton onClick={toggleDrawer(anchor, true)} style={{color: '#ffffff'}}>
+                        <PeopleIcon />
+                    </IconButton>
+                </Tooltip>
                 <Drawer
                     anchor={anchor} 
                     open={state[anchor]} 

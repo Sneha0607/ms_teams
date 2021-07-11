@@ -25,9 +25,17 @@ const Teams = () => {
         <div className={classes.content}>
 
         <div className={classes.grow}>
-            <AppBar position="static" className={classes.appbar} elevation={0}>
+            <AppBar 
+                position="static" 
+                className={classes.appbar} 
+                elevation={0}
+            >
                 <Toolbar>
-                    <Typography className={classes.title} variant="h6" noWrap>
+                    <Typography 
+                        className={classes.title} 
+                        variant="h6" 
+                        noWrap
+                    >
                         All Teams
                     </Typography>
                     <div className={classes.grow} />
@@ -37,21 +45,23 @@ const Teams = () => {
                                 <SettingsIcon />
                             </IconButton>
                         </Tooltip>
-                        <Tooltip title='Join or create team' placement='bottom'>
+                        <Tooltip title='Create a team' placement='bottom'>
                             <IconButton aria-label="settings" className={classes.menuButton} href='/create-team'>
-                                <GroupAddIcon />
+                                <GroupAddIcon/>
+                                <Typography variant='body2'>Create a team</Typography>
                             </IconButton>
                         </Tooltip>
                     </div>
                     <div className={classes.sectionMobile}>
                         <Tooltip title="Settings" placement="bottom">
                             <IconButton aria-label="settings" className={classes.menuButton} >
-                                <SettingsIcon />
+                                <SettingsIcon/>
                             </IconButton>
                         </Tooltip>
-                        <Tooltip title='Join or create team' placement='bottom'>
+                        <Tooltip title='Create a team' placement='bottom'>
                             <IconButton aria-label="settings" className={classes.menuButton} href='/create-team'>
-                                <GroupAddIcon />
+                                <GroupAddIcon/>
+                                <Typography variant='body2'>Create a team</Typography>
                             </IconButton>
                         </Tooltip>
                     </div>
