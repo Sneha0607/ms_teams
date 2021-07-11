@@ -52,7 +52,7 @@ const CalendarSchedule = () => {
                                     </ListItemAvatar> 
                                     <ListItemText>
                                         Meeting scheduled on {new Date(meeting.createdAt.seconds * 1000).toLocaleDateString("en-US")},
-                                        at {meeting.time} hrs
+                                        at {meeting.time} hrs by {meeting.creatorEmail}
                                     </ListItemText>
                                     <div
                                         onClick={(e) => db.doc(`meetings/${meeting.code}/participants/${currentUser.uid}`)

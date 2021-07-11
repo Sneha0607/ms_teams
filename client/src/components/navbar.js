@@ -14,7 +14,6 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MessageIcon from '@material-ui/icons/Message';
 import GroupIcon from '@material-ui/icons/Group';
 import DateRangeIcon from '@material-ui/icons/DateRange';
-import CallIcon from '@material-ui/icons/Call';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import SearchIcon from '@material-ui/icons/Search';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
@@ -201,15 +200,6 @@ const Navbar = () => {
                 </ListItemIcon>
               </Tooltip>
               <ListItemText>Calendar</ListItemText>
-            </ListItem>
-
-            <ListItem button component='a' href='/calls'>
-              <Tooltip title='Calls' placement='right'>
-                <ListItemIcon className={classes.icons}>
-                  <CallIcon/>
-                </ListItemIcon>
-              </Tooltip>
-              <ListItemText>Calls</ListItemText>
             </ListItem>
 
             <ListItem button >

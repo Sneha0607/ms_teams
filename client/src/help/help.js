@@ -7,7 +7,6 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MessageIcon from '@material-ui/icons/Message';
 import GroupIcon from '@material-ui/icons/Group';
 import DateRangeIcon from '@material-ui/icons/DateRange';
-import CallIcon from '@material-ui/icons/Call';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import HelpIcon from '@material-ui/icons/Help';
 import Speech from 'react-speech';
@@ -103,15 +102,6 @@ const Help = () => {
                         </Avatar>
                     </ListItemAvatar>
                     <ListItemText primary="Calendar" secondary="You can keep a track of all the scheduled meetings" />
-                </ListItem>
-
-                <ListItem>
-                    <ListItemAvatar>
-                        <Avatar>
-                            <CallIcon />
-                        </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary="Calls" secondary="You can call" />
                 </ListItem>
 
                 <ListItem>

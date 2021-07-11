@@ -93,6 +93,12 @@ const CreateTeam = () => {
                             </Button>
                         )}
                     </form>
+                    <Typography 
+                        variant='caption'
+                        style={{ marginTop: '5vh' }}
+                    >
+                        The team will be public and accessible by all users!
+                    </Typography>
                 </Grid>
             </Grid>
         </div>

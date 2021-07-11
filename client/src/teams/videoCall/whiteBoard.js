@@ -1,23 +1,18 @@
 import React from 'react';
 import { useLocation } from 'react-router';
-import { db } from '../../firebase';
-import { useAuth } from '../../contexts/AuthContext';
 import { IconButton } from '@material-ui/core';
-import PanToolIcon from '@material-ui/icons/PanTool';
+import CreateIcon from '@material-ui/icons/Create';
+import Container from './components/container/Container';
 
-const HandRaise = () => {
-
-    const { currentUser } = useAuth();
+const WhiteBoard = () => {
 
     //FETCHING MEETING CODE FROM URL
     const location = useLocation();
     const meetingCode = location.pathname.substring(location.pathname.lastIndexOf('/')+1);
 
-    const handleClick = (e) => {
-        e.preventDefault();
-        
-        //PUSHING MESSAGE IN DATABASE
-        
+    const handleClick = () => {
+        const url = `/${meetingCode}/whiteboard`;
+        window.open(url, '_blank');
     }
 
     return (
@@ -26,10 +21,11 @@ const HandRaise = () => {
                 onClick={handleClick} 
                 style={{color: '#ffffff'}}
             >
-                <PanToolIcon />
+                <CreateIcon />
             </IconButton>
+            
         </div>
     )
 }
 
-export default HandRaise;
+export default WhiteBoard;

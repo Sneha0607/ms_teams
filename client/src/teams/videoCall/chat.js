@@ -6,6 +6,7 @@ import { IconButton, Button, TextField, Dialog, DialogActions, DialogContent, Di
     DialogTitle, List, ListItem, Typography, Divider } from '@material-ui/core';
 import ChatIcon from '@material-ui/icons/Chat';
 import SendIcon from '@material-ui/icons/Send';
+import jsPDF from 'jspdf';
 
 const Chat = () => {
 
@@ -48,6 +49,25 @@ const Chat = () => {
             setChats(snapshot.docs.map(doc => doc.data()))
         });
     }, [meetingCode])
+
+    const exportChat = () => {
+        var doc = new jsPDF('p', 'pt');
+        var i = 20
+        var j = 30
+        doc.setFontSize('15');
+        doc.text(i, 20, "Meeting Chats");
+        doc.setFontSize('10');
+        
+        chats.map(
+          (chat)=>{
+            doc.text(i, j, chat.senderEmail.substring(0, chat.senderEmail.indexOf('@')));
+            doc.text(i+110, j, '-')
+            doc.text(i+115, j, chat.message);
+            j = j+20;
+          }
+        )
+        doc.save("meeting_chat.pdf");
+    }
 
     return (
         <div>
@@ -100,6 +120,12 @@ const Chat = () => {
                     </form>
                 </DialogContent>
                 <DialogActions>
+                    <Button 
+                      onClick={exportChat}
+                      style={{ backgroundColor: '#464775', color: '#ffffff', margin: '2%' }}
+                    >
+                      Export Chat
+                    </Button>
                     <Button onClick={handleClose} color="primary">
                         Close
                     </Button>

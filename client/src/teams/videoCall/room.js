@@ -13,7 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Participants from './participants';
 import Chat from './chat';
 import Share from './share';
-import HandRaise from './handRaise';
+import WhiteBoard from './whiteBoard';
 
 const Container = styled.div`
     padding: 2vw;
@@ -211,7 +211,7 @@ const Room = (props) => {
                     {videoControl}
                     <Participants />
                     <Chat />
-                    <HandRaise />
+                    <WhiteBoard />
                     <Share />
                     <IconButton onClick={leaveMeeting} href='/teams' style={{color: '#9d2f42'}}>
                         <CallEndIcon/>
