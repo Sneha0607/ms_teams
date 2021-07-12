@@ -23,5 +23,17 @@ Through this app users can create teams, start or schedule meetings. During the 
 
 #### Installation
 ```
+git clone https://github.com/Sneha0607/ms_teams.git
+cd ms_teams
+#Open two terminals
+
+#1st Terminal
+cd client
 npm install
+npm start
+
+#2nd Terminal
+cd server
+npm install
+npm start
 ```
