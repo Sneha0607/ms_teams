@@ -11,6 +11,7 @@ const Share = () => {
 
     const [open, setOpen] = useState(false);
 
+    //FUNCTIONS TO OPEN AND CLOSE THE SHARE DIALOG
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -34,6 +35,9 @@ const Share = () => {
 
     return (
         <div>
+
+            {/* SHARE BUTTON */}
+
             <Tooltip title='Share Meeting Info' placement='top'>
                 <IconButton 
                     onClick={handleClickOpen} 
@@ -42,6 +46,8 @@ const Share = () => {
                     <ShareIcon />
                 </IconButton>
             </Tooltip>
+
+            {/* DIALOG BOX */}
 
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">

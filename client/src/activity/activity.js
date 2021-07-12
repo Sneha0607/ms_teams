@@ -26,6 +26,8 @@ const Activity = () => {
             >
                 YOUR ACTIVITY
             </Typography>
+            
+            {/* LIST OF ACTIVITIES */}
             <List>
             {
                 activities.map(
@@ -55,10 +57,3 @@ const Activity = () => {
 }
 
 export default Activity;
-
-
-//Welcome message
-//Created a team
-//Created a meeting
-//Joined a meeting
-//Added a task

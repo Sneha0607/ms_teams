@@ -25,6 +25,9 @@ const Teams = () => {
         <div className={classes.content}>
 
         <div className={classes.grow}>
+
+            {/* TOP BAR IN TEAMS SECTION */}
+
             <AppBar 
                 position="static" 
                 className={classes.appbar} 
@@ -67,6 +70,8 @@ const Teams = () => {
                     </div>
                 </Toolbar>
             </AppBar>
+
+            {/* GRID TO DISPLAY ALL THE TEAMS */}
 
             <Grid 
                 container 

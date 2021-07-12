@@ -17,6 +17,8 @@ const Signup = () => {
     const [nameError, setNameError] = useState('');
     const history = useHistory();
 
+    //SIGNUP FUNCTION
+
     const handleSignup = (e) => {
         e.preventDefault();
         setPasswordError('');
@@ -93,6 +95,9 @@ const Signup = () => {
                     >
                         Sign up
                     </Typography>
+
+                    {/* FORM TO SUBMIT USER INFORMATION */}
+
                     <form onSubmit = {handleSignup}>
                         {nameError && <Alert severity = "error">{nameError}</Alert>}
                         {emailError && <Alert severity = "error">{emailError}</Alert>}
@@ -141,6 +146,7 @@ const Signup = () => {
                             Sign up
                         </Button>
                     </form>
+                    
                     <p>
                         <Typography variant = "h7"  color = "textPrimary" family = "Roboto" gutterBottom>
                             Already a user?

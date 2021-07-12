@@ -6,7 +6,7 @@ import './style.css';
 class Board extends React.Component {
 
     timeout;
-    socket = io.connect("/");
+    socket = io.connect("/");   //CONNECTING TO SOCKET.IO SERVER
 
     ctx;
     isDrawing = false;
@@ -14,6 +14,7 @@ class Board extends React.Component {
     constructor(props) {
         super(props);
 
+        //ON canvas-data EVENT OF SOCKET.IO
         this.socket.on("canvas-data", function(data){
 
             var root = this;
@@ -26,7 +27,6 @@ class Board extends React.Component {
                 var ctx = canvas.getContext('2d');
                 image.onload = function() {
                     ctx.drawImage(image, 0, 0);
-
                     root.isDrawing = false;
                 };
                 image.src = data;
@@ -34,15 +34,18 @@ class Board extends React.Component {
         })
     }
 
+    //CALLING FUNCTION TO DRAW ON CANVAS
     componentDidMount() {
         this.drawOnCanvas();
     }
 
+    //FUNCTION TO RECEIVE THE SIZE AND COLOR OF BRUSH
     componentWillReceiveProps(newProps) {
         this.ctx.strokeStyle = newProps.color;
         this.ctx.lineWidth = newProps.size;
     }
 
+    //FUNCTION TO DRAW ON CANVAS / WRITE ON WHITEBOARD
     drawOnCanvas() {
         var canvas = document.querySelector('#board');
         this.ctx = canvas.getContext('2d');
@@ -53,10 +56,11 @@ class Board extends React.Component {
         canvas.width = parseInt(sketch_style.getPropertyValue('width'));
         canvas.height = parseInt(sketch_style.getPropertyValue('height'));
 
+        //COORDINATES OF THE MOUSE POINTER
         var mouse = {x: 0, y: 0};
         var last_mouse = {x: 0, y: 0};
 
-        /* Mouse Capturing Work */
+        //CAPTURING MOUSE WORK
         canvas.addEventListener('mousemove', function(e) {
             last_mouse.x = mouse.x;
             last_mouse.y = mouse.y;
@@ -66,7 +70,7 @@ class Board extends React.Component {
         }, false);
 
 
-        /* Drawing on Paint App */
+        //DRAWING ON WHITEBOARD
         ctx.lineWidth = this.props.size;
         ctx.lineJoin = 'round';
         ctx.lineCap = 'round';
@@ -98,11 +102,13 @@ class Board extends React.Component {
 
     render() {
         return (
-            <div class="sketch" id="sketch">
-                <canvas className="board" id="board"></canvas>
+            <div className="sketch" id="sketch">
+                <canvas className="board" id="board">
+                    {/* DRAWING CANVAS */}
+                </canvas>
             </div>
         )
     }
 }
 
-export default Board
+export default Board;

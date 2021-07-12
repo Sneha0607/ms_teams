@@ -24,7 +24,7 @@ const Participants = () => {
 
     const [participants, setParticipants] = useState([]);
 
-
+    //FETCHING MEETING CODE FROM URL
     const location = useLocation();
     const meetingCode = location.pathname.substring(location.pathname.lastIndexOf('/')+1);
 
@@ -52,6 +52,8 @@ const Participants = () => {
 
       setState({ ...state, [anchor]: open });
     };
+
+    // DISPLAYING LIST OF PARTICIPANTS
 
     const list = (anchor) => (
         <div
@@ -95,6 +97,9 @@ const Participants = () => {
         <div>
             {['right'].map((anchor) => (
             <React.Fragment key={anchor}>
+
+                {/* PARTICIPANTS BUTTON */}
+
                 <Tooltip title='Participants' placement='top'>
                     <IconButton onClick={toggleDrawer(anchor, true)} style={{color: '#ffffff'}}>
                         <PeopleIcon />

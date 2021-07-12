@@ -2,14 +2,16 @@ import firebase from 'firebase';
 import 'firebase/firestore';
 import 'firebase/auth';
 
+//STORED THE FIREBASE DETAILS IN .env.local FILE
+
 const firebaseConfig = {
-    apiKey: "AIzaSyBdEOdHz2SB6tAS-pabNgMGBGoHs7ROw-w",
-    authDomain: "teams-4ca3f.firebaseapp.com",
-    projectId: "teams-4ca3f",
-    storageBucket: "teams-4ca3f.appspot.com",
-    messagingSenderId: "416771298043",
-    appId: "1:416771298043:web:b20e66784b82e0981cd65e",
-    measurementId: "G-DKCFXEGEYM"
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_FIREBASE_APP_ID,
+    measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 };
 
 firebase.initializeApp(firebaseConfig);

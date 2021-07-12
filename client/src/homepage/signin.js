@@ -6,12 +6,15 @@ import {Button, Checkbox, FormControlLabel, Grid, Link, TextField, Typography } 
 import Alert from '@material-ui/lab/Alert';
 
 const Signin = () => {
+
     const classes = useStyles();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const history = useHistory();
+
+    //LOGIN FUNCTION: Checking Firebase Authentication 
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -59,6 +62,9 @@ const Signin = () => {
                     >
                         Sign in
                     </Typography>
+
+                    {/* FORM TO SUBMIT USER EMAIL AND PASSWORD TO SIGN IN */}
+
                     <form onSubmit = {handleLogin}>
                         {emailError && <Alert severity = "error">{emailError}</Alert>}
                         {passwordError && <Alert severity = "error">{passwordError}</Alert>}
@@ -89,10 +95,12 @@ const Signin = () => {
                             Sign in
                         </Button>
                     </form>
+
                     <FormControlLabel 
                         control = {<Checkbox name = "rememberMe" color = "primary"/>} 
                         label = "Remember me"
                     />
+                    
                     <p>
                         <Typography variant = "h7"  color = "textPrimary" family = "Roboto" gutterBottom>
                             <Link href = "#" >Forgot Password?</Link>

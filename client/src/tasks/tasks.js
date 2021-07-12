@@ -13,17 +13,17 @@ const Tasks = () => {
     const classes = useStyles();
     const { currentUser } = useAuth();
     
-    // to fetch data from database while the app is loading
+    //TO FETCH TODOS FROM DATABASE WHILE THE APP IS LOADING
     useEffect(() => {
     db.collection("users").doc(currentUser.uid).collection("tasks").orderBy("timestamp", "desc")
     .onSnapshot(snapshot => {
       setTodos(snapshot.docs.map(doc => ({ 
-          id:doc.id, 
+          id: doc.id, 
           todo: doc.data().todo
         })))
     })}, [currentUser.uid])
   
-    // Function on button add TODo
+    // ADD TODO FUNCTION
     const addTodo = (Event) => {
       // preventing default nature of form of refresh
       Event.preventDefault();
@@ -46,11 +46,12 @@ const Tasks = () => {
   
     return (
       <div className={classes.tasks}>
-        {/* Wraping up in form to make sure enter key will submiting the form  */}
         <Typography variant='h1' className = {classes.tasksHeader}>
           MANAGE YOUR TASKS
         </Typography>
         
+        {/* FORM TO SUBMIT TODO */}
+
         <form className={classes.form}>
           <FormControl>
             <InputLabel>
@@ -75,7 +76,7 @@ const Tasks = () => {
           </Button>
         </form>
         
-        {/* FETCHING TASKS FROM DATABASE */}
+        {/* DISPLAYING TASKS FROM DATABASE */}
         <List className={classes.tasksList}>
           {todos.map(todo => (
            <Todo todo={todo} />

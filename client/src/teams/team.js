@@ -283,6 +283,9 @@ const Team = (props) => {
                 Choose date and time to schedule meeting
             </DialogTitle>
             <Divider />
+
+            {/* FORM TO SCHEDULE A MEETING */}
+
             <DialogContent style={{ height: '50vh' }}>
               <form onSubmit={schedule}>
                 <DatePicker
@@ -305,6 +308,7 @@ const Team = (props) => {
                 </Button>
               </form>
             </DialogContent>
+            
             <DialogActions>
                 <Button onClick={handleCloseCalendar} color="primary">
                     Close

@@ -16,6 +16,8 @@ const CalendarSchedule = () => {
     const [meetings, setMeetings] = useState([]);
     const [value, onChange] = useState(new Date());
 
+    //FETCHING SCHEDULED MEETINGS FROM DATABASE
+
     useEffect(() => {
         db.collection('meetings').orderBy("createdAt", "desc")
         .onSnapshot(snapshot => {
@@ -33,10 +35,14 @@ const CalendarSchedule = () => {
                 YOUR CALENDAR
             </Typography>
 
+            {/* CALENDAR */}
+
             <Calendar
                 onChange={onChange}
                 value={value}
             />
+
+            {/* LIST OF SCHEDULED MEETINGS */}
 
             <List className={classes.listRoot}>
             {

@@ -27,7 +27,7 @@ const Chat = () => {
     setMessage('');
   }
 
-  /**********FETCH COMMUNITY MESSAGES FROM DATABASE**********/
+  //FETCHING COMMUNITY CHATS FROM DATABASE
   useEffect(() => {
     db.collection(`messages`).orderBy("sentAt", "desc")
     .onSnapshot(snapshot => {
@@ -49,6 +49,9 @@ const Chat = () => {
         <ListItem
           className={classes.createPost}
         >
+
+          {/* FORM TO ENTER MESSAGE */}
+
           <form onSubmit={sendMessage} style={{ justifyContent:'center' }}>
             <TextField
                 id="outlined-basic"  
@@ -63,6 +66,9 @@ const Chat = () => {
               startIcon={<SendIcon style={{ fontSize: '2rem', color: '#ffffff' }}/>}
             />
           </form>
+
+        {/* ALL CHATS */}
+
         </ListItem>
         {
           chats.map(

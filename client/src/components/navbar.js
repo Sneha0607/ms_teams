@@ -38,6 +38,7 @@ const Navbar = () => {
     history.push('/');
   };
 
+  //FUNCTIONS TO EXPAND AND COLLAPSE SIDEBAR
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -53,6 +54,7 @@ const Navbar = () => {
       });
   }, [])
 
+  //FUNCTIONS TO OPEN AND CLOSE PROFILE MENU
   const handleProfileMenuOpen = (event) => {
       setAnchorEl(event.currentTarget);
   };
@@ -78,6 +80,7 @@ const Navbar = () => {
     </Menu>
   );
 
+  //TEXT FOR VOICE ASSISTANT OF GUIDE SECTION
   const text = "Hello user!You can utilize this sidebar to navigate through the various features of this app!Try all of these and enjoy! Do share your feedback in the community chat section! Thank you!";
 
   return (

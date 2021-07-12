@@ -11,13 +11,13 @@ const WhiteBoard = () => {
 
     //FUNCTION TO OPEN WHITEBOARD IN NEW TAB
     const handleClick = () => {
-        const url = `/room/${meetingCode}/whiteboard`;
+        const url = `/${meetingCode}/whiteboard`;
         window.open(url, '_blank');
     }
 
     return (
         <div>
-            <Tooltip title='Open Whiteboard' placement='top'>
+            <Tooltip title='Open Collaborative Whiteboard' placement='top'>
                 <IconButton 
                     onClick={handleClick} 
                     style={{color: '#ffffff'}}

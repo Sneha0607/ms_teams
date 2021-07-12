@@ -4,10 +4,14 @@ import { AppBar, Toolbar, Typography, Button } from '@material-ui/core';
 import Marquee from "react-fast-marquee";
 
 const Navbar = () => {
+
     const classes = useStyles();
 
     return(
         <div className={classes.navbarRoot}>
+
+            {/* NAVBAR */}
+
             <AppBar className={classes.navbar} elevation={0} position="static">
                 <Toolbar>
                     <img className={classes.logo} src={process.env.PUBLIC_URL + 'images/teams.png'} alt="logo"/>
@@ -19,6 +23,8 @@ const Navbar = () => {
                     <Button className={classes.navbarButton} color="inherit" href='/signin'>Sign in</Button>
                 </Toolbar>
             </AppBar>
+
+            {/* MARQUEE SECTION */}
 
             <AppBar className={classes.blueBox} elevation={0} position='static'>
                 <Marquee speed={50} gradient={false}>

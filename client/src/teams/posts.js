@@ -11,9 +11,11 @@ const Posts = () => {
     const history = useHistory();
     const { currentUser } = useAuth();
 
+    //FETCHING CURRENT TEAM CODE FROM URL
     const location = useLocation();
     const teamCode = location.pathname.substring(location.pathname.lastIndexOf('/')+1);
 
+    //FETCHING TEAM MEETINGS
     useEffect(() => {
         db.collection(`teams/${teamCode}/meetings`).orderBy("createdAt", "desc")
         .onSnapshot(snapshot => {
@@ -24,6 +26,9 @@ const Posts = () => {
 
     return (
         <List style={{ marginTop: '10vh', marginLeft: '10vw' }}>
+
+            {/* DISPLAYING MEETINGS IN THE TEAM */}
+
             {
                 meetings.map(
                     (meeting)=>{ 

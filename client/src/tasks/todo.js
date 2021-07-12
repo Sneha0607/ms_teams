@@ -13,6 +13,7 @@ const Todo = (props) => {
     const [open, setOpen] = useState(false);
     const [input, setInput] = useState();
 
+    //UPDATE TODO FUNCTION
     const updateTodo = () => {
       // update the todo with the new input
       db.collection("users").doc(currentUser.uid).collection("tasks").doc(props.todo.id).set(
@@ -24,6 +25,7 @@ const Todo = (props) => {
       setOpen(false);
     };
 
+    //DONE TODO FUNCTION
     const doneTodo = () => {
 
       //PUSHING IN USER ACTIVITY
@@ -33,7 +35,7 @@ const Todo = (props) => {
           doneAt: new Date()
       })
 
-      //delete the todo from 
+      //DELETE TODO IN DATABASE
       db.collection("users").doc(currentUser.uid).collection("tasks").doc(props.todo.id).delete();
     }
 

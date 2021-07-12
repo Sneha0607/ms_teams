@@ -47,6 +47,7 @@ const Chats = (props) => {
         setMessage('');
     }
 
+    //FUNCTION TO EXPORT CHAT AS A PDF
     const exportChat = () => {
       var doc = new jsPDF('p', 'pt');
       var i = 20
@@ -76,6 +77,9 @@ const Chats = (props) => {
         >
           <Typography variant='subtitle1' className={classes.heading}>Meeting Chats</Typography>
         </AccordionSummary>
+
+        {/* DISPLAYING MEETING CHATS IN TEAM POSTS */}
+
         <AccordionDetails>
             <div>
                 {
@@ -93,6 +97,8 @@ const Chats = (props) => {
                         }
                     )
                 }
+
+                {/* FORM TO SEND MESSAGE */}
                 <form onSubmit={sendMessage}>
                     <TextField
                         id="filled-basic" 
@@ -106,6 +112,8 @@ const Chats = (props) => {
                         startIcon={<SendIcon/>}
                     />
                 </form>
+
+                {/* BUTTON TO EXPORT CHAT */}
                 <Button 
                   onClick={exportChat}
                   style={{ backgroundColor: '#464775', textTransform: 'none', color: '#ffffff', margin: '2%' }}

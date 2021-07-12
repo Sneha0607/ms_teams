@@ -24,6 +24,7 @@ const Help = () => {
         });
     }, [])
 
+    //TEXT FOR VOICE ASSISTANT 
     const text = "Hello user!Welcome to Teams!You can use teams to create groups, meetings and chat with the community, you can even manage your daily tasks and todos and can also view your activities in this app! Thank you!";
 
     return (

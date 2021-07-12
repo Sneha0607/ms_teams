@@ -1,5 +1,7 @@
 import React from 'react';
 
+//THIS PAGE WILL BE DISPLAYED TO THE USERS WHO HAVE NOT SIGNED UP OR SIGNED IN AND ARE TRYING TO JOIN USING A MEETING LINK
+
 const NotSigned = () => {
     return (
         <div style={{ margin: '10vw' }}>

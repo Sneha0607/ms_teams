@@ -35,6 +35,7 @@ const Chat = () => {
         setMessage('');
     }
 
+    //FUNCTIONS TO OPEN AND CLOSE DIALOG BOX
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -51,6 +52,7 @@ const Chat = () => {
         });
     }, [meetingCode])
 
+    //FUNCTION TO EXPORT CHAT AS PDF
     const exportChat = () => {
         var doc = new jsPDF('p', 'pt');
         var i = 20
@@ -72,6 +74,9 @@ const Chat = () => {
 
     return (
         <div>
+
+            {/* CHAT BUTTON */}
+
             <Tooltip title='Chat' placement='top'>
                 <IconButton 
                     onClick={handleClickOpen} 
@@ -80,6 +85,8 @@ const Chat = () => {
                     <ChatIcon />
                 </IconButton>
             </Tooltip>
+
+            {/* CHAT DIALOG BOX */}
 
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">
@@ -107,6 +114,9 @@ const Chat = () => {
                             }
                         </List>
                     </DialogContentText>
+
+                    {/* FORM TO SEND MESSAGE */}
+
                     <form onSubmit={sendMessage}>
                         <TextField
 
@@ -123,6 +133,9 @@ const Chat = () => {
                     </form>
                 </DialogContent>
                 <DialogActions>
+
+                    {/* EXPORT CHAT BUTTON */}
+
                     <Button 
                       onClick={exportChat}
                       style={{ backgroundColor: '#464775', textTransform: 'none', color: '#ffffff', margin: '2%' }}

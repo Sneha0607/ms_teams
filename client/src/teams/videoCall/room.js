@@ -13,7 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Participants from './participants';
 import Chat from './chat';
 import Share from './share';
-import WhiteBoard from './whiteBoard';
+import WhiteBoard from './whiteBoard/whiteBoard';
 
 const Container = styled.div`
     padding: 2vw;
