@@ -37,23 +37,23 @@ Apart from this, this app also has features to view user activity, participate i
   1) Mandatory functionality achieved: two participants should be able connect with each other to have a video conversation.
   2) Adapted to the new functionality: chat feature.
   3) Added extra features: 
-    a) User authentication
-    b) More than two people can connect in a video meeting
-    c) Meetings can be started now or can be scheduled at any time and date
-    d) Participants list can be viewed
-    e) Toggle audio and video
-    f) Video can be viewed in full screen and picture-in-picture mode
-    g) Users can chat before, during and even after the meeting has ended
-    g) Any number of teams can be created, in which anyone can create meetings
-    h) Joining to a meeting doesn't really requires a link or a code
-    i) User activities can be viewed
-    j) Community Chats 
-    k) Calendar for scheduled meetings
-    i) Task Manager
+    i. User authentication
+    ii. More than two people can connect in a video meeting
+    iii. Meetings can be started now or can be scheduled at any time and date
+    iv. Participants list can be viewed
+    v. Toggle audio and video
+    vi. Video can be viewed in full screen and picture-in-picture mode
+    vii. Users can chat before, during and even after the meeting has ended
+    viii. Any number of teams can be created, in which anyone can create meetings
+    ix. Joining to a meeting doesn't really requires a link or a code
+    x. User activities can be viewed
+    xi. Community Chats 
+    xii. Calendar for scheduled meetings
+    xiii. Task Manager
   4) Added bonus features:
-    a) All the meeting chats can be exported as a PDF for future reference
-    b) An interactive whiteboard, where all participants of the meeting can collaborate
-    c) Voice Assistant which helps as a guide for the app
+    i. All the meeting chats can be exported as a PDF for future reference
+    ii. An interactive whiteboard, where all participants of the meeting can collaborate
+    iii. Voice Assistant which helps as a guide for the app
 
 ### Installation
 ```
