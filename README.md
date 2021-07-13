@@ -37,22 +37,23 @@ Apart from this, this app also has features to view user activity, participate i
   1) Mandatory functionality achieved: two participants should be able connect with each other to have a video conversation.
   2) Adapted to the new functionality: chat feature.
   3) Added extra features: 
-    - User authentication
-    - More than two people can connect in a video meeting
-    - Meetings can be started now or can be scheduled at any time and date
-    - Participants list
-    - Toggle audio and video
-    - Video can be viewed in full screen and picture-in-picture mode
-    - Any number of teams can be created, in which anyone can create meetings
-    - Joining to a meeting doesn't really requires a link or a code
-    - User activities can be viewed
-    - Community Chats 
-    - Calendar for scheduled meetings
-    - Task Manager
+    a) User authentication
+    b) More than two people can connect in a video meeting
+    c) Meetings can be started now or can be scheduled at any time and date
+    d) Participants list can be viewed
+    e) Toggle audio and video
+    f) Video can be viewed in full screen and picture-in-picture mode
+    g) Users can chat before, during and even after the meeting has ended
+    g) Any number of teams can be created, in which anyone can create meetings
+    h) Joining to a meeting doesn't really requires a link or a code
+    i) User activities can be viewed
+    j) Community Chats 
+    k) Calendar for scheduled meetings
+    i) Task Manager
   4) Added bonus features:
-    - All the meeting chats can be exported as a PDF for future reference
-    - An interactive whiteboard, where all participants of the meeting can collaborate
-    - Voice Assistant which helps as a guide for the app
+    a) All the meeting chats can be exported as a PDF for future reference
+    b) An interactive whiteboard, where all participants of the meeting can collaborate
+    c) Voice Assistant which helps as a guide for the app
 
 ### Installation
 ```
