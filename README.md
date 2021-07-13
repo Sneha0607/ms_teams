@@ -34,26 +34,32 @@ Apart from this, this app also has features to view user activity, participate i
   5) simple-peer library (node.js style API for WebRTC)
 
 ### Features
-  1. Mandatory functionality achieved: two participants should be able connect with each other to have a video conversation.
-  2. Adapted to the new functionality: chat feature.
-  3. Added extra features: 
-    1. User authentication
-    2. More than two people can connect in a video meeting
-    3. Meetings can be started now or can be scheduled at any time and date
-    4. Participants list can be viewed
-    5. Toggle audio and video
-    6. Video can be viewed in full screen and picture-in-picture mode
-    7. Users can chat before, during and even after the meeting has ended
-    8. Any number of teams can be created, in which anyone can create meetings
-    9. Joining to a meeting doesn't really requires a link or a code
-    10. User activities can be viewed
-    11. Community Chats 
-    12. Calendar for scheduled meetings
-    13. Task Manager
-  4) Added bonus features:
-    1. All the meeting chats can be exported as a PDF for future reference
-    2. An interactive whiteboard, where all participants of the meeting can collaborate
-    3. Voice Assistant which helps as a guide for the app
+<ol>
+  <li> Mandatory functionality achieved: two participants should be able connect with each other to have a video conversation </li>
+  <li> Adapted to the new functionality: chat feature </li>
+  <li> Added extra features: </li>
+    <ol type='i'>
+      <li> User authentication </li>
+      <li> More than two people can connect in a video meeting </li>
+      <li> Meetings can be started now or can be scheduled at any time and date </li>
+      <li> Participants list can be viewed </li>
+      <li> Toggle audio and video </li>
+      <li> Video can be viewed in full screen and picture-in-picture mode </li>
+      <li> Users can chat before, during and even after the meeting has ended </li>
+      <li> Any number of teams can be created, in which anyone can create meetings </li>
+      <li> Joining to a meeting doesn't really requires a link or a code </li>
+      <li> User activities can be viewed </li>
+      <li> Community Chats </li>
+      <li> Calendar for scheduled meetings </li>
+      <li> Task Manager </li>
+    </ol>
+  <li> Added bonus features: </li>
+    <ol type='i'>
+      <li> All the meeting chats can be exported as a PDF for future reference </li>
+      <li> An interactive whiteboard, where all participants of the meeting can collaborate </li>
+      <li> Voice Assistant which helps as a guide for the app </li>
+    </ol>
+</ol>
 
 ### Installation
 ```
