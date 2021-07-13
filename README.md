@@ -16,7 +16,8 @@ https://clone-microsoft-teams.herokuapp.com
 
 ## Table of Contents
 - [Description](#description)
-- [Technology Stack](#technology-stack)
+- [Technology Used](#technology-used)
+- [Features](#features)
 - [Installation](#installation)
 - [Demo Images](#demo-images)
 
@@ -25,10 +26,33 @@ Through this app users can create teams, start or schedule meetings. All the mee
 <br/>
 Apart from this, this app also has features to view user activity, participate in community chat, manage your tasks, view your calendar to look up for scheduled meetings and a voice assistant which guides you through the app!
 
-### Technology Stack:
+### Technology Used
   1) NodeJs
   2) ReactJs
   3) Firebase
+  4) socket.io
+  5) simple-peer library (node.js style API for WebRTC)
+
+### Features
+  1) Mandatory functionality achieved: two participants should be able connect with each other to have a video conversation.
+  2) Adapted to the new functionality: chat feature.
+  3) Added extra features: 
+    - User authentication
+    - More than two people can connect in a video meeting
+    - Meetings can be started now or can be scheduled at any time and date
+    - Participants list
+    - Toggle audio and video
+    - Video can be viewed in full screen and picture-in-picture mode
+    - Any number of teams can be created, in which anyone can create meetings
+    - Joining to a meeting doesn't really requires a link or a code
+    - User activities can be viewed
+    - Community Chats 
+    - Calendar for scheduled meetings
+    - Task Manager
+  4) Added bonus features:
+    - All the meeting chats can be exported as a PDF for future reference
+    - An interactive whiteboard, where all participants of the meeting can collaborate
+    - Voice Assistant which helps as a guide for the app
 
 ### Installation
 ```
