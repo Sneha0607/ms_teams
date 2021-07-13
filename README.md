@@ -1,6 +1,6 @@
 <h1 align="center">MICROSOFT TEAMS CLONE</h1>
 
-<p><img src="https://c.s-microsoft.com/favicon.ico?v2" height=20px> Built during Microsoft Engage Mentorship Program 2021</p>
+<p><img src="https://c.s-microsoft.com/favicon.ico?v2" height=20px> Built during <a href='https://microsoft.acehacker.com/engage2021/?mc_cid=22228bb25e&mc_eid=b5a167e3c2'>Microsoft Engage Mentorship Program 2021</a> </p>
 
 ## Introduction
 It is a clone of the web version of Microsoft Teams, built using NodeJS in backend and ReactJS in frontend. 
@@ -11,10 +11,10 @@ https://clone-microsoft-teams.herokuapp.com
 ## Demo Video
 <a href='https://www.youtube.com/watch?v=uf3k8dtzaF0'>Demo Video</a>
 
-## Documentation / User Guide
+## Documentation/User Guide
 <a href='https://drive.google.com/file/d/1EXJgMKEh-1H_dR8WokXrySvRalFdkBAO/view?usp=sharing'>Documentation</a>
 
-## Presentation Link
+## Presentation
 <a href='https://drive.google.com/file/d/1K4peb0KkbG_7DbBTH5xa9kLCnjuKTSmG/view?usp=sharing'>Presentation</a>
 
 ## Table of Contents
@@ -51,6 +51,7 @@ Apart from this, this app also has features to view user activity, participate i
   <li> Added extra features: </li>
     <ol type='i'>
       <li> User authentication </li>
+      <li> UI/UX is responsive and similar to actual teams </li>
       <li> More than two people can connect in a video meeting </li>
       <li> Meetings can be started now or can be scheduled at any time and date </li>
       <li> Participants list can be viewed </li>
