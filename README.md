@@ -22,6 +22,7 @@ https://clone-microsoft-teams.herokuapp.com
 
 ### Description
 Through this app users can create teams, start or schedule meetings. All the meetings will get listed in the team, and anyone can directly join from there. During the meeting, users can toggle between their audio and video, can view in full screen and picture-in-picture mode. All the participants of the meeting can view the participants list, chat with everyone and can even draw their thoughts on the collaborative whiteboard. The chats can be initiated before the meeting and can continue even after the meeting. The chats can be exported as a PDF. The meeting URL and Code can also be copied.
+<br/>
 Apart from this, this app also has features to view user activity, participate in community chat, manage your tasks, view your calendar to look up for scheduled meetings and a voice assistant which guides you through the app!
 
 ### Technology Stack:
@@ -33,6 +34,7 @@ Apart from this, this app also has features to view user activity, participate i
 ```
 git clone https://github.com/Sneha0607/ms_teams.git
 cd ms_teams
+
 #Open two terminals
 
 #1st Terminal
@@ -49,15 +51,28 @@ To get the database working, the firebase configuration needs to be added in cli
 
 ### Demo Images
 ![home](https://github.com/Sneha0607/ms_teams/blob/master/images/home.png)
+<br/>
 ![signup](https://github.com/Sneha0607/ms_teams/blob/master/images/signup.png)
+<br/>
 ![teams](https://github.com/Sneha0607/ms_teams/blob/master/images/teams.png)
+<br/>
 ![team_posts](https://github.com/Sneha0607/ms_teams/blob/master/images/team_posts.png)
+<br/>
 ![chats](https://github.com/Sneha0607/ms_teams/blob/master/images/chats.png)
+<br/>
 ![participants](https://github.com/Sneha0607/ms_teams/blob/master/images/participants.png)
+<br/>
 ![share](https://github.com/Sneha0607/ms_teams/blob/master/images/share.png)
+<br/>
 ![whiteboard](https://github.com/Sneha0607/ms_teams/blob/master/images/whiteboard.png)
+<br/>
 ![activity](https://github.com/Sneha0607/ms_teams/blob/master/images/activity.png)
+<br/>
 ![community_chat](https://github.com/Sneha0607/ms_teams/blob/master/images/community.png)
+<br/>
 ![tasks](https://github.com/Sneha0607/ms_teams/blob/master/images/tasks.png)
+<br/>
 ![calendar](https://github.com/Sneha0607/ms_teams/blob/master/images/calendar.png)
+<br/>
 ![help](https://github.com/Sneha0607/ms_teams/blob/master/images/help.png)
+<br/>
