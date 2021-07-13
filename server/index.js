@@ -43,8 +43,8 @@ io.on('connection', socket => {
         io.to(payload.callerID).emit('receiving returned signal', { signal: payload.signal, id: socket.id });
     });
 
-    socket.on('canvas-data', (data)=> {
-        socket.broadcast.emit('canvas-data', data);
+    socket.on('whiteboard', (data)=> {
+        socket.broadcast.emit('whiteboard', data);
     })
 
     socket.on('disconnect', () => {

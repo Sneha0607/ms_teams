@@ -1,6 +1,5 @@
 import React from 'react';
 import io from 'socket.io-client';
-
 import './style.css';
 
 class Board extends React.Component {
@@ -14,8 +13,8 @@ class Board extends React.Component {
     constructor(props) {
         super(props);
 
-        //ON canvas-data EVENT OF SOCKET.IO
-        this.socket.on("canvas-data", function(data){
+        //ON whiteboard EVENT OF SOCKET.IO
+        this.socket.on("whiteboard", function(data){
 
             var root = this;
             var interval = setInterval(function(){
@@ -51,19 +50,19 @@ class Board extends React.Component {
         this.ctx = canvas.getContext('2d');
         var ctx = this.ctx;
 
-        var sketch = document.querySelector('#sketch');
-        var sketch_style = getComputedStyle(sketch);
-        canvas.width = parseInt(sketch_style.getPropertyValue('width'));
-        canvas.height = parseInt(sketch_style.getPropertyValue('height'));
+        var draw = document.querySelector('#draw');
+        var drawStyle = getComputedStyle(draw);
+        canvas.width = parseInt(drawStyle.getPropertyValue('width'));
+        canvas.height = parseInt(drawStyle.getPropertyValue('height'));
 
         //COORDINATES OF THE MOUSE POINTER
         var mouse = {x: 0, y: 0};
-        var last_mouse = {x: 0, y: 0};
+        var lastMouse = {x: 0, y: 0};
 
         //CAPTURING MOUSE WORK
         canvas.addEventListener('mousemove', function(e) {
-            last_mouse.x = mouse.x;
-            last_mouse.y = mouse.y;
+            lastMouse.x = mouse.x;
+            lastMouse.y = mouse.y;
 
             mouse.x = e.pageX - this.offsetLeft;
             mouse.y = e.pageY - this.offsetTop;
@@ -76,35 +75,39 @@ class Board extends React.Component {
         ctx.lineCap = 'round';
         ctx.strokeStyle = this.props.color;
 
-        canvas.addEventListener('mousedown', function(e) {
-            canvas.addEventListener('mousemove', onPaint, false);
-        }, false);
-
+        //MOUSE EVENT LISTENERS
         canvas.addEventListener('mouseup', function() {
-            canvas.removeEventListener('mousemove', onPaint, false);
+            canvas.removeEventListener('mousemove', onDraw, false);
         }, false);
 
+        canvas.addEventListener('mousedown', function(e) {
+            canvas.addEventListener('mousemove', onDraw, false);
+        }, false);
+
+        //ONDRAW FUNCTION
         var root = this;
-        var onPaint = function() {
+        var onDraw = function() {
             ctx.beginPath();
-            ctx.moveTo(last_mouse.x, last_mouse.y);
+            ctx.moveTo(lastMouse.x, lastMouse.y);
             ctx.lineTo(mouse.x, mouse.y);
             ctx.closePath();
             ctx.stroke();
 
-            if(root.timeout != undefined) clearTimeout(root.timeout);
-            root.timeout = setTimeout(function(){
+            if(root.timeout != undefined) 
+                clearTimeout(root.timeout);
+            
+                root.timeout = setTimeout(function(){
                 var base64ImageData = canvas.toDataURL("image/png");
-                root.socket.emit("canvas-data", base64ImageData);
+                root.socket.emit("whiteboard", base64ImageData);
             }, 1000)
         };
     }
 
     render() {
         return (
-            <div className="sketch" id="sketch">
+            <div className="draw" id="draw">
                 <canvas className="board" id="board">
-                    {/* DRAWING CANVAS */}
+                    {/* DRAWING BOARD */}
                 </canvas>
             </div>
         )
