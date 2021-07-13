@@ -29,8 +29,8 @@ https://clone-microsoft-teams.herokuapp.com
 - [Demo Images](#demo-images)
 
 ### Problem Statement
-The solution should be a fully functional prototype with at least one mandatory functionality - a minimum of two participants should be able connect with each other using your product to have a video conversation.
-Adapt feature: Include a chat feature in your application where meeting participants can share info without disrupting the flow of the meeting. Through this chat feature, your participants should be able to: View & Send messages, continue the conversation after the meeting and start the conversation before the meeting.
+- The solution should be a fully functional prototype with at least one mandatory functionality - a minimum of two participants should be able connect with each other using your product to have a video conversation.
+- Adapt feature: Include a chat feature in your application where meeting participants can share info without disrupting the flow of the meeting. Through this chat feature, your participants should be able to: View & Send messages, continue the conversation after the meeting and start the conversation before the meeting.
 
 ### Description
 Through this app users can create teams, start or schedule meetings. All the meetings will get listed in the team, and anyone can directly join from there. During the meeting, users can toggle between their audio and video, can view in full screen and picture-in-picture mode. All the participants of the meeting can view the participants list, chat with everyone and can even draw their thoughts on the collaborative whiteboard. The chats can be initiated before the meeting and can continue even after the meeting. The chats can be exported as a PDF. The meeting URL and Code can also be copied.
