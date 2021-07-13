@@ -11,11 +11,11 @@ https://clone-microsoft-teams.herokuapp.com
 ## Demo Video
 <a href='https://www.youtube.com/watch?v=uf3k8dtzaF0'>Demo Video</a>
 
+## Documentation / User Guide
+<a href='https://drive.google.com/file/d/1EXJgMKEh-1H_dR8WokXrySvRalFdkBAO/view?usp=sharing'>Documentation</a>
+
 ## Presentation Link
 <a href='https://drive.google.com/file/d/1K4peb0KkbG_7DbBTH5xa9kLCnjuKTSmG/view?usp=sharing'>Presentation</a>
-
-## Documentation / User Guide
-<a href=''>Documentation</a>
 
 ## Table of Contents
 - [Problem Statement](#problem-statement)
