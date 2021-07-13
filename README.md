@@ -14,12 +14,23 @@ https://clone-microsoft-teams.herokuapp.com
 ## Presentation Link
 <a href='https://drive.google.com/file/d/1K4peb0KkbG_7DbBTH5xa9kLCnjuKTSmG/view?usp=sharing'>Presentation</a>
 
+## Documentation / User Guide
+<a href=''>Documentation</a>
+
 ## Table of Contents
+- [Problem Statement](#problem-statement)
 - [Description](#description)
 - [Technology Used](#technology-used)
 - [Features](#features)
-- [Installation](#installation)
+- [Future Goals](#future-goals)
+- [Target Users](#target-users)
+- [What I learnt?](#what-i-learnt)
+- [Local Installation](#local-installation)
 - [Demo Images](#demo-images)
+
+### Problem Statement
+The solution should be a fully functional prototype with at least one mandatory functionality - a minimum of two participants should be able connect with each other using your product to have a video conversation.
+Adapt feature: Include a chat feature in your application where meeting participants can share info without disrupting the flow of the meeting. Through this chat feature, your participants should be able to: View & Send messages, continue the conversation after the meeting and start the conversation before the meeting.
 
 ### Description
 Through this app users can create teams, start or schedule meetings. All the meetings will get listed in the team, and anyone can directly join from there. During the meeting, users can toggle between their audio and video, can view in full screen and picture-in-picture mode. All the participants of the meeting can view the participants list, chat with everyone and can even draw their thoughts on the collaborative whiteboard. The chats can be initiated before the meeting and can continue even after the meeting. The chats can be exported as a PDF. The meeting URL and Code can also be copied.
@@ -61,7 +72,22 @@ Apart from this, this app also has features to view user activity, participate i
     </ol>
 </ol>
 
-### Installation
+### Future Goals
+  1. Increase scalability
+  2. Private chat rooms
+  3. Breakout rooms
+  4. Private teams, which are currently public for all users in my app
+
+### Target Users
+  1. Educational Institutes
+  2. Office/Professional Meetings
+  3. Friends/Family
+
+### What I Learnt?
+  - The theme of the mentorship program was Agile Methodology. I learnt how we need to plan our projects much before implementing/building it. We need to built, in a manner    that it is able to adapt to any new feature proposed by the client. 
+  - I also read and learnt a lot about webRTC, peer-to-peer connection and how actually do we establish a video call with one or more participants.
+
+### Local Installation
 ```
 git clone https://github.com/Sneha0607/ms_teams.git
 cd ms_teams
